@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<routes>
+    <route url="/" module="Index" action="showIndex" />
+
+    <!-- Auteur -->
+    <route url="/auteur/([0-9]+)/([a-z0-9]+)" module="Auteur" action="getAuteur" vars="id,name" />
+    <route url="/auteur/([0-9]+)/([a-z0-9]+)/livre" module="Auteur" action="getLivres" vars="id,name" />
+    <route url="/auteur/([0-9]+)/([a-z0-9]+)/page" module="Auteur" action="getPages" vars="id,name" />
+    <route url="/auteur/([0-9]+)/([a-z0-9]+)/page/([0-9]+)/([a-z0-9]+)" module="Auteur" action="getPage" vars="id,name,pageid,pagename" />
+
+    <!-- Concours -->
+
+
+    <!-- Cycle -->
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9]+)" module="Cycle" action="getCycle" vars="auteurid,id,name" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9]+)/livre" module="Cycle" action="getLivres" vars="auteurid,id,name" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9]+)/page" module="Cycle" action="getPages" vars="auteurid,id,name" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9]+)/page/([0-9]+)/([a-z0-9]+)" module="Cycle" action="getPage" vars="auteurid,id,name,pageid,pagename" />
+
+    <!-- Galerie -->
+
+    <!-- Général -->
+    <route url="/about" module="About" action="about" />
+    <route url="/contact" module="Contact" action="contact" />
+    <route url="/mentions" module="About" action="mentions" />
+
+    <!-- Livre -->
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9]+)" module="Livre" action="getLivre" vars="auteurid,id,name" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9]+)/edition" module="Livre" action="getEditions" vars="auteurid,id,name" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9]+)/page" module="Livre" action="getPages" vars="auteurid,id,name" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9]+)/page/([0-9]+)/([a-z0-9]+)" module="Livre" action="getPage" vars="auteurid,id,name,pageid,pagename" />
+
+    <!-- Wiki -->
+
+    <!-- Administration -->
+    <!-- Administration / Auteur -->
+
+    <!-- Administration / Cycle -->
+
+    <!-- Administration / Page -->
+    
+
+</routes>

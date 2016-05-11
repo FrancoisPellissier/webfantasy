@@ -1,0 +1,830 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"con",
+				"controllerClass"
+			],
+			[
+				"type_evol",
+				"type_evol_vol_my_mois"
+			],
+			[
+				"vol_my",
+				"vol_my_mois_p2"
+			],
+			[
+				"vol_m",
+				"vol_my_mois_p3"
+			],
+			[
+				"type_e",
+				"type_evol_vol_my_mois"
+			],
+			[
+				"evol",
+				"evol_vol_my_mois"
+			],
+			[
+				"mode",
+				"modelClass"
+			],
+			[
+				"re",
+				"realname"
+			],
+			[
+				"modi",
+				"modifyPassword"
+			],
+			[
+				"mod",
+				"modifRealname"
+			],
+			[
+				"pa",
+				"password2"
+			],
+			[
+				"pass",
+				"password2"
+			],
+			[
+				"pas",
+				"password1"
+			],
+			[
+				"pun",
+				"pun_config"
+			],
+			[
+				"passw",
+				"password_clean"
+			],
+			[
+				"er",
+				"errors"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"ans",
+				"answerid"
+			],
+			[
+				"Model",
+				"ModelName"
+			],
+			[
+				"s",
+				"smilies"
+			],
+			[
+				"prote",
+				"proc_terminate"
+			],
+			[
+				"getin",
+				"get_index"
+			],
+			[
+				"get",
+				"getFichesByGenre  (function)"
+			],
+			[
+				"num",
+				"num_rows"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"nu",
+				"num_rows"
+			],
+			[
+				"fe",
+				"fetch_assoc  (function)"
+			],
+			[
+				"e",
+				"exists  (variable)"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "library/BaseController.class.php",
+			"settings":
+			{
+				"buffer_size": 1971,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "library/BaseModel.class.php",
+			"settings":
+			{
+				"buffer_size": 6766,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"git:s",
+				"Git: Status"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"packag",
+				"Package Control: Install Package"
+			],
+			[
+				"Pac",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: U",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"pac",
+				"Package Control: Add Repository"
+			],
+			[
+				"",
+				"Set Syntax: PHP"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/xampp/htdocs/webfantasy_vf/modules/Avis/view/edit.tpl.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/Avis/view/add.tpl.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/Avis/AvisController.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/Avis/Avis.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/About/AboutController.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/About/view/about.tpl.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/About/view/index.tpl.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/About/view/mentions.tpl.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/About/text/mentions.txt",
+		"/C/xampp/htdocs/webfantasy_vf/modules/About/text/about.txt",
+		"/C/xampp/htdocs/webfantasy_vf/library/View.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/Router.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/Route.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/BaseController.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/BaseModel.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/HTTPRequest.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/HTTPResponse.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/Image.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/Parsedown.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/Query.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/Date.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/Datetime.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/Application.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/library/autoload.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/Error/ErrorController.class.php",
+		"/C/xampp/htdocs/webfantasy_vf/modules/Error/view/error_404.tpl.php",
+		"/C/xampp/htdocs/webfantasy_vf/assets/layouts/footer.php",
+		"/C/xampp/htdocs/webfantasy_vf/assets/layouts/header.php",
+		"/C/xampp/htdocs/webfantasy_vf/assets/layouts/layout.tpl.php",
+		"/C/xampp/htdocs/webfantasy_vf/assets/layouts/menu.php",
+		"/C/xampp/htdocs/webfantasy_vf/assets/layouts/sidebar.php",
+		"/C/xampp/htdocs/webfantasy_vf/assets/js/functions.js",
+		"/C/xampp/htdocs/webfantasy_vf/assets/config/config.php",
+		"/C/xampp/htdocs/webfantasy_vf/assets/config/routes.xml",
+		"/C/xampp/htdocs/webfantasy_vf/assets/css/style.css",
+		"/C/xampp/htdocs/webfantasy_vf/assets/js/theater.js",
+		"/C/Users/francois.pellissier/Documents/Perso/GoogleMapsApi/Suunto/Move_2016_04_23_10_51_48_Randonnée.gpx",
+		"/C/Users/francois.pellissier/Documents/Perso/GoogleMapsApi/test.html",
+		"/C/Users/francois.pellissier/Documents/Perso/GoogleMapsApi/Suunto/test.csv",
+		"/C/Users/francois.pellissier/Documents/Perso/GoogleMapsApi/Suunto/Move_2016_04_23_10_51_48_Randonnée.kml",
+		"/C/Users/francois.pellissier/Documents/Perso/GoogleMapsApi/Suunto/Move_2016_04_23_10_51_48_Randonnée.tcx",
+		"/C/Users/francois.pellissier/Documents/Perso/GoogleMapsApi/Suunto/Move_2016_04_23_10_51_48_Randonnée.fit",
+		"/C/Users/francois.pellissier/Desktop/tac561.sql",
+		"/C/xampp/htdocs/movie/modules/Film/view/show.tpl.php",
+		"/H/769_TotalBToC/BDD/DEVELOPPEMENT/01 - Passerelle Brute/2016-02-02/Loyalty_Commandes_2015.txt",
+		"/Y/DEPARTEMENTS/DIR_LOYALTYDATA/INTELLIGENCE_DATA/Modes_Operatoires/042_FRB/2015.03 Webreporting/BDD 042 FRB - 128 WebReporting - Objectifs - Requetes.sql",
+		"/C/xampp/htdocs/datapanel/modules/Manager/Manager.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Login/Login.class.php",
+		"/C/xampp/htdocs/datapanel/assets/config/dbconfig.php",
+		"/C/xampp/htdocs/datapanel/modules/Index/view/showIndexTalend.tpl.php",
+		"/C/xampp/htdocs/datapanel/modules/Doc/Talend/view/joblet_email.tpl.php",
+		"/C/xampp/htdocs/datapanel/modules/Doc/Talend/view/context.tpl.php",
+		"/C/xampp/htdocs/datapanel/library/BaseModel.class.php",
+		"/C/xampp/htdocs/datapanel/assets/js/mediapro.js",
+		"/C/xampp/htdocs/datapanel/modules/MediaPro/Object/view/showList.tpl.php",
+		"/C/xampp/htdocs/datapanel/modules/MediaPro/Object/Object.class.php",
+		"/C/xampp/htdocs/datapanel/modules/MediaPro/Object/ObjectController.class.php",
+		"/C/xampp/htdocs/datapanel/assets/config/routes.xml",
+		"/C/xampp/htdocs/datapanel/modules/MediaPro/Bloc/Bloc.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Talend/Execution/ExecutionController.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Talend/Execution/view/lastExec.tpl.php",
+		"/C/xampp/htdocs/datapanel/assets/js/talend.js",
+		"/C/xampp/htdocs/datapanel/assets/layouts/menu.php",
+		"/C/xampp/htdocs/datapanel/assets/layouts/sidebar.php",
+		"/C/xampp/htdocs/datapanel/modules/LoyaltyData/Skill/SkillController.class.php",
+		"/C/xampp/htdocs/datapanel/modules/LoyaltyData/Skill/view/showMine.tpl.php",
+		"/C/xampp/htdocs/datapanel/modules/LoyaltyData/Skill/view/showSkill.tpl.php",
+		"/C/xampp/htdocs/datapanel/modules/LoyaltyData/Skill/view/showSkillHeader.tpl.php",
+		"/C/xampp/htdocs/datapanel/assets/js/skill.js",
+		"/C/xampp/htdocs/datapanel/modules/MediaPro/Bloc/view/showBlocHeader.tpl.php",
+		"/C/xampp/htdocs/datapanel/modules/MediaPro/Bloc/view/showPages.tpl.php",
+		"/C/xampp/htdocs/datapanel/modules/LoyaltyData/Skill/Skill.class.php",
+		"/C/xampp/htdocs/datapanel/library/Query.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Index/Index.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Login/view/login.tpl.php",
+		"/C/xampp/htdocs/datapanel/modules/Login/LoginController.class.php",
+		"/C/xampp/htdocs/datapanel/assets/js/operation.js",
+		"/C/xampp/htdocs/datapanel/assets/config/config.php",
+		"/C/xampp/htdocs/datapanel/modules/Talend/Execution/Execution.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Talend/Flux/Flux.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Talend/Job/Job.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Talend/Project/Project.class.php",
+		"/C/xampp/htdocs/datapanel/.htaccess",
+		"/C/xampp/htdocs/datapanel/modules/Server/Server/ServerController.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Server/Server/Server.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Server/Database/DatabaseController.class.php",
+		"/C/xampp/htdocs/datapanel/modules/Server/Database/Database.class.php",
+		"/Y/DEPARTEMENTS/DIR_LOYALTYDATA/INTELLIGENCE_DATA/Modes_Operatoires/042_FRB/2015.03 Webreporting/BDD 042 FRB - 128 WebReporting - Requetes.sql",
+		"/C/xampp/htdocs/datapanel/library/View.class.php",
+		"/C/xampp/htdocs/datapanel/library/BaseController.class.php",
+		"/C/xampp/htdocs/datapanel/library/Application.class.php",
+		"/C/xampp/htdocs/datapanel/library/Route.class.php",
+		"/C/xampp/htdocs/datapanel/library/HTTPResponse.class.php",
+		"/C/xampp/htdocs/datapanel/library/HTTPRequest.class.php",
+		"/C/xampp/htdocs/datapanel/modules/MediaPro/Document/DocumentController.class.php",
+		"/C/xampp/htdocs/loyaltydata/modules/Index/view/showIndex.tpl.php",
+		"/C/xampp/htdocs/loyaltydata/assets/config/routes.xml",
+		"/C/xampp/htdocs/loyaltydata/assets/config/functions.php",
+		"/C/xampp/htdocs/loyaltydata/assets/config/dbconfig.php",
+		"/C/xampp/htdocs/loyaltydata/assets/config/config.php",
+		"/C/xampp/htdocs/loyaltydata/.htaccess",
+		"/C/xampp/htdocs/loyaltydata/index.php",
+		"/C/xampp/htdocs/loyaltydata/modules/Server/Server/view/showServerList.tpl.php",
+		"/Y/INTELLIGENCE_DATA/Modes_Operatoires/042_FRB/2015.03 Webreporting/BDD 042 FRB - 128 WebReporting - Objectifs - Requetes.sql",
+		"/C/xampp/htdocs/movie/.git/config",
+		"/C/xampp/htdocs/loyaltydata/modules/Index/view/showIndexToolsbox.tpl.php",
+		"/C/xampp/htdocs/loyaltydata/library/BaseModel.class.php",
+		"/C/xampp/htdocs/loyaltydata/library/DBLayer.class.php",
+		"/C/xampp/htdocs/loyaltydata/modules/Talend/Execution/Execution.class.php",
+		"/C/xampp/htdocs/loyaltydata/modules/Manager/Manager.class.php",
+		"/C/xampp/htdocs/loyaltydata/modules/MediaPro/Document/Document.class.php",
+		"/C/xampp/htdocs/loyaltydata/library/Application.class.php",
+		"/C/xampp/htdocs/loyaltydata/library/Mysqli.php",
+		"/C/xampp/htdocs/loyaltydata/modules/Talend/Execution/view/lastExec.tpl.php",
+		"/C/xampp/htdocs/loyaltydata/library/temp_DBLayer.class.php",
+		"/C/xampp/htdocs/loyaltydata/modules/Server/Server/Server.class.php",
+		"/C/Talend/Talend5.6.1/workspace/C013_LE_MAJ_LS/context/loyaltydata_0.1.item",
+		"/Y/INTELLIGENCE_DATA/Modes_Operatoires/042_FRB/2015.03 Webreporting/BDD 042 FRB - 128 WebReporting - Requetes.sql",
+		"/Y/INTELLIGENCE_DATA/Modes_Operatoires/065_TGR/BDD 065 TGR - WebReporting - Requetes.sql",
+		"/C/xampp/htdocs/loyaltydata/modules/Server/Server/view/listServer.tpl.php",
+		"/C/Users/francois.pellissier/Desktop/.htaccess",
+		"/C/Users/francois.pellissier/Desktop/index.php",
+		"/C/Users/francois.pellissier/Desktop/config.php",
+		"/C/xampp/htdocs/movie/index.php",
+		"/C/xampp/htdocs/movie/assets/config/config.php",
+		"/C/xampp/htdocs/loyaltydata/assets/layouts/header.php",
+		"/C/xampp/htdocs/loyaltydata/assets/layouts/menu.php",
+		"/C/xampp/htdocs/loyaltydata/modules/Index/IndexController.class.php"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"Cycle",
+			"coordinates",
+			"2015",
+			" {{ $conditions_p3 }}",
+			") AS",
+			"SUM",
+			"{{ $periode }}",
+			"{{ $p3_end }}",
+			"{{ $conditions_p3 }}",
+			"{{ $periode }}",
+			"`",
+			"extradate_1_indic",
+			",\n",
+			"date",
+			"c_4",
+			"pcivil",
+			"code_niveau",
+			"PUN_ROOT",
+			"var",
+			"'$val'",
+			"loyaltydata",
+			"'loyaltydata'",
+			"11",
+			"loyaltyprint.loyaltyprint_orders",
+			"loyaltyprint.loyaltyprint_documentsordered",
+			"ls2v2_client.clt_25_distriboissons_loyaltyprint_tramedistrimonth",
+			"ls2v2_client.clt_25_distriboissons_loyaltyprint_tramedistriproduct",
+			"ls2v2_client.clt_25_distriboissons_drag_drop",
+			"•         ",
+			"	",
+			"priority",
+			"c.code_niveau_1_p12m_p3",
+			"rewrite",
+			"write",
+			"rewri",
+			"p12m",
+			"le_hierarchies_familles_achat.",
+			"le_articles.",
+			"le_hierarchies_familles_vente.",
+			"le_articles.",
+			"m1_articles.",
+			"le_articles.",
+			"_p2",
+			"periode",
+			"conditions_p3",
+			"parc_p2_",
+			"{{ $p3_end }}",
+			" {{ $conditions_p3 }}",
+			"{{ $periode }}",
+			"freq",
+			"marge",
+			"point_operation_classement_results.",
+			"point_prediction.",
+			"p12m",
+			"freq",
+			"pmois",
+			"''2014-12-31''",
+			"{{ $p3_end }}",
+			"{{ $periode }}",
+			"{{ $conditions_p2 }}",
+			"{{ $conditions_p3 }}",
+			"•	",
+			"2160",
+			"/",
+			"-- 1.1",
+			"1.1",
+			" ",
+			")",
+			"array('blocid' => ",
+			"dos",
+			"//",
+			"	",
+			"    2808351",
+			"Id",
+			" »",
+			"« ",
+			"’",
+			"	",
+			"|",
+			"	",
+			"« ",
+			" »",
+			"–",
+			"style=\\\"border: solid 1px black\\\"",
+			"tdstyle",
+			"{{ $field_1 }}",
+			"AND i.code_comm_3_p3 = 115",
+			"AND i.code_comm_2_p3 = 22",
+			"code_comm_1_p3 = 2",
+			"{{ conditions_p2 }}",
+			"{{ conditions_p3 }}",
+			"{{ $conditions_p2 }}",
+			"{{ $conditions_p3 }}",
+			"{{ $periode }}",
+			"{{ $filtre['analyse']['code_comm_4'] }}",
+			"{{ $filtre['analyse']['code_comm_5'] }}",
+			"{{ $filtre['analyse']['code_comm_3'] }}",
+			"{{ $filtre['analyse']['code_comm_2'] }}",
+			"{{ $filtre['analyse']['code_comm_1'] }}",
+			"{{ $p3_end }}",
+			"condition_niveau",
+			"$user",
+			"-- 1.2",
+			"CA Hors Carburant",
+			"AND i.code_fam_1 = 1",
+			"vol_",
+			"volume",
+			"Volume -",
+			"volume",
+			"Volume",
+			"\\",
+			"\\\\",
+			"\\\\\\",
+			"\\\\",
+			"\\\\\\\\",
+			"\\\\\\",
+			"\\\\",
+			"/",
+			"\\",
+			"error",
+			"eror",
+			"time",
+			"user",
+			"\"'",
+			"'",
+			"pun_setcookie",
+			");\n",
+			"lda"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"@",
+			"pcivil",
+			"'2014-12-31'",
+			"pmois",
+			"true",
+			"\"",
+			"'",
+			"\"",
+			"-",
+			"td style",
+			"ca_1",
+			"AND i.code_comm_3_p3 = 130",
+			"AND i.code_comm_2_p3 = 11",
+			"code_comm_1_p3 = 1",
+			"{{ $conditions_p2 }}",
+			"{{ $conditions_p3 }}",
+			"true",
+			"pmois",
+			"3",
+			"31",
+			"102",
+			"115",
+			"22",
+			"2",
+			"2014-12-31",
+			"', 'texte' => '",
+			"', 'title' => '",
+			"array('url' => '",
+			"contact@webfantasy.fr",
+			"	",
+			"img/",
+			"/img/",
+			"C:/Users/François/Music/"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "library/BaseController.class.php",
+					"settings":
+					{
+						"buffer_size": 1971,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1144,
+								1144
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 42.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "library/BaseModel.class.php",
+					"settings":
+					{
+						"buffer_size": 6766,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4889,
+								4889
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"basemo",
+				"library/BaseModel.class.php"
+			],
+			[
+				"obj",
+				"modules/MediaPro/Object/Object.class.php"
+			],
+			[
+				"basemd",
+				"library/BaseModel.class.php"
+			],
+			[
+				"ex",
+				"modules/Talend/Execution/ExecutionController.class.php"
+			],
+			[
+				"object",
+				"modules/MediaPro/Object/ObjectController.class.php"
+			],
+			[
+				"route",
+				"assets/config/routes.xml"
+			],
+			[
+				"skill",
+				"assets/js/skill.js"
+			],
+			[
+				"men",
+				"assets/layouts/menu.php"
+			],
+			[
+				"side",
+				"assets/layouts/sidebar.php"
+			],
+			[
+				"sk",
+				"assets/js/skill.js"
+			],
+			[
+				"show",
+				"modules/Index/view/showIndexTalend.tpl.php"
+			],
+			[
+				"skill.js",
+				"assets/js/skill.js"
+			],
+			[
+				"con",
+				"assets/config/config.php"
+			],
+			[
+				"dbconf",
+				"assets/config/dbconfig.php"
+			],
+			[
+				"dbco",
+				"assets/config/dbconfig.php"
+			],
+			[
+				"vie",
+				"library/View.class.php"
+			],
+			[
+				"db",
+				"assets/config/dbconfig.php"
+			],
+			[
+				"view",
+				"library/View.class.php"
+			],
+			[
+				"base",
+				"library/BaseController.class.php"
+			],
+			[
+				"appli",
+				"library/Application.class.php"
+			],
+			[
+				"showop",
+				"modules/Operation/Operation/view/showOperationForm.tpl.php"
+			],
+			[
+				"basecon",
+				"library/BaseController.class.php"
+			],
+			[
+				"menu",
+				"assets/layouts/menu.php"
+			],
+			[
+				"fun",
+				"assets/config/functions.php"
+			],
+			[
+				"func",
+				"assets/config/functions.php"
+			],
+			[
+				"section",
+				"modules/Documentation/Section/Section.class.php"
+			],
+			[
+				"functio",
+				"assets/config/functions.php"
+			],
+			[
+				"doc",
+				"modules/Documentation/Doc/Doc.class.php"
+			],
+			[
+				"dbcon",
+				"assets/config/dbconfig.php"
+			],
+			[
+				"header",
+				"assets/layouts/header.php"
+			],
+			[
+				"execlog",
+				"modules/Talend/Execution/view/getExecLog.tpl.php"
+			],
+			[
+				"basemod",
+				"library/BaseModel.class.php"
+			],
+			[
+				"basemode",
+				"library/BaseModel.class.php"
+			],
+			[
+				"config",
+				"forum/config.php"
+			],
+			[
+				"conf",
+				"forum/config.php"
+			],
+			[
+				"blocc",
+				"modules/MediaPro/Bloc/BlocController.class.php"
+			],
+			[
+				"bloc",
+				"modules/MediaPro/Bloc/Bloc.class.php"
+			],
+			[
+				"basecont",
+				"library/BaseController.class.php"
+			],
+			[
+				"baseco",
+				"library/BaseController.class.php"
+			],
+			[
+				"taled",
+				"assets/js/talend.js"
+			],
+			[
+				"listjo",
+				"modules/Talend/Job/view/listJob.tpl.php"
+			],
+			[
+				"jobocn",
+				"modules/Talend/Job/JobController.class.php"
+			],
+			[
+				"cong",
+				"forum/config.php"
+			],
+			[
+				"bloccon",
+				"modules/MediaPro/Bloc/BlocController.class.php"
+			],
+			[
+				"rout",
+				"assets/config/routes.xml"
+			],
+			[
+				"showfl",
+				"modules/Talend/Flux/view/showFluxHeader.tpl.php"
+			],
+			[
+				"tes",
+				"webfantasy_v2/test.php"
+			],
+			[
+				"film.ca",
+				"weblib_2/models/Film.class.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"selected_items":
+		[
+			[
+				"",
+				"/C/xampp/htdocs/webfantasy/webfantasy.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 217.0,
+	"status_bar_visible": true
+}
