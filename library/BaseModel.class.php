@@ -75,6 +75,26 @@ abstract class BaseModel {
            $this->exists = false;
     }
 
+    public function getPages() {
+        $types = array('auteur', 'cycle', 'livre');
+
+        // Ne fonctionne que si la fiche existe et est dans la liste
+        if($this->exists AND in_array($this->table, $types)) {
+            
+            $result = $this->db->query('SELECT pageid, pagetitre FROM page WHERE fichetype = \''.$this->table.'\' AND ficheid = '.intval($this->infos[$this->key]).' AND pageparentid = 0 ORDER BY ordre')or error('Impossible de récupérer les pages de la fiche "'.$this->table.' '.intval($id).'"', __FILE__, __LINE__, $this->db->error());
+            
+            $pages = array();
+            if($this->db->num_rows($result)) {
+                $pages[] = $this->db->fetch_assoc($result);
+                }
+
+            $this->infos['pages'] = $pages;
+        }
+        else {
+            $this->infos['pages'] = array();
+        }
+    }
+
     public function hydrate($datas) {
         // On parcourt le schema pour insérer les données correspondant dans les data
         foreach($this->schema AS $field => $infos) {
@@ -139,8 +159,6 @@ abstract class BaseModel {
     }
     
     public function add() {
-        global $pun_user;
-        
         $error = array();
         // On vérifie les données, les remplaçant par la valeur par défaut si besoin
         $datas = $this->checkData('insert', $this->infos, $error);
