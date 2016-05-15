@@ -187,7 +187,7 @@ abstract class BaseModel {
         if($this->db->num_rows($result)) {
             // Parcourt des résultats
             while($cur = $this->db->fetch_assoc($result)) {
-                $return[$cur[$this->key]] = $cur;
+                $return[] = $cur;
             }
         }
         return $return;
