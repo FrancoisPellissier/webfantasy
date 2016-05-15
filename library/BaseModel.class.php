@@ -179,4 +179,17 @@ abstract class BaseModel {
         // On enregistre les modifications en base
         $this->db->query(Query::update($this->table, $datas, array($this->key => $this->infos[$this->key]), $this->time))or error('Impossible de modifier la fiche '.$this->infos[$this->key].' dans la table : '.$this->table, __FILE__, __LINE__, $this->db->error());
     }
+
+    public function getResults($sql) {
+        $return = array();
+
+        // Il y a des résultats ?
+        if($this->db->num_rows($result)) {
+            // Parcourt des résultats
+            while($cur = $this->db->fetch_assoc($result)) {
+                $return[$cur[$this->key]] = $cur;
+            }
+        }
+        return $return;
+    }
 }
