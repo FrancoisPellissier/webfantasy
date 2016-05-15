@@ -19,4 +19,19 @@ class Livre extends \library\BaseModel {
         'cycleordre' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'Ordre du livre dans le cycle'),
         );
     }
+
+    public function getEditions() {
+        $editions = array();
+        if($this->exists) {
+            $sql = 'SELECT editionid, titre, datesortie, nbpage
+                FROM site_edition AS e
+                INNER JOIN site_livre_edition AS le
+                    ON e.editionid = le.editionid
+                    AND le.livreid = '.$this->infos[$this->key] .'
+                ORDER BY langid, datesortie DESC';
+
+            $editions = $this->getResults($sql);
+        }
+        return $editions;
+    }
 }
