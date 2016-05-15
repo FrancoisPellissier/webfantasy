@@ -4,9 +4,10 @@ namespace modules\Cycle;
 class Cycle extends \library\BaseModel {
     public function __construct() {
         parent::__construct();
-        $this->table = 'cycle';
+        $this->table = 'site_cycle';
         $this->key = 'cycleid';
         $this->time = true;
+        $this->fichetype = 'cycle';
         $this->picture = true;
         
         $this->schema = array(

@@ -4,8 +4,9 @@ namespace modules\Auteur;
 class Auteur extends \library\BaseModel {
     public function __construct() {
         parent::__construct();
-        $this->table = 'auteur';
+        $this->table = 'site_auteur';
         $this->key = 'auteurid';
+        $this->fichetype = 'auteur';
         $this->time = true;
         
         $this->schema = array(

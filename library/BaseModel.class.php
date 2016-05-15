@@ -3,6 +3,7 @@ namespace library;
 
 abstract class BaseModel {
     public $db;
+    public $fichetype;
     public $table;
     public $key;
     public $schema;
@@ -79,9 +80,9 @@ abstract class BaseModel {
         $types = array('auteur', 'cycle', 'livre');
 
         // Ne fonctionne que si la fiche existe et est dans la liste
-        if($this->exists AND in_array($this->table, $types)) {
+        if($this->exists AND in_array($this->fichetype, $types)) {
             
-            $result = $this->db->query('SELECT pageid, pagetitre FROM page WHERE fichetype = \''.$this->table.'\' AND ficheid = '.intval($this->infos[$this->key]).' AND pageparentid = 0 ORDER BY ordre')or error('Impossible de récupérer les pages de la fiche "'.$this->table.' '.intval($id).'"', __FILE__, __LINE__, $this->db->error());
+            $result = $this->db->query('SELECT pageid, pagetitre FROM page WHERE fichetype = \''.$this->fichetype.'\' AND ficheid = '.intval($this->infos[$this->key]).' AND pageparentid = 0 ORDER BY ordre')or error('Impossible de récupérer les pages de la fiche "'.$this->table.' '.intval($id).'"', __FILE__, __LINE__, $this->db->error());
             
             $pages = array();
             if($this->db->num_rows($result)) {

@@ -4,9 +4,10 @@ namespace modules\Livre;
 class Livre extends \library\BaseModel {
     public function __construct() {
         parent::__construct();
-        $this->table = 'livre';
+        $this->table = 'site_livre';
         $this->key = 'livreid';
         $this->time = true;
+        $this->fichetype = 'livre';
         $this->picture = true;
         
         $this->schema = array(
