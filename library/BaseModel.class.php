@@ -16,7 +16,7 @@ abstract class BaseModel {
      */
     public $order;
     public $time;
-    public $picture;
+    public $picture = false;
     public $infos;
     public $exists = false;
 
@@ -65,6 +65,10 @@ abstract class BaseModel {
             $cur = $this->db->fetch_assoc($result);
             $this->exists = true;
             $this->infos = $cur;
+
+            // Génération du titre usuel si que VF / VO
+            if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
+                $this->infos['titre'] = ($this->schema['titre_vf'] != "" ? $this->schema['titre_vf'] : $this->schema['titre_vo']);
             
             // On enregistre la visite de cette "page" pour pouvoir faire des stats plus tard
             // L'info n'est pertinente que pour le fiche vu, pas pour la récupération dans le cadre d'un test d'existence
@@ -103,6 +107,26 @@ abstract class BaseModel {
                 $this->infos[$field] = $datas[$field];
             }
         }
+    }
+
+    public function generateCollection($datas) {
+        $collection = array();
+        $module = ucwords($this->fichetype);
+        
+        // Parcourt des résultats pour générer un tableau d'objets
+        foreach($datas AS $data) {
+            $modelClass = '\modules\\'.$module.'\\'.$module;
+            $model = new $modelClass();
+            $model->hydrate($data);
+
+            // Titre usuel
+            if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
+                $this->infos['titre'] = ($this->schema['titre_vf'] != "" ? $this->schema['titre_vf'] : $this->schema['titre_vo']);
+            }
+
+            $collection[$this->infos[$this->key]] = $model;
+        }
+        return $collection;
     }
 
     public function checkData($modiftype, $post, $errors) {
