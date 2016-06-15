@@ -112,10 +112,10 @@ abstract class BaseModel {
     public function generateCollection($datas) {
         $collection = array();
         $module = ucwords($this->fichetype);
+        $modelClass = '\modules\\'.$module.'\\'.$module;
         
         // Parcourt des résultats pour générer un tableau d'objets
         foreach($datas AS $data) {
-            $modelClass = '\modules\\'.$module.'\\'.$module;
             $model = new $modelClass();
             $model->hydrate($data);
 
