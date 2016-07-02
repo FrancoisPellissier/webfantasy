@@ -1,8 +1,8 @@
 <?php
 if($_SERVER['SERVER_NAME'] == 'localhost') {
-    define('ROOT', 'C:/xampp/htdocs/webfantasy_vf/');
+    define('ROOT', 'C:/xampp/htdocs/webfantasy/');
     define('PUN_ROOT', ROOT.'forum/');
-    define('WWW_ROOT', 'http://localhost/webfantasy_vf/');
+    define('WWW_ROOT', 'http://localhost/webfantasy/');
     }
 else if($_SERVER['SERVER_NAME'] == 'mymoviewall.com') {
     define('ROOT', '/homepages/4/d185183764/htdocs/');
@@ -10,10 +10,13 @@ else if($_SERVER['SERVER_NAME'] == 'mymoviewall.com') {
     define('WWW_ROOT', 'http://www.mymoviewall.com/');
 }
 else {
-    define('ROOT', 'C:/xampp/htdocs/webfantasy_vf/');
+    define('ROOT', 'C:/xampp/htdocs/webfantasy/');
     define('PUN_ROOT', ROOT.'forum/');
-    define('WWW_ROOT', 'http://localhost/webfantasy_vf/');
+    define('WWW_ROOT', 'http://localhost/webfantasy/');
 }
+
+// Décommenter pour passer en mode maintenance
+// define('MAINTENANCE_MOD', true);
 
 require PUN_ROOT.'include/common.php';
 require PUN_ROOT.'include/parser.php';
