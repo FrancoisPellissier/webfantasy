@@ -31,6 +31,6 @@ class HTTPRequest {
     }
 
     public function requestURI() {
-        return str_replace('/movie' , '', $_SERVER['REQUEST_URI']);
+        return str_replace('/webfantasy' , '', $_SERVER['REQUEST_URI']);
     }
 }

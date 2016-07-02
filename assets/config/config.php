@@ -16,7 +16,7 @@ else {
 }
 
 // Décommenter pour passer en mode maintenance
-// define('MAINTENANCE_MOD', true);
+define('MAINTENANCE_MOD', false);
 
 require PUN_ROOT.'include/common.php';
 require PUN_ROOT.'include/parser.php';
