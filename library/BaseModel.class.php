@@ -69,7 +69,8 @@ abstract class BaseModel {
             // Génération du titre usuel si que VF / VO
             if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
                 $this->infos['titre'] = ($this->schema['titre_vf'] != "" ? $this->schema['titre_vf'] : $this->schema['titre_vo']);
-            
+            }
+
             // On enregistre la visite de cette "page" pour pouvoir faire des stats plus tard
             // L'info n'est pertinente que pour le fiche vu, pas pour la récupération dans le cadre d'un test d'existence
             if($track) {
@@ -77,7 +78,7 @@ abstract class BaseModel {
             }
         }
         else 
-           $this->exists = false;
+            $this->exists = false;
     }
 
     public function getPages() {
@@ -103,7 +104,7 @@ abstract class BaseModel {
     public function hydrate($datas) {
         // On parcourt le schema pour insérer les données correspondant dans les data
         foreach($this->schema AS $field => $infos) {
-            if(isset($datas[$field]))
+            if(isset($datas[$field])) {
                 $this->infos[$field] = $datas[$field];
             }
         }
