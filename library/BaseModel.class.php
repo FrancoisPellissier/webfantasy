@@ -122,10 +122,10 @@ abstract class BaseModel {
 
             // Titre usuel
             if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
-                $this->infos['titre'] = ($this->schema['titre_vf'] != "" ? $this->schema['titre_vf'] : $this->schema['titre_vo']);
+                $model->infos['titre'] = ($model->infos['titre_vf'] != "" ? $model->infos['titre_vf'] : $model->infos['titre_vo']);
             }
 
-            $collection[$this->infos[$this->key]] = $model;
+            $collection[$model->infos[$this->key]] = $model;
         }
         return $collection;
     }
@@ -205,7 +205,7 @@ abstract class BaseModel {
         $this->db->query(Query::update($this->table, $datas, array($this->key => $this->infos[$this->key]), $this->time))or error('Impossible de modifier la fiche '.$this->infos[$this->key].' dans la table : '.$this->table, __FILE__, __LINE__, $this->db->error());
     }
 
-    public function getResults($sql) {
+    public function getResults($result) {
         $return = array();
 
         // Il y a des résultats ?
