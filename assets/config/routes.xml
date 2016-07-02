@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
-    <route url="/" module="Index" action="showIndex" />
+    <route url="/" module="Accueil" action="showAccueil" />
 
     <!-- Auteur -->
     <route url="/auteur/([0-9]+)/([a-z0-9]+)" module="Auteur" action="showAuteur" vars="id,name" />
