@@ -16,6 +16,3 @@ Conformément à la loi Informatique et Libertés du 6 Janvier 1978, et compte t
 ## Cookies
 Certaines pages peuvent contenir un marqueur témoin («  cookie  »). Un cookie est un fichier de taille réduite stocké sur votre ordinateur, utilisé à la fois pour faciliter votre navigation sur le site. Ces données ne sont donc pas recueillies pour nous permettre d'identifier l'identité des personnes naviguant sur le site. 
 Vous êtes informé que vous pouvez vous opposer à l'enregistrement de ces "cookies" en configurant votre ordinateur selon les modalités détaillées sur le site de la CNIL : (http://www.cnil.fr/index.php?id=131)
-
-## Données
-L'alimentation du site se base exclusivement sur les données disponibles sur Allocine, récupérées en utilisant l'[API Allocine Helper](https://github.com/etienne-gauvin/api-allocine-helper).

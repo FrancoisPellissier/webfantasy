@@ -1,0 +1,201 @@
+/* Kit graphique par Graphiques-Kits.com */
+/* Copyright 2007 tous droits réservés */
+/* ------------------------------------ */
+
+
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+	color: #666666;
+	background: #FFFFFF url(images/background-header.jpg) repeat-x top;
+}
+
+div#site {
+    text-align:left;
+    width: 1000px;
+	margin: auto;
+}
+
+/* ------------------------------------ */
+
+div#header {
+    background: url(images/header.jpg) no-repeat 0 0;
+    height: 171px;
+    margin: 0;
+    padding: 0;
+}
+
+div#sous-header {
+    height: 34px;
+    margin: 0;
+    padding: 0;
+}
+
+div#mh {
+	margin-left: 70px;
+}
+
+div#mh a, div#mh a:link {
+	float: left;
+	padding-right: 50px;
+	padding-top:10px;
+	font-family: Verdana;
+	font-size: 10px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #FFFFFF;	
+}
+
+/* ------------------------------------ */
+
+div#corp {
+	background: url(images/corp.jpg) repeat-y;
+}
+
+
+div#left {
+	float: left;
+	width: 318px;
+	margin: 0px;
+	padding: 0px;
+	background: url(images/left-background.jpg) repeat-y;
+}
+
+div#contenu-left {
+	background: url(images/left-top.jpg) no-repeat;
+    padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 63px;
+	padding-right: 25px;
+}
+
+div.title {
+	background: url(images/title.jpg) no-repeat;
+	height: 26px;
+	width: 216px;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-left: 10px;
+    font-family: "Times New Roman", Times, Verdana;
+    font-size: 13px;
+	color: #000000;	
+	font-weight : bold;
+	font-style: italic;
+}
+
+div.contenu-menu {
+	padding-bottom: 0px;
+	padding-left: 10px;
+	padding-bottom: 18px;
+}
+
+div.menu {
+	margin-left: 10px;
+	padding-left: 4px;
+	padding-top: 7px;
+	background: url(images/li.jpg) repeat-y;
+}
+
+div.menu a {
+    color : #666666;
+    font-weight : bold;
+	font-size: 11px;
+	height: 10px;
+}
+
+div#right {
+    width:682px;
+	float:left;
+}
+
+div#arbo {
+    padding-top: 10px;
+	padding-bottom: 35px;
+	padding-left: 0px;
+	padding-right: 70px;
+}
+
+div#contenu-right {
+	background: url(images/right-top.jpg) no-repeat;
+    padding-top: 20px;
+	padding-bottom: 40px;
+	padding-left: 0px;
+	padding-right: 70px;
+}
+
+
+/* ------------------------------------ */
+
+#margepied {
+    height:33px;
+    clear:both;
+    background:transparent;
+}
+
+#footer {
+    height:33px;
+	width:100%;
+	margin:0 auto;
+	padding:0;
+	background: url(images/background-footer.jpg) repeat-x bottom;
+	background-color: #e40001;
+	text-align:center;
+	clear: both;
+	margin-top:-42px;
+}
+
+#footer p {
+    padding-top: 12px;
+    font-size: 10px;
+	color: #FFFFFF
+}
+
+#footer a {
+    color : #FFFFFF;
+    font-family:verdana;
+    text-decoration:none;
+}
+
+#footer a:hover , a:active , a:focus {
+    color : #FFFFFF;
+    font-weight : bold;
+    text-decoration:none;
+}
+
+
+/* ------------------------------------ */
+
+html, body { 
+    margin: 0;
+	padding: 0;
+}
+
+span.spacer {
+	height:0.01em;
+	overflow:hidden;
+	display:block;
+	width:100%;
+	clear:both;
+}
+
+img { border: 0; }
+li { list-style: none; }
+
+a {
+    color : #666666;
+    font-family:verdana;
+    text-decoration:none;
+}
+
+a:hover , a:active , a:focus {
+    color : #666666;
+    font-weight : bold;
+    text-decoration:none;
+}
+
+h3 {
+	font-size: 11px;
+	font-weight: bold;
+	color: #ff5a00;
+	margin-bottom: 15px;
+}
