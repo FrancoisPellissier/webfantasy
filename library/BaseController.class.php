@@ -8,7 +8,6 @@ abstract class BaseController {
     protected $request;
     protected $response;
     protected $titre_page;
-    protected $user;
     protected $jsfile;
 
     public function __construct(\library\HTTPRequest $request, $module, $action) {
@@ -17,7 +16,6 @@ abstract class BaseController {
         $this->request = $request;
         $this->response = new \library\HTTPResponse();
 
-        $this->user = new \modules\User\User();
         $this->view = new \library\View($module, $action);
     }
 
