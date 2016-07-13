@@ -7,7 +7,6 @@ abstract class BaseController {
     protected $view = '';
     protected $request;
     protected $response;
-    protected $titre_page;
     protected $jsfile;
 
     public function __construct(\library\HTTPRequest $request, $module, $action) {
@@ -39,7 +38,6 @@ abstract class BaseController {
 
     public function makeView() {        
         // Valeurs génériques à transmettre
-        $this->view->with('titre_page', $this->titre_page);
         $this->view->with('user', $this->user->infos);
         $this->view->with('jsfile', $this->jsfile);
 
