@@ -22,4 +22,41 @@ class Cycle extends \library\BaseModel {
     public function getLivres() {
         
     }
+
+    // Génération des sections de la sidebar
+    public function sidebar($section, $auteurid = 0) {
+        $items = array();
+
+        if($section == 'main') {
+            $baselink = 'cycle/'.$auteurid.'/'.$this->infos['cycleid'].'/'.$this->slug($this->infos['titre']);
+
+            $items[] = array(
+                'href' => $baselink,
+                'value' => 'Fiche'
+            );
+
+            // Affichage de la liste des pages de 1er niveau
+            if(isset($this->infos['pages'])) {
+                foreach($this->infos['pages'] AS $page) {
+                    $items[] = array(
+                        'href' => $baselink.'/'.$page->infos['pageid'].'/'.$this->slug($page->infos['titre']),
+                        'value' => $page->infos['titre']
+                    );
+                }
+            }
+        }
+        else if($section == 'livre') {
+            $baselink = 'livre/'.$this->infos['auteurid'].'/';
+            
+            if(isset($this->infos['livre'])) {
+                foreach($this->infos['livre'] AS $livre) {
+                    $items[] = array(
+                        'href' => $baselink.$livre->infos['livreid'].'/'.$this->slug($livre->infos['titre']),
+                        'value' => $livre->infos['titre']
+                    );
+                }
+            }
+        }
+        return $items;
+    }
 }
