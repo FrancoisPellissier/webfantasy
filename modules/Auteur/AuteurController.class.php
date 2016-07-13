@@ -27,14 +27,26 @@ class AuteurController extends \library\BaseController {
 	}
 
 	public function showLivres() {
+        $common = $this->getCommon();
+        $auteur = $common[0];
+        $view = $common[1];
+
         $this->makeView();
 	}
 
 	public function showPages() {
+        $common = $this->getCommon();
+        $auteur = $common[0];
+        $view = $common[1];
+
         $this->makeView();
 	}
 
 	public function showPage() {
+        $common = $this->getCommon();
+        $auteur = $common[0];
+        $view = $common[1];
+        
         $this->makeView();
 	}
 }
