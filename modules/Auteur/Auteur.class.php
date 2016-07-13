@@ -20,10 +20,45 @@ class Auteur extends \library\BaseModel {
     }
 
     public function getCycles() {
+        $cycleCollection = new \modules\Cycle\Cycle();
+        $sql = 'SELECT c.'.implode(', c.', array_keys($cycleCollection->schema)).' FROM site_cycle AS c INNER JOIN site_cycle_auteur AS sca ON c.cycleid = sca.cycleid AND sca.auteurid ='.$this->infos['auteurid'].' ORDER BY sca.ordre';
 
+        $result = $this->db->query($sql)or error('Impossible de récupérer les cycles de cet auteur', __FILE__, __LINE__, $this->db->error());
+        $cycles = $this->getResults($result);
+
+        $cycleCollection = new \modules\Cycle\Cycle();
+        $this->infos['cycle'] = $cycleCollection->generateCollection($cycles);
     }
 
     public function getLivres() {
 
+    }
+
+    // Génération des sections de la sidebar
+    public function sidebar($section) {
+        $items = array();
+
+        if($section == 'cycle') {
+            $baselink = 'cycle/'.$this->infos['auteurid'].'/';
+            
+
+            if(isset($this->infos['cycle'])) {
+                foreach($this->infos['cycle'] AS $cycle) {
+                    $items[] = array(
+                        'href' => $baselink.$cycle->infos['cycleid'].'/'.$this->slug($cycle->infos['titre']),
+                        'value' => $cycle->infos['titre']
+                    );
+                }
+            }
+        }
+        else if($section == 'page') {
+            $baselink = 'auteur/'.$this->infos['auteurid'].'/'.$this->slug($this->infos['fullname']).'/';
+
+            $items[] = array(
+                'href' => $baselink.'page/1/interviews',
+                'value' => 'Interviews'
+            );
+        }
+        return $items;
     }
 }
