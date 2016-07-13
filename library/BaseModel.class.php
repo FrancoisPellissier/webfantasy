@@ -68,7 +68,7 @@ abstract class BaseModel {
 
             // Génération du titre usuel si que VF / VO
             if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
-                $this->infos['titre'] = ($this->schema['titre_vf'] != "" ? $this->schema['titre_vf'] : $this->schema['titre_vo']);
+                $this->infos['titre'] = ($this->infos['titre_vf'] != "" ? $this->infos['titre_vf'] : $this->infos['titre_vo']);
             }
 
             // On enregistre la visite de cette "page" pour pouvoir faire des stats plus tard
