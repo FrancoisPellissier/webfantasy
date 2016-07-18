@@ -5,12 +5,13 @@ class CycleController extends \library\BaseController {
      public function getCommon() {
         $model = $this->exists();
         $auteurid = intval($this->request->getData('auteurid'));
+        $model->getLivres($auteurid);
 
         // Ajout des éléments dans la Sidebar
         $this->view->sidebarAdd('title', $model->infos['titre']);
         $this->view->sidebarAdd('link', $model->sidebar('main', $auteurid));
         $this->view->sidebarAdd('title', 'Les livres');
-        $this->view->sidebarAdd('link', $model->sidebar('livre'));
+        $this->view->sidebarAdd('link', $model->sidebar('livre', $auteurid));
 
         // Génération du nom de la page
         $this->view->setTitle($model->infos['titre']);

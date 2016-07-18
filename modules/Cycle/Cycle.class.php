@@ -19,8 +19,28 @@ class Cycle extends \library\BaseModel {
         );
     }
 
-    public function getLivres() {
-        
+    public function getLivres($auteurid = 0) {
+        $livreCollection = new \modules\Livre\Livre();
+        $auteurid = intval($auteurid);
+       
+        /* ** TO DO **
+        ** Trier par date de sortie VO en plus de cycleordre
+        ** ** Fin du TO **
+        */
+
+        // Présence d'un auteurid ?
+        if($auteurid != 0) {
+            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).' FROM site_livre AS l INNER JOIN site_livre_auteur AS sla ON l.livreid = sla.livreid AND l.cycleid ='.$this->infos['cycleid'].' AND sla.auteurid = '.$auteurid.' ORDER BY l.cycleordre, titre_vo';
+        }
+        else  {
+            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).' FROM site_livre AS l WHERE l.cycleid ='.$this->infos['cycleid'].' ORDER BY l.cycleordre, titre_vo';
+        }
+
+        $result = $this->db->query($sql)or error('Impossible de récupérer les livres de ce cycle', __FILE__, __LINE__, $this->db->error());
+        $cycles = $this->getResults($result);
+
+        $livreCollection = new \modules\Livre\Livre();
+        $this->infos['livre'] = $livreCollection->generateCollection($cycles); 
     }
 
     // Génération des sections de la sidebar
@@ -46,7 +66,7 @@ class Cycle extends \library\BaseModel {
             }
         }
         else if($section == 'livre') {
-            $baselink = 'livre/'.$this->infos['auteurid'].'/';
+            $baselink = 'livre/'.$auteurid.'/';
             
             if(isset($this->infos['livre'])) {
                 foreach($this->infos['livre'] AS $livre) {
