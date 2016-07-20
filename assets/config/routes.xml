@@ -27,6 +27,7 @@
     <!-- Livre -->
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)" module="Livre" action="showLivre" vars="auteurid,id,name" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edition" module="Livre" action="showEditions" vars="auteurid,id,name" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/avis" module="Livre" action="showAvis" vars="auteurid,id,name" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page" module="Livre" action="showPages" vars="auteurid,id,name" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)" module="Livre" action="showPage" vars="auteurid,id,name,pageid,pagename" />
 
