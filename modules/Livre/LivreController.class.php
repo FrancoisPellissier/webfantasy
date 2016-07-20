@@ -3,13 +3,13 @@ namespace modules\Livre;
 
 class LivreController extends \library\BaseController {
     public function getCommon() {
-        $model = $this->exists();
+        $this->model = $this->exists();
         $auteurid = intval($this->request->getData('auteurid'));
-        $model->getCycle($auteurid);
+        $this->model->getCycle($auteurid);
 
         // Ajout des éléments dans la Sidebar
-        $this->view->sidebarAdd('title', $model->infos['titre']);
-        $this->view->sidebarAdd('link', $model->sidebar('main', $auteurid));
+        $this->view->sidebarAdd('title', $this->model->infos['titre']);
+        $this->view->sidebarAdd('link', $this->model->sidebar('main', $auteurid));
         
         /* ** TO DO **
         ** A paramétrer en fonction cycle oui / non
@@ -17,19 +17,14 @@ class LivreController extends \library\BaseController {
         ** ** Fin du TO **
         */
         $this->view->sidebarAdd('title', 'Dans le même cycle');
-        $this->view->sidebarAdd('link', $model->sidebar('livre', $auteurid));
+        $this->view->sidebarAdd('link', $this->model->sidebar('livre', $auteurid));
 
         // Génération du nom de la page
-        $this->view->setTitle($model->infos['titre']);
-
-        return array($model, $view);
+        $this->view->setTitle($this->model->infos['titre']);
     }
 
     public function showLivre() {
-        $common = $this->getCommon();
-        $model = $common[0];
-        $view = $common[1];
-
+        $this->getCommon();
         $this->makeView();
     }
 
