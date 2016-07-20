@@ -8,6 +8,7 @@ abstract class BaseController {
     protected $request;
     protected $response;
     protected $jsfile;
+    protected $model;
 
     public function __construct(\library\HTTPRequest $request, $module, $action) {
         $this->setModule($module);
@@ -38,6 +39,7 @@ abstract class BaseController {
 
     public function makeView() {        
         // Valeurs génériques à transmettre
+        $this->view->with('model', $this->model);
         $this->view->with('user', $this->user->infos);
         $this->view->with('jsfile', $this->jsfile);
 
