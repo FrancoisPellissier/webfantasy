@@ -25,12 +25,4 @@ class CycleController extends \library\BaseController {
 	public function showLivres() {
 
 	}
-
-	public function showPages() {
-
-	}
-
-	public function showPage() {
-		
-	}
 }

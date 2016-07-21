@@ -59,7 +59,7 @@ class Cycle extends \library\BaseModel {
             if(isset($this->infos['pages'])) {
                 foreach($this->infos['pages'] AS $page) {
                     $items[] = array(
-                        'href' => $baselink.'/'.$page->infos['pageid'].'/'.$this->slug($page->infos['titre']),
+                        'href' => $baselink.'/page/'.$page->infos['pageid'].'/'.$this->slug($page->infos['titre']),
                         'value' => $page->infos['titre']
                     );
                 }

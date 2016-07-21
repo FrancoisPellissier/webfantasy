@@ -31,12 +31,4 @@ class LivreController extends \library\BaseController {
     public function showEditions() {
 
     }
-
-    public function showPages() {
-
-    }
-
-    public function showPage() {
-        
-    }
 }

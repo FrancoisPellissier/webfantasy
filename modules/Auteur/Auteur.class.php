@@ -58,6 +58,16 @@ class Auteur extends \library\BaseModel {
                 'href' => $baselink.'page/1/interviews',
                 'value' => 'Interviews'
             );
+
+            // Affichage de la liste des pages de 1er niveau
+            if(isset($this->infos['pages'])) {
+                foreach($this->infos['pages'] AS $page) {
+                    $items[] = array(
+                        'href' => $baselink.'/page/'.$page->infos['pageid'].'/'.$this->slug($page->infos['titre']),
+                        'value' => $page->infos['titre']
+                    );
+                }
+            }
         }
         return $items;
     }
