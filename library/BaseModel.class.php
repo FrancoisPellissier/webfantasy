@@ -86,18 +86,15 @@ abstract class BaseModel {
 
         // Ne fonctionne que si la fiche existe et est dans la liste
         if($this->exists AND in_array($this->fichetype, $types)) {
-            
-            $result = $this->db->query('SELECT pageid, pagetitre FROM page WHERE fichetype = \''.$this->fichetype.'\' AND ficheid = '.intval($this->infos[$this->key]).' AND pageparentid = 0 ORDER BY ordre')or error('Impossible de récupérer les pages de la fiche "'.$this->table.' '.intval($id).'"', __FILE__, __LINE__, $this->db->error());
-            
-            $pages = array();
-            if($this->db->num_rows($result)) {
-                $pages[] = $this->db->fetch_assoc($result);
-                }
 
-            $this->infos['pages'] = $pages;
-        }
-        else {
-            $this->infos['pages'] = array();
+            $pageCollection = new \modules\Page\Page();
+            $sql = 'SELECT pageid, titre FROM site_page WHERE typepage = \''.$this->fichetype.'\' AND ficheid = '.intval($this->infos[$this->key]).' AND page_parent_id = 0 ORDER BY ordre';
+
+            $result = $this->db->query($sql)or error('Impossible de récupérer les pages de la fiche "'.$this->table.' '.intval($this->infos[$this->key]).'"', __FILE__, __LINE__, $this->db->error());
+            $pages = $this->getResults($result);
+
+            $pageCollection = new \modules\Page\Page();
+            $this->infos['pages'] = $pageCollection->generateCollection($pages);
         }
     }
 

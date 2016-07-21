@@ -60,8 +60,35 @@ abstract class BaseController {
             $this->response->redirect($redirect);
         // S'il existe, on le passe dans la vue et on le renvoie
         else {
-            $this->view->with('model', $model->infos);
+            $model->getPages();
             return $model;
+        }
+    }
+
+    public function getCommon() {
+
+    }
+
+    public function showPages() {
+        $common = $this->getCommon();
+
+        $this->makeView();
+    }
+
+    public function showPage() {
+        $common = $this->getCommon();
+
+        $id = intval($this->request->getData('pageid'));
+        $model = new \modules\Page\Page();
+        $model->exists($id);
+        
+        // S'il n'existe pas, on redirige vers l'adresse fournie
+        if(!$model->exists) {
+            $this->response->redirect($redirect);
+        }
+        else {
+            $this->view->with('page', $model);
+            $this->makeView();
         }
     }
 }
