@@ -21,4 +21,20 @@ class Page extends \library\BaseModel {
         'source' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Source de la page'),
         );
     }
+
+    public function exists($id, $track = false) {
+        parent::exists($id, $track);
+
+        if($this->exists) {
+            $pageCollection = new \modules\Page\Page();
+            $sql = 'SELECT pageid, titre FROM site_page WHERE page_parent_id = '.intval($id).' ORDER BY ordre';
+
+            $result = $this->db->query($sql)or error('Impossible de récupérer les enfants de la page '.intval($id), __FILE__, __LINE__, $this->db->error());
+            $pages = $this->getResults($result);
+
+            $pageCollection = new \modules\Page\Page();
+            $this->infos['childpages'] = $pageCollection->generateCollection($pages);
+        }
+
+    }
 }
