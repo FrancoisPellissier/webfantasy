@@ -9,12 +9,14 @@ abstract class BaseController {
     protected $response;
     protected $jsfile;
     protected $model;
+    protected $fil_ariane;
 
     public function __construct(\library\HTTPRequest $request, $module, $action) {
         $this->setModule($module);
         $this->setAction($action);
         $this->request = $request;
         $this->response = new \library\HTTPResponse();
+        $this->fil_ariane = array();
 
         $this->view = new \library\View($module, $action);
     }
@@ -40,6 +42,7 @@ abstract class BaseController {
     public function makeView() {        
         // Valeurs génériques à transmettre
         $this->view->with('model', $this->model);
+        $this->view->with('fil_ariane', $this->fil_ariane);
         $this->view->with('user', $this->user->infos);
         $this->view->with('jsfile', $this->jsfile);
 
@@ -90,5 +93,12 @@ abstract class BaseController {
             $this->view->with('page', $model);
             $this->makeView();
         }
+    }
+
+    protected function addAriane($url, $title) {
+        $this->fil_ariane[] = array(
+            'url' => $url,
+            'title' => $title
+            );
     }
 }

@@ -12,10 +12,11 @@
                     array('url' => '', 'title' => 'La Première Leçon du Sorcier'),
                     array('url' => '', 'title' => 'Éditions')
                     );
-
-                foreach($fil_ariane AS $ariane) {
-                    echo ' > <a href="'.$ariane['url'].'">'.$ariane['title'].'</a>';
                 }
+
+            // Affichage du fil d'Ariane
+            foreach($fil_ariane AS $ariane) {
+                echo ' > <a href="'.$ariane['url'].'">'.$ariane['title'].'</a>';
             }
             ?>
         </div>
