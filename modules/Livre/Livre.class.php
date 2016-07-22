@@ -32,14 +32,15 @@ class Livre extends \library\BaseModel {
     public function getEditions() {
         $editions = array();
         if($this->exists) {
-            $sql = 'SELECT editionid, titre, datesortie, nbpage
+            $sql = 'SELECT e.editionid, e.titre, e.datesortie, e.nbpage
                 FROM site_edition AS e
                 INNER JOIN site_livre_edition AS le
                     ON e.editionid = le.editionid
                     AND le.livreid = '.$this->infos[$this->key] .'
                 ORDER BY langid, datesortie DESC';
 
-            $editions = $this->getResults($sql);
+            $result = $this->db->query($sql)or error('Impossible de récupérer les éditions du livre '.$this->infos[$this->key], __FILE__, __LINE__, $this->db->error());
+            $editions = $this->getResults($result);
         }
         return $editions;
     }

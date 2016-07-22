@@ -38,6 +38,9 @@ class LivreController extends \library\BaseController {
     }
 
     public function showEditions() {
-
+        $this->getCommon();
+        $this->addAriane('livre/'.intval($auteurid).'/'.$this->model->infos['livreid'].'/'.$this->model->slug($this->model->infos['titre']).'/edition', 'Éditions');
+        $this->view->with('editions', $this->model->getEditions());
+        $this->makeView();
     }
 }
