@@ -23,11 +23,6 @@ class Cycle extends \library\BaseModel {
         $livreCollection = new \modules\Livre\Livre();
         $auteurid = intval($auteurid);
        
-        /* ** TO DO **
-        ** Trier par date de sortie VO en plus de cycleordre
-        ** ** Fin du TO **
-        */
-
         // Présence d'un auteurid ?
         if($auteurid != 0) {
             $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).' FROM site_livre AS l INNER JOIN site_livre_auteur AS sla ON l.livreid = sla.livreid AND l.cycleid ='.$this->infos['cycleid'].' AND sla.auteurid = '.$auteurid.' ORDER BY l.cycleordre, titre_vo';
