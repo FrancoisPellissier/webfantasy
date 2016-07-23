@@ -91,6 +91,7 @@ abstract class BaseController {
         }
         else {
             $this->view->with('page', $model);
+            $this->addAriane($this->model->getSlug().$model->getSlug(), $model->infos['titre']);
             $this->makeView();
         }
     }
