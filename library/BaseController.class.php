@@ -91,6 +91,16 @@ abstract class BaseController {
         }
         else {
             $this->view->with('page', $model);
+            // Une page parente existe ?
+            if($model->infos['page_parent_id'] != 0) {
+                $parent = new \modules\Page\Page();
+                $parent->exists($model->infos['page_parent_id']);
+
+                if($parent->exists) {
+                    $this->addAriane($this->model->getSlug().$parent->getSlug(), $parent->infos['titre']);                    
+                }
+            }
+
             $this->addAriane($this->model->getSlug().$model->getSlug(), $model->infos['titre']);
             $this->makeView();
         }
