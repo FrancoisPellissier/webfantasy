@@ -66,9 +66,53 @@ CREATE TABLE site_image (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Récupération des images liées à l'une des catégories migrées
+INSERT INTO site_image (titre, description, filename, created_at, updated_at, pwgid)
+	SELECT
+		i.`name`,
+		i.`comment`,
+		i.file,
+		i.date_metadata_update,
+		i.date_metadata_update,
+		i.id
+	FROM site_auteurs.wg_images AS i
+	INNER JOIN site_auteurs.wg_image_category AS ic
+		ON i.id = ic.image_id
+	INNER JOIN site_category AS c
+		ON c.pwgid = ic.category_id
+	GROUP BY ic.image_id;
+
+-- Associations unique
+DROP TABLE IF EXISTS cat_temp;
+CREATE TABLE cat_temp
+	SELECT image_id, category_id
+	FROM site_auteurs.wg_image_category
+	GROUP BY image_id
+	HAVING COUNT(*) = 1;
+
+UPDATE site_image AS i
+INNER JOIN cat_temp AS ic
+	ON i.pwgid = ic.image_id
+INNER JOIN site_category AS c
+	ON ic.category_id = c.pwgid
+SET i.categoryid = c.categoryid;
+
+DROP TABLE IF EXISTS cat_temp;
+
+-- Catégorie éligibles
+DROP TABLE IF EXISTS site_cat_el;
+CREATE TABLE site_cat_el
+	SELECT categoryid
+	FROM site_category
+	WHERE category_parentid IN(9, 181)
 
 
--- Modification de l'association des images en cas de multiples association (livre/pays)
-
+-- Génération de l'association des images pour les fiches
+UPDATE site_image AS i
+INNER JOIN site_auteurs.wg_image_category AS ic
+	ON i.pwgid = ic.image_id
+INNER JOIN site_category AS c
+	ON ic.category_id = c.pwgid
+	AND c.fichetype != ''
+SET i.categoryid = c.categoryid;
 
 

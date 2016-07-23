@@ -15,7 +15,8 @@ class Cycle extends \library\BaseModel {
         'titre_vo' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Titre original'),
         'titre_vf' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Titre français'),
         'description' => array('fieldtype' => 'TEXT', 'required' => false, 'default' => '', 'publicname' => 'Présentation du cycle'),
-        'cycleparentid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID du cycle parent si existe')
+        'cycleparentid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID du cycle parent si existe'),
+        'is_cycle' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'Cycle ou juste groupement de livres')
         );
     }
 

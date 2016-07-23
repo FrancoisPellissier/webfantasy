@@ -13,8 +13,9 @@ class Edition extends \library\BaseModel {
         'titre' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Titre de l edition'),
         'langid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'Langue'),
         'datesortie' => array('fieldtype' => 'DATE', 'required' => false, 'default' => '', 'publicname' => 'Date de sortie'),
-        'publisherid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'Editeur',
-        'formatid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'Format'
+        'publisher' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Editeur',
+        'illustrateur' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Illustrateur',
+        'formatid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'Format',
         'nbpage' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'Nb de page'
         );
     }

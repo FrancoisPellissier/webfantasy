@@ -17,8 +17,12 @@ class Page extends \library\BaseModel {
         'ficheid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID de la fiche associée'),
         'ordre' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'Ordre de la page'),
         'titre' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Titre de la page'),
+        'extrait' => array('fieldtype' => 'TEXT', 'required' => false, 'default' => '', 'publicname' => 'Extrait de la page'),
         'texte' => array('fieldtype' => 'TEXT', 'required' => false, 'default' => '', 'publicname' => 'Contenu de la page'),
         'source' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Source de la page'),
+        'traducteur' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Traducteur de la page'),
+        'poster_id' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID du créateur de la page'),
+        'publish_date' => array('fieldtype' => 'DATE', 'required' => false, 'default' => '', 'publicname' => 'Date de publication originale')
         );
     }
 
