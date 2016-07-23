@@ -26,10 +26,10 @@ class Cycle extends \library\BaseModel {
        
         // Présence d'un auteurid ?
         if($auteurid != 0) {
-            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).' FROM site_livre AS l INNER JOIN site_livre_auteur AS sla ON l.livreid = sla.livreid AND l.cycleid ='.$this->infos['cycleid'].' AND sla.auteurid = '.$auteurid.' ORDER BY l.cycleordre, titre_vo';
+            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).' FROM site_livre AS l INNER JOIN site_livre_auteur AS sla ON l.livreid = sla.livreid AND l.cycleid ='.$this->infos['cycleid'].' AND sla.auteurid = '.$auteurid.' ORDER BY l.cycleordre, date_vo, date_vf';
         }
         else  {
-            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).' FROM site_livre AS l WHERE l.cycleid ='.$this->infos['cycleid'].' ORDER BY l.cycleordre, titre_vo';
+            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).' FROM site_livre AS l WHERE l.cycleid ='.$this->infos['cycleid'].' ORDER BY l.cycleordre, date_vo, date_vf';
         }
 
         $result = $this->db->query($sql)or error('Impossible de récupérer les livres de ce cycle', __FILE__, __LINE__, $this->db->error());
