@@ -45,7 +45,7 @@ class Cycle extends \library\BaseModel {
         $items = array();
 
         if($section == 'main') {
-            $baselink = 'cycle/'.$auteurid.'/'.$this->infos['cycleid'].'/'.$this->slug($this->infos['titre']);
+            $baselink = $this->getSlug();
 
             $items[] = array(
                 'href' => $baselink,
@@ -56,7 +56,7 @@ class Cycle extends \library\BaseModel {
             if(isset($this->infos['pages'])) {
                 foreach($this->infos['pages'] AS $page) {
                     $items[] = array(
-                        'href' => $baselink.'/page/'.$page->infos['pageid'].'/'.$this->slug($page->infos['titre']),
+                        'href' => $baselink.$page->getSlug(),
                         'value' => $page->infos['titre']
                     );
                 }
@@ -68,12 +68,21 @@ class Cycle extends \library\BaseModel {
             if(isset($this->infos['livre'])) {
                 foreach($this->infos['livre'] AS $livre) {
                     $items[] = array(
-                        'href' => $baselink.$livre->infos['livreid'].'/'.$this->slug($livre->infos['titre']),
+                        'href' => $baselink.$livre->getSlug(false),
                         'value' => $livre->infos['titre']
                     );
                 }
             }
         }
         return $items;
+    }
+
+    public function getSlug($complete = true) {
+        if($complete) {
+            return 'cycle/'.$this->auteur->infos['auteurid'].'/'.$this->infos['cycleid'].'/'.$this->slug($this->infos['titre']);
+        }
+        else  {
+            return $this->infos['cycleid'].'/'.$this->slug($this->infos['titre']);
+        }
     }
 }

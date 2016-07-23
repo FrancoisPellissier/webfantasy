@@ -16,7 +16,7 @@ class AuteurController extends \library\BaseController {
         $this->view->setTitle($this->model->infos['fullname']);
 
         // Ajout du fil d'Ariane
-        $this->addAriane('auteur/'.$this->model->infos['auteurid'].'/'.$this->model->slug($this->model->infos['fullname']), $this->model->infos['fullname']);
+        $this->addAriane($this->model->getSlug(), $this->model->infos['fullname']);
     }
 
 	public function showAuteur() {

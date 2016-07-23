@@ -39,6 +39,9 @@ class Page extends \library\BaseModel {
             $pageCollection = new \modules\Page\Page();
             $this->infos['childpages'] = $pageCollection->generateCollection($pages);
         }
+    }
 
+    public function getSlug() {
+        return '/page/'.$this->infos['pageid'].'/'.$this->slug($this->infos['titre']);
     }
 }

@@ -23,9 +23,9 @@ class LivreController extends \library\BaseController {
         $this->view->setTitle($this->model->infos['titre']);
 
         // Ajout du fil d'Ariane
-        $this->addAriane('auteur/'.$this->model->auteur->infos['auteurid'].'/'.$this->model->auteur->slug($this->model->auteur->infos['fullname']), $this->model->auteur->infos['fullname']);
-        $this->addAriane('cycle/'.$this->model->auteur->infos['auteurid'].'/'.$this->model->infos['cycle']['cycleid'].'/'.$this->model->slug($this->model->infos['cycle']['titre']), $this->model->infos['cycle']['titre']);
-        $this->addAriane('livre/'.$this->model->auteur->infos['auteurid'].'/'.$this->model->infos['livreid'].'/'.$this->model->slug($this->model->infos['titre']), $this->model->infos['titre']);
+        $this->addAriane($this->model->auteur->getSlug(), $this->model->auteur->infos['fullname']);
+        $this->addAriane($this->model->infos['cycle']->getSlug(), $this->model->infos['cycle']->infos['titre']);
+        $this->addAriane($this->model->getSlug(), $this->model->infos['titre']);
     }
 
     public function showLivre() {
@@ -35,7 +35,7 @@ class LivreController extends \library\BaseController {
 
     public function showEditions() {
         $this->getCommon();
-        $this->addAriane('livre/'.intval($auteurid).'/'.$this->model->infos['livreid'].'/'.$this->model->slug($this->model->infos['titre']).'/edition', 'Éditions');
+        $this->addAriane($this->model->getSlug().'/edition', 'Éditions');
         $this->view->with('editions', $this->model->getEditions());
         $this->makeView();
     }

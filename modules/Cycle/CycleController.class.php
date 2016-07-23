@@ -17,8 +17,8 @@ class CycleController extends \library\BaseController {
         $this->view->setTitle($this->model->infos['titre']);
 
         // Ajout du fil d'Ariane
-        $this->addAriane('auteur/'.$this->model->auteur->infos['auteurid'].'/'.$this->model->slug($this->model->auteur->infos['fullname']), $this->model->auteur->infos['fullname']);
-        $this->addAriane('cycle/'.$this->model->auteur->infos['auteurid'].'/'.$this->model->infos['cycleid'].'/'.$this->model->slug($this->model->infos['titre']), $this->model->infos['titre']);
+        $this->addAriane($this->model->auteur->getSlug(), $this->model->auteur->infos['fullname']);
+        $this->addAriane($this->model->getSlug(), $this->model->infos['titre']);
     }
 	
     public function showCycle() {

@@ -26,9 +26,10 @@ class Livre extends \library\BaseModel {
         // On récupère le cycle associé
         $cycle = new \modules\Cycle\Cycle();
         $cycle->exists($this->infos['cycleid']);
+        $cycle->getAuteur();
         $cycle->getLivres();
 
-        $this->infos['cycle'] = $cycle->infos;
+        $this->infos['cycle'] = $cycle;
     }
 
     public function getEditions() {
@@ -53,7 +54,7 @@ class Livre extends \library\BaseModel {
         $items = array();
 
         if($section == 'main') {
-            $baselink = 'livre/'.$auteurid.'/'.$this->infos['livreid'].'/'.$this->slug($this->infos['titre']);
+            $baselink = $this->getSlug();
 
             $items[] = array(
                 'href' => $baselink,
@@ -85,7 +86,7 @@ class Livre extends \library\BaseModel {
             if(isset($this->infos['pages'])) {
                 foreach($this->infos['pages'] AS $page) {
                     $items[] = array(
-                        'href' => $baselink.'/page/'.$page->infos['pageid'].'/'.$this->slug($page->infos['titre']),
+                        'href' => $baselink.$page->getSlug(),
                         'value' => $page->infos['titre']
                     );
                 }
@@ -94,15 +95,24 @@ class Livre extends \library\BaseModel {
         else if($section == 'livre') {
             $baselink = 'livre/'.$auteurid.'/';
             
-            if(isset($this->infos['cycle']['livre'])) {
-                foreach($this->infos['cycle']['livre'] AS $livre) {
+            if(isset($this->infos['cycle']->infos['livre'])) {
+                foreach($this->infos['cycle']->infos['livre'] AS $livre) {
                     $items[] = array(
-                        'href' => $baselink.$livre->infos['livreid'].'/'.$this->slug($livre->infos['titre']),
+                        'href' => $baselink.$livre->getSlug(false),
                         'value' => $livre->infos['titre']
                     );
                 }
             }
         }
         return $items;
+    }
+
+    public function getSlug($complete = true) {
+        if($complete) {
+            return 'livre/'.$this->auteur->infos['auteurid'].'/'.$this->infos['livreid'].'/'.$this->slug($this->infos['titre']);
+        }
+        else {
+            return $this->infos['livreid'].'/'.$this->slug($this->infos['titre']);
+        }
     }
 }

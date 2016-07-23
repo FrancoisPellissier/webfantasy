@@ -45,14 +45,14 @@ class Auteur extends \library\BaseModel {
             if(isset($this->infos['cycle'])) {
                 foreach($this->infos['cycle'] AS $cycle) {
                     $items[] = array(
-                        'href' => $baselink.$cycle->infos['cycleid'].'/'.$this->slug($cycle->infos['titre']),
+                        'href' => $baselink.$cycle->getSlug(false),
                         'value' => $cycle->infos['titre']
                     );
                 }
             }
         }
         else if($section == 'page') {
-            $baselink = 'auteur/'.$this->infos['auteurid'].'/'.$this->slug($this->infos['fullname']).'/';
+            $baselink = $this->getSlug().'/';
 
             $items[] = array(
                 'href' => $baselink.'page/1/interviews',
@@ -63,12 +63,21 @@ class Auteur extends \library\BaseModel {
             if(isset($this->infos['pages'])) {
                 foreach($this->infos['pages'] AS $page) {
                     $items[] = array(
-                        'href' => $baselink.'/page/'.$page->infos['pageid'].'/'.$this->slug($page->infos['titre']),
+                        'href' => $baselink.$page->getSlug(),
                         'value' => $page->infos['titre']
                     );
                 }
             }
         }
         return $items;
+    }
+
+    public function getSlug($complete = true) {
+        if($complete) {
+            return 'auteur/'.$this->infos['auteurid'].'/'.$this->slug($this->infos['fullname']);
+        }
+        else {
+            return $this->infos['auteurid'].'/'.$this->slug($this->infos['fullname']);
+        }
     }
 }
