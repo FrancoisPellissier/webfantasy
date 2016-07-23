@@ -20,9 +20,9 @@ class Cycle extends \library\BaseModel {
         );
     }
 
-    public function getLivres($auteurid = 0) {
+    public function getLivres() {
         $livreCollection = new \modules\Livre\Livre();
-        $auteurid = intval($auteurid);
+        $auteurid = $this->auteur->infos['auteurid'];
        
         // Présence d'un auteurid ?
         if($auteurid != 0) {
@@ -40,7 +40,8 @@ class Cycle extends \library\BaseModel {
     }
 
     // Génération des sections de la sidebar
-    public function sidebar($section, $auteurid = 0) {
+    public function sidebar($section) {
+        $auteurid = $this->auteur->infos['auteurid'];
         $items = array();
 
         if($section == 'main') {

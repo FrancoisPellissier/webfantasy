@@ -19,6 +19,7 @@ abstract class BaseModel {
     public $picture = false;
     public $infos;
     public $exists = false;
+    public $auteur;
 
     public function __construct() {
         global $db;
@@ -239,5 +240,15 @@ abstract class BaseModel {
         }
 
         return $text;
+    }
+
+    public function getAuteur() {
+        $request = new \library\HTTPRequest();
+        $auteurid = intval($request->getData('auteurid'));
+        $this->auteur = new \modules\Auteur\Auteur();
+        $this->auteur->exists($auteurid);
+
+        if(!$this->auteur->exists)
+            $this->response->redirect();
     }
 }
