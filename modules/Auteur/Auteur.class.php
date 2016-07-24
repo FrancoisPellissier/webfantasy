@@ -52,12 +52,7 @@ class Auteur extends \library\BaseModel {
             }
         }
         else if($section == 'page') {
-            $baselink = $this->getSlug().'/';
-
-            $items[] = array(
-                'href' => $baselink.'page/1/interviews',
-                'value' => 'Interviews'
-            );
+            $baselink = $this->getSlug();
 
             // Affichage de la liste des pages de 1er niveau
             if(isset($this->infos['pages'])) {

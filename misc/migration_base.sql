@@ -152,8 +152,8 @@ CREATE TABLE `site_page` (
   `traducteur` varchar(200) NOT NULL DEFAULT '',
   `poster_id` int(11) NOT NULL DEFAULT '0',
   `publish_date` date DEFAULT NULL,
-  `created_at` int(11) NOT NULL DEFAULT '0',
-  `updated_at` int(11) NOT NULL DEFAULT '0',
+  `created_at` datetime NULL DEFAULT NULL,
+  `updated_at` datetime NULL DEFAULT NULL,
   PRIMARY KEY (`pageid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -164,4 +164,20 @@ INSERT INTO site_page
 
   UPDATE `site_page`
   SET publish_date = NULL
-WHERE publish_date = '0000-00-00'
+WHERE publish_date = '0000-00-00';
+
+SELECT @nb := MAX(pageid) FROM site_page;
+
+INSERT INTO site_page (pageid, typepage, ficheid, ordre, titre, poster_id, created_at, updated_at)
+  VALUES(@nb+1, 'auteur', 1, 0, 'Interviews', 2, NOW(), NOW());
+
+INSERT INTO site_page (pageid, typepage, ficheid, ordre, titre, poster_id, created_at, updated_at)
+  VALUES(@nb+2, 'auteur', 2, 0, 'Interviews', 2, NOW(), NOW());
+
+INSERT INTO site_page (pageid, typepage, ficheid, ordre, titre, poster_id, created_at, updated_at)
+  VALUES(@nb+3, 'auteur', 3, 0, 'Interviews', 2, NOW(), NOW());
+
+INSERT INTO site_page (page_parent_id, typepage, ficheid, ordre, titre, extrait, texte, source, poster_id, created_at, updated_at)
+  SELECT @nb+domaine, 'auteur', domaine, ordre, titre, description, texte, source, 2, NOW(), NOW()
+  FROM site_auteurs.site_interviews;
+  
