@@ -248,7 +248,9 @@ abstract class BaseModel {
         $this->auteur = new \modules\Auteur\Auteur();
         $this->auteur->exists($auteurid);
 
-        if(!$this->auteur->exists)
-            $this->response->redirect();
+        if(!$this->auteur->exists) {
+            $response = new \library\HTTPResponse();
+            $response->redirect();
+        }
     }
 }
