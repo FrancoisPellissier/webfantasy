@@ -2,9 +2,12 @@
 namespace modules\Livre;
 
 class LivreController extends \library\BaseController {
-    public function getCommon() {
+    public function getCommon($getAuteur = true) {
         $this->model = $this->exists();
-        $this->model->getAuteur();
+
+        if($getAuteur) {
+            $this->model->getAuteur();
+        }
         $this->model->getCycle();
 
         // Ajout des éléments dans la Sidebar
@@ -38,5 +41,32 @@ class LivreController extends \library\BaseController {
         $this->addAriane($this->model->getSlug().'/edition', 'Éditions');
         $this->view->with('editions', $this->model->getEditions());
         $this->makeView();
+    }
+
+    public function add() {
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+
+        }
+        // On affiche le formulaire
+        else {
+            
+        }
+    }
+
+    public function edit() {
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $this->getCommon();
+            $data = $this->request->postData('data');
+            $this->model->hydrate($data);          
+            $this->model->edit();
+            $this->response->redirect($this->model->getSlug());
+        }
+        // On affiche le formulaire
+        else {
+            $this->getCommon();
+            $this->makeView();       
+        }
     }
 }

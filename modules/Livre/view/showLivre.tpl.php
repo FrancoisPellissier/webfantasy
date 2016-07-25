@@ -12,3 +12,6 @@ echo "\n\t".'<p><strong>Date de sortie française :</strong> '.$model->infos['da
 
 echo "\n\t".'<p><strong>Présentation :</strong><br/>';
 echo nl2br($model->infos['description']);
+
+
+echo "\n\t".'<p>Administration : <a href="'.$model->getSlug().'/edit">Modifier</p>';

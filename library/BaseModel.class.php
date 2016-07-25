@@ -195,9 +195,9 @@ abstract class BaseModel {
         return $id;
     }
 
-    public function edit($post, $get = array()) {
+    public function edit($post = array(), $get = array()) {
         // On vérifie les données, les remplaçant par la valeur par défaut si besoin
-        $datas = $this->checkData('update', $post, $error);
+        $datas = $this->checkData('update', $this->infos, $error);
         
         // On enregistre les modifications en base
         $this->db->query(Query::update($this->table, $datas, array($this->key => $this->infos[$this->key]), $this->time))or error('Impossible de modifier la fiche '.$this->infos[$this->key].' dans la table : '.$this->table, __FILE__, __LINE__, $this->db->error());
