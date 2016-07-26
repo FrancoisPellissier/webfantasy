@@ -29,4 +29,20 @@ class CycleController extends \library\BaseController {
 	public function showLivres() {
 
 	}
+
+    public function edit() {
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $this->getCommon();
+            $data = $this->request->postData('data');
+            $this->model->hydrate($data);          
+            $this->model->edit();
+            $this->response->redirect($this->model->getSlug());
+        }
+        // On affiche le formulaire
+        else {
+            $this->getCommon();
+            $this->makeView();     
+        }
+    }
 }
