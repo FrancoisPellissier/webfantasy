@@ -85,4 +85,23 @@ class Cycle extends \library\BaseModel {
             return $this->infos['cycleid'].'/'.$this->slug($this->infos['titre']);
         }
     }
+
+    public function getCycles($auteurid = 0) {
+        // Présence d'un auteurid ?
+        if($auteurid != 0) {
+            $sql = $sql = 'SELECT c.cycleid, IF(c.titre_vf = \'\', c.titre_vo, c.titre_vf) AS titre FROM site_cycle AS c INNER JOIN site_cycle_auteur AS sc ON sc.cycleid = c.cycleid AND sc.auteurid = '.intval($auteurid).' ORDER BY titre';
+        }
+        else  {
+            $sql = 'SELECT cycleid, IF(titre_vf = \'\', titre_vo, titre_vf) AS titre FROM site_cycle ORDER BY titre';
+        }
+
+        $result = $this->db->query($sql)or error('Impossible de récupérer les cycles', __FILE__, __LINE__, $this->db->error());
+        $cycles = array();
+
+        while($cur = $this->db->fetch_assoc($result)) {
+                $cycles[$cur['cycleid']] = $cur['titre'];
+            }
+
+        return $cycles;
+    }
 }
