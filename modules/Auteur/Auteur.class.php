@@ -75,4 +75,12 @@ class Auteur extends \library\BaseModel {
             return $this->infos['auteurid'].'/'.$this->slug($this->infos['fullname']);
         }
     }
+
+    public function assocLivre($livreid) {
+        $result = $this->db->query('INSERT IGNORE INTO site_livre_auteur (auteurid, livreid) VALUES('.$this->infos['auteurid'].', '.intval($livreid).') ')or error('Impossible de récupérer les cycles de cet auteur', __FILE__, __LINE__, $this->db->error());
+    }
+
+    public function assocCycle($cycleid) {
+
+    }
 }

@@ -46,11 +46,34 @@ class LivreController extends \library\BaseController {
     public function add() {
         // On traite le formulaire
         if($this->request->method() == 'POST') {
+            $this->model = new Livre();
+            $this->model->getAuteur();
 
+            $data = $this->request->postData('data');
+            $data['auteurid'] = $this->model->auteur->infos['auteurid'];
+            $this->model->hydrate($data);    
+
+            $livreid = $this->model->add();
+            $this->model->exists($livreid);
+
+            $this->model->auteur->assocLivre($livreid);
+            $this->response->redirect($this->model->getSlug());
         }
         // On affiche le formulaire
         else {
-            
+            $this->model = new Livre();
+            $this->model->getAuteur();
+
+            // Génération du nom de la page
+            $this->view->setTitle('Ajouter un livre');
+
+            // Ajout du fil d'Ariane
+            $this->addAriane($this->model->auteur->getSlug(), $this->model->auteur->infos['fullname']);
+
+            $cycle = new \modules\Cycle\Cycle();
+            $this->view->with('cycles', $cycle->getCycles($this->model->auteur->infos['auteurid']));
+            // Génération de la page
+            $this->makeView();  
         }
     }
 
