@@ -77,10 +77,16 @@ class Auteur extends \library\BaseModel {
     }
 
     public function assocLivre($livreid) {
-        $result = $this->db->query('INSERT IGNORE INTO site_livre_auteur (auteurid, livreid) VALUES('.$this->infos['auteurid'].', '.intval($livreid).') ')or error('Impossible de récupérer les cycles de cet auteur', __FILE__, __LINE__, $this->db->error());
+        $result = $this->db->query('INSERT IGNORE INTO site_livre_auteur (auteurid, livreid) VALUES('.$this->infos['auteurid'].', '.intval($livreid).') ')or error('Impossible de lier auteur et livre', __FILE__, __LINE__, $this->db->error());
     }
 
     public function assocCycle($cycleid) {
+        // Récupération du plus grand ordre
+        $result = $this->db->query('SELECT IFNULL(MAX(ordre), 0) AS ordre FROM site_cycle_auteur WHERE auteurid = '.$this->infos['auteurid'])or error('Impossible de récupérer le dernier ordre', __FILE__, __LINE__, $this->db->error());   
 
+        $cur = $this->db->fetch_assoc($result);
+
+        // Insertion du lien Auteur / Cycle
+        $result = $this->db->query('INSERT IGNORE INTO site_cycle_auteur (auteurid, cycleid, ordre) VALUES('.$this->infos['auteurid'].', '.intval($cycleid).', '.($cur['ordre']+1).') ')or error('Impossible de lier auteur et cycle', __FILE__, __LINE__, $this->db->error());
     }
 }

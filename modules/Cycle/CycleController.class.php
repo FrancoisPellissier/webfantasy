@@ -30,6 +30,36 @@ class CycleController extends \library\BaseController {
 
 	}
 
+    public function add() {
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $this->model = new Cycle();
+            $this->model->getAuteur();
+
+            $data = $this->request->postData('data');
+            $this->model->hydrate($data);    
+            $cycleid = $this->model->add();
+            $this->model->exists($cycleid);
+
+            $this->model->auteur->assocCycle($cycleid);
+            $this->response->redirect($this->model->getSlug());
+        }
+        // On affiche le formulaire
+        else {
+            $this->model = new Cycle();
+            $this->model->getAuteur();
+
+            // Génération du nom de la page
+            $this->view->setTitle('Ajouter un cycle');
+
+            // Ajout du fil d'Ariane
+            $this->addAriane($this->model->auteur->getSlug(), $this->model->auteur->infos['fullname']);
+
+            // Génération de la page
+            $this->makeView();  
+        }
+    }
+
     public function edit() {
         // On traite le formulaire
         if($this->request->method() == 'POST') {
