@@ -106,6 +106,33 @@ abstract class BaseController {
         }
     }
 
+    public function addPage() {
+        $this->getCommon();
+
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $data = $this->request->postData('data');
+
+            $data['typepage'] = $this->model->fichetype;
+            $data['ficheid'] = $this->model->infos[$this->model->key];
+
+            $page = new \modules\Page\Page();
+            $page->hydrate($data);
+            $page->setDefaultOrder();
+
+            $pageid = $page->add();
+            $page->exists($pageid);
+
+            $this->response->redirect($this->model->getSlug().$page->getSlug());
+            
+        }
+        // On affiche le formulaire
+        else {
+            $this->view->addTitle('Ajouter une page');
+            $this->makeView();  
+        }
+    }
+
     protected function addAriane($url, $title) {
         $this->fil_ariane[] = array(
             'url' => $url,

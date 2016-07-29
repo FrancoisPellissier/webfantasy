@@ -71,6 +71,16 @@ class View {
     public function setTitle($title) {
         $this->titre_page = $title;
     }
+
+    /**
+     * View::addTitle()
+     * 
+     * @param string $title
+     * @return void
+     */
+    public function addTitle($title) {
+        $this->titre_page = $title.' - '.$this->titre_page;
+    }
    
     /**
      * View::make()

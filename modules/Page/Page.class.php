@@ -44,4 +44,10 @@ class Page extends \library\BaseModel {
     public function getSlug() {
         return '/page/'.$this->infos['pageid'].'/'.$this->slug($this->infos['titre']);
     }
+
+    public function setDefaultOrder() {
+        $result = $this->db->query('SELECT IFNULL(MAX(ordre), 0) AS ordre FROM site_page WHERE page_parent_id = '.intval($this->infos['page_parent_id']).' AND typepage =\''.$this->db->escape($this->infos['typepage']).'\' AND ficheid = '.intval($this->infos['ficheid']))or error('Impossible de récupérer le dernier ordre', __FILE__, __LINE__, $this->db->error()); 
+        $cur = $this->db->fetch_assoc($result);
+        $this->infos['ordre'] = $cur['ordre'] + 1;
+    }
 }
