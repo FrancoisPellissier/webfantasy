@@ -48,4 +48,8 @@
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)/page/add" module="Auteur" action="addPage" vars="id,name" />
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/add" module="Cycle" action="addPage" vars="auteurid,id,name" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/add" module="Livre" action="addPage" vars="auteurid,id,name" />
+
+    <route url="/auteur/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)/edit" module="Auteur" action="editPage" vars="id,name,pageid,pagename" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)/edit" module="Cycle" action="editPage" vars="auteurid,id,name,pageid,pagename" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)/edit" module="Livre" action="editPage" vars="auteurid,id,name,pageid,pagename" />
 </routes>

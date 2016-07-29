@@ -133,6 +133,38 @@ abstract class BaseController {
         }
     }
 
+    public function editPage() {
+        $this->getCommon();
+
+        $id = intval($this->request->getData('pageid'));
+        $model = new \modules\Page\Page();
+        $model->exists($id);
+        
+        // S'il n'existe pas, on redirige
+        if(!$model->exists) {
+            $this->response->redirect($redirect);
+        }
+        else {
+            // On traite le formulaire
+            if($this->request->method() == 'POST') {
+                $data = $this->request->postData('data');
+
+                $page = new \modules\Page\Page();
+                $model->hydrate($data);
+                $model->edit();
+
+                $this->response->redirect($this->model->getSlug().$model->getSlug());    
+            }
+            // On affiche le formulaire
+            else {
+                $this->view->addTitle('Modifier la page - '.$model->infos['titre']);
+                $this->view->with('page', $model);
+                $this->makeView();  
+            }
+
+        }
+    }
+
     protected function addAriane($url, $title) {
         $this->fil_ariane[] = array(
             'url' => $url,

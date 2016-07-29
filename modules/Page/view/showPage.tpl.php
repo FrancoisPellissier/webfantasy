@@ -11,3 +11,6 @@ if(!empty($page->infos['childpages'])) {
 		echo "\n\t".'<p><a href="'.$model->getSlug().$child->getSlug().'">'.$child->infos['titre'].'</a></p>';
 	}
 }
+
+
+echo "\n\t".'<p>Administration : <a href="'.$model->getSlug().$page->getSlug().'/edit">Modifier</p>';
