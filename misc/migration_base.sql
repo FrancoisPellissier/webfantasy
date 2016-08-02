@@ -181,3 +181,10 @@ INSERT INTO site_page (page_parent_id, typepage, ficheid, ordre, titre, extrait,
   SELECT @nb+domaine, 'auteur', domaine, ordre, titre, description, texte, source, 2, NOW(), NOW()
   FROM site_auteurs.site_interviews;
   
+
+-- Récupération de la description de l'auteur
+UPDATE webfantasy.site_auteur
+INNER JOIN site_auteurs.site_config
+  ON webfantasy.site_auteur.auteurid = site_auteurs.site_config.domaine
+  AND site_auteurs.site_config.config_name = 'auteur'
+SET webfantasy.site_auteur.description = site_auteurs.site_config.config_value
