@@ -6,7 +6,7 @@ class View {
     private $layout;
     private $view;
 
-    private $titre_page;
+    private $titre;
     private $sidebar;
     
     /**
@@ -69,7 +69,7 @@ class View {
      * @return void
      */
     public function setTitle($title) {
-        $this->titre_page = $title;
+        $this->addTitle($title);
     }
 
     /**
@@ -79,7 +79,19 @@ class View {
      * @return void
      */
     public function addTitle($title) {
-        $this->titre_page = $title.' - '.$this->titre_page;
+        $this->title[] = $title;
+    }
+
+    /**
+     * View::generateTitle()
+     * 
+     * @param string $title
+     * @return string
+     */
+    private function generateTitle() {
+        $this->title[] = 'WebFantasy';
+
+        return implode(' - ', $this->title);
     }
    
     /**
@@ -95,7 +107,7 @@ class View {
         }
         $view = $this->view;
         $sidebar = $this->sidebar;
-        $titre_page = $this->titre_page;
+        $titre_page = $this->generateTitle();
 
         include($this->layout);
     }

@@ -14,7 +14,7 @@ class CycleController extends \library\BaseController {
         $this->view->sidebarAdd('link', $this->model->sidebar('livre'));
 
         // Génération du nom de la page
-        $this->view->setTitle($this->model->infos['titre']);
+        $this->view->addTitle($this->model->infos['titre']);
 
         // Ajout du fil d'Ariane
         $this->addAriane($this->model->auteur->getSlug(), $this->model->auteur->infos['fullname']);
@@ -50,7 +50,7 @@ class CycleController extends \library\BaseController {
             $this->model->getAuteur();
 
             // Génération du nom de la page
-            $this->view->setTitle('Ajouter un cycle');
+            $this->view->addTitle('Ajouter un cycle');
 
             // Ajout du fil d'Ariane
             $this->addAriane($this->model->auteur->getSlug(), $this->model->auteur->infos['fullname']);

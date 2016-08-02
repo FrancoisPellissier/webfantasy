@@ -160,7 +160,7 @@ abstract class BaseController {
             }
             // On affiche le formulaire
             else {
-                $this->view->addTitle('Modifier la page - '.$model->infos['titre']);
+                $this->view->addTitle('Modifier la page '.$model->infos['titre']);
                 $this->view->with('page', $model);
                 $this->makeView();  
             }

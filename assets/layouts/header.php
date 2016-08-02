@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <base href="<?php echo WWW_ROOT; ?>" />
 
-        <title><?php echo $titre_page; ?> - Titre à fournir</title>
+        <title><?php echo $titre_page; ?></title>
 
         <link rel="icon" type="image/png" href="favicon.png" />
         <link href="assets/css/style.css" rel="stylesheet">

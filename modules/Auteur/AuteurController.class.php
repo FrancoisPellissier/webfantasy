@@ -13,7 +13,7 @@ class AuteurController extends \library\BaseController {
         $this->view->sidebarAdd('link', $this->model->sidebar('cycle'));
 
         // Génération du nom de la page
-        $this->view->setTitle($this->model->infos['fullname']);
+        $this->view->addTitle($this->model->infos['fullname']);
 
         // Ajout du fil d'Ariane
         $this->addAriane($this->model->getSlug(), $this->model->infos['fullname']);
