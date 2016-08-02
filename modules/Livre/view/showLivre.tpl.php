@@ -11,7 +11,7 @@ echo "\n\t".'<p><strong>Date de sortie originale :</strong> '.$model->infos['dat
 echo "\n\t".'<p><strong>Date de sortie française :</strong> '.$model->infos['date_vf'].'</p>';
 
 echo "\n\t".'<p><strong>Présentation :</strong><br/>';
-echo nl2br($model->infos['description']);
+echo parse_message($model->infos['description'], 0);
 
 
 echo "\n\t".'<p>Administration : <a href="'.$model->getSlug().'/edit">Modifier</p>';

@@ -1,7 +1,7 @@
 <?php
 echo "\n\t".'<h1>'.$page->infos['titre'].'</h1>';
 
-echo "\n\t".'<hp>'.nl2br($page->infos['texte']).'</p>';
+echo "\n\t".'<hp>'.parse_message($page->infos['texte'], 0).'</p>';
 
 // La page possède des pages enfants ?
 if(!empty($page->infos['childpages'])) {
