@@ -3,9 +3,11 @@ namespace library;
 
 class Application {
     protected $httpRequest;
+    protected $domaine;
 
-    public function __construct() {
+    public function __construct($domaine) {
          $this->httpRequest = new HTTPRequest();
+         $this->domaine = $domaine;
     }
 
     public function run() {
@@ -57,7 +59,7 @@ class Application {
         // On instancie le contrôleur.
         $controllerClass = '\modules\\'.$matchedRoute->module().'\\'.$matchedRoute->module().'Controller';
 
-        return new $controllerClass($this->httpRequest, $matchedRoute->module(), $matchedRoute->action());
+        return new $controllerClass($this->httpRequest, $matchedRoute->module(), $matchedRoute->action(), $this->domaine);
     }
 
     public function httpRequest() {

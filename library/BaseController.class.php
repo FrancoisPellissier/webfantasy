@@ -10,13 +10,15 @@ abstract class BaseController {
     protected $jsfile;
     protected $model;
     protected $fil_ariane;
+    protected $domaine;
 
-    public function __construct(\library\HTTPRequest $request, $module, $action) {
+    public function __construct(\library\HTTPRequest $request, $module, $action, $domaine) {
         $this->setModule($module);
         $this->setAction($action);
         $this->request = $request;
         $this->response = new \library\HTTPResponse();
         $this->fil_ariane = array();
+        $this->domaine = $domaine;
 
         $this->view = new \library\View($module, $action);
     }
@@ -45,6 +47,7 @@ abstract class BaseController {
         $this->view->with('fil_ariane', $this->fil_ariane);
         $this->view->with('user', $this->user->infos);
         $this->view->with('jsfile', $this->jsfile);
+        $this->view->with('domaine', $this->domaine);
 
         // Génération de la vue
         $this->view->make();

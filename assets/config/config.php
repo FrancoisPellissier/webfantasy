@@ -23,6 +23,8 @@ require PUN_ROOT.'include/parser.php';
 
 global $pun_user;
 
+$domaine = 3;
+
 // Inclusions
 require_once('library/autoload.php');
 
