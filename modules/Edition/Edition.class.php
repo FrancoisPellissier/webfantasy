@@ -7,7 +7,7 @@ class Edition extends \library\BaseModel {
 
     public function __construct() {
         parent::__construct();
-        $this->table = 'edition';
+        $this->table = 'site_edition';
         $this->key = 'editionid';
         $this->time = true;
 

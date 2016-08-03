@@ -96,4 +96,56 @@ class LivreController extends \library\BaseController {
             $this->makeView();     
         }
     }
+
+    public function addEdition() {
+        $this->view->addTitle('Ajouter une édition');
+        $this->getCommon();
+        $this->addAriane($this->model->getSlug().'/edition', 'Éditions');
+        $edition = new \modules\Edition\Edition();
+
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $data = $this->request->postData('data');
+            $edition->hydrate($data);
+            $editionid = $edition->add();
+            $this->model->assocEdition($editionid);
+            $this->response->redirect($this->model->getSlug().'/edition');
+        }
+        // On affiche le formulaire
+        else {
+            $edition->getLangs();
+            $edition->getFormats();
+            $this->view->with('edition', $edition);
+            $this->makeView();  
+        }        
+    }
+
+    public function editEdition() {
+        $this->view->addTitle('Modifier une édition');
+        $this->getCommon();
+        $this->addAriane($this->model->getSlug().'/edition', 'Éditions');
+        $edition = new \modules\Edition\Edition();
+        $edition->exists($this->request->getData('editionid'));
+
+        if($edition->exists) {
+            // On traite le formulaire
+            if($this->request->method() == 'POST') {
+                $data = $this->request->postData('data');
+                $edition->hydrate($data);
+                $edition->edit();
+                $this->response->redirect($this->model->getSlug().'/edition');
+            }
+            // On affiche le formulaire
+            else {
+                $edition->getLangs();
+                $edition->getFormats();
+                $this->view->with('edition', $edition);
+                $this->makeView();  
+            }
+
+        }
+        else {
+             $this->response->redirect($this->model->getSlug().'/edition');
+        }
+    }
 }

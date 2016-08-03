@@ -43,6 +43,8 @@
     <!-- Administration / Livre -->
     <route url="/livre/([0-9]+)/add" module="Livre" action="add" vars="auteurid" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edit" module="Livre" action="edit" vars="auteurid,id,name" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edition/add" module="Livre" action="addEdition" vars="auteurid,id,name" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edition/([0-9]+)/edit" module="Livre" action="editEdition" vars="auteurid,id,name,editionid" />
 
     <!-- Administration / Page -->
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)/page/add" module="Auteur" action="addPage" vars="id,name" />

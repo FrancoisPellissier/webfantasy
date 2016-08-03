@@ -112,4 +112,8 @@ class Livre extends \library\BaseModel {
             return $this->infos['livreid'].'/'.$this->slug($this->infos['titre']);
         }
     }
+
+    public function assocEdition($editionid) {
+        $result = $this->db->query('INSERT IGNORE INTO site_livre_edition (livreid, editionid) VALUES('.$this->infos['livreid'].', '.intval($editionid).') ')or error('Impossible de lier auteur et edition', __FILE__, __LINE__, $this->db->error());
+    }
 }
