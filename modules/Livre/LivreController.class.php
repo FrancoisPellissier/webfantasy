@@ -89,10 +89,12 @@ class LivreController extends \library\BaseController {
         // On affiche le formulaire
         else {
             $this->getCommon();
-            // Récupération des cycles
             $cycle = new \modules\Cycle\Cycle();
             $this->view->with('cycles', $cycle->getCycles($this->model->auteur->infos['auteurid']));
-            // Génération de la page
+
+            $form = new \library\Form($this->model->infos);
+            $this->view->with('form', $form);
+
             $this->makeView();     
         }
     }
