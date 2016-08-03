@@ -63,16 +63,6 @@ class View {
     }
 
     /**
-     * View::setTitle()
-     * 
-     * @param string $title
-     * @return void
-     */
-    public function setTitle($title) {
-        $this->addTitle($title);
-    }
-
-    /**
      * View::addTitle()
      * 
      * @param string $title
