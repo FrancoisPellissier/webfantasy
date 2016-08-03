@@ -202,6 +202,7 @@ INSERT INTO site_format VALUES ('2', 'Relié');
 INSERT INTO site_format VALUES ('3', 'Poche');
 INSERT INTO site_format VALUES ('4', 'Semi-poche');
 INSERT INTO site_format VALUES ('5', 'eBook');
+INSERT INTO site_format VALUES ('6', 'Autre');
 
 DROP TABLE IF EXISTS site_langue;
 CREATE TABLE site_langue (
@@ -221,3 +222,7 @@ INNER JOIN webfantasy.site_format AS f
 INNER JOIN webfantasy.site_edition AS en
   ON eo.editionid = en.editionid
 SET en.formatid = f.formatid;
+
+UPDATE site_edition
+  SET formatid = 6
+WHERE formatid = 0;
