@@ -188,3 +188,36 @@ INNER JOIN site_auteurs.site_config
   ON webfantasy.site_auteur.auteurid = site_auteurs.site_config.domaine
   AND site_auteurs.site_config.config_name = 'auteur'
 SET webfantasy.site_auteur.description = site_auteurs.site_config.config_value
+
+-- Tables d'éditions
+DROP TABLE IF EXISTS site_format;
+CREATE TABLE site_format (
+  formatid int(10) NOT NULL AUTO_INCREMENT,
+  formatname varchar(255) DEFAULT '',
+  PRIMARY KEY (formatid)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+INSERT INTO site_format VALUES ('1', 'Broché');
+INSERT INTO site_format VALUES ('2', 'Relié');
+INSERT INTO site_format VALUES ('3', 'Poche');
+INSERT INTO site_format VALUES ('4', 'Semi-poche');
+INSERT INTO site_format VALUES ('5', 'eBook');
+
+DROP TABLE IF EXISTS site_langue;
+CREATE TABLE site_langue (
+  langid int(10) NOT NULL AUTO_INCREMENT,
+  langname varchar(255) DEFAULT '',
+  PRIMARY KEY (langid)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+INSERT INTO site_langue VALUES ('1', 'Français');
+INSERT INTO site_langue VALUES ('2', 'Anglais');
+INSERT INTO site_langue VALUES ('3', 'Allemand');
+INSERT INTO site_langue VALUES ('4', 'Japonais');
+
+UPDATE site_auteurs.site_edition AS eo
+INNER JOIN webfantasy.site_format AS f
+  ON eo.format = f.formatname
+INNER JOIN webfantasy.site_edition AS en
+  ON eo.editionid = en.editionid
+SET en.formatid = f.formatid;
