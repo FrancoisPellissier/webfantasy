@@ -1,4 +1,4 @@
 <?php
-foreach ($editions AS $edition) {
-	echo "\n\t".'<p>'.$edition['titre'].' ('.$edition['nbpage'].')</p>';
+foreach ($model->infos['editions'] AS $edition) {
+	echo "\n\t".'<p>'.$edition->infos['titre'].' ('.$edition->infos['nbpage'].')<br />'.$edition->infos['langname'].'<br />'.$edition->infos['formatname'].'</p>';
 }

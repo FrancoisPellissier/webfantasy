@@ -35,19 +35,14 @@ class Livre extends \library\BaseModel {
     }
 
     public function getEditions() {
-        $editions = array();
-        if($this->exists) {
-            $sql = 'SELECT e.editionid, e.titre, e.datesortie, e.nbpage
-                FROM site_edition AS e
-                INNER JOIN site_livre_edition AS le
-                    ON e.editionid = le.editionid
-                    AND le.livreid = '.$this->infos[$this->key] .'
-                ORDER BY langid, datesortie DESC';
+        $editionCollection = new \modules\Edition\Edition();
+        $sql = 'SELECT e.'.implode(', e.', array_keys($editionCollection->schema)).' FROM site_edition AS e INNER JOIN site_livre_edition AS le ON e.editionid = le.editionid AND le.livreid = '.$this->infos[$this->key] .' ORDER BY langid, datesortie DESC';
 
-            $result = $this->db->query($sql)or error('Impossible de récupérer les éditions du livre '.$this->infos[$this->key], __FILE__, __LINE__, $this->db->error());
-            $editions = $this->getResults($result);
-        }
-        return $editions;
+        $result = $this->db->query($sql)or error('Impossible de récupérer les éditions  de ce livre', __FILE__, __LINE__, $this->db->error());
+        $editions = $this->getResults($result);
+
+        $editionCollection = new \modules\Edition\Edition();
+        $this->infos['editions'] = $editionCollection->generateCollection($editions);       
     }
 
     // Génération des sections de la sidebar
