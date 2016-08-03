@@ -2,8 +2,8 @@
     <p>Titre VO <input type="text" name="data[titre_vo]" value="" /></p>
     <p>Titre VF <input type="text" name="data[titre_vf]" value="" /></p>
 
-    <p>Date VO <input type="text" name="data[date_vo]" value="" /></p>
-    <p>Date VF <input type="text" name="data[date_vf]" value="" /></p>
+    <p>Date VO <input type="date" name="data[date_vo]" value="" /></p>
+    <p>Date VF <input type="date" name="data[date_vf]" value="" /></p>
 
     <p>Cycle : <select name="data[cycleid]">
     	<?php
