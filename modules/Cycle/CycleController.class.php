@@ -55,6 +55,9 @@ class CycleController extends \library\BaseController {
             // Ajout du fil d'Ariane
             $this->addAriane($this->model->auteur->getSlug(), $this->model->auteur->infos['fullname']);
 
+            $form = new \library\Form(array());
+            $this->view->with('form', $form);
+
             // Génération de la page
             $this->makeView();  
         }
@@ -72,6 +75,8 @@ class CycleController extends \library\BaseController {
         // On affiche le formulaire
         else {
             $this->getCommon();
+            $form = new \library\Form($this->model->infos);
+            $this->view->with('form', $form);
             $this->makeView();     
         }
     }
