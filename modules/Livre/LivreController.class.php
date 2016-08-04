@@ -72,6 +72,10 @@ class LivreController extends \library\BaseController {
 
             $cycle = new \modules\Cycle\Cycle();
             $this->view->with('cycles', $cycle->getCycles($this->model->auteur->infos['auteurid']));
+
+            $form = new \library\Form(array());
+            $this->view->with('form', $form);
+
             // Génération de la page
             $this->makeView();  
         }
@@ -118,8 +122,10 @@ class LivreController extends \library\BaseController {
             $edition->getLangs();
             $edition->getFormats();
             $this->view->with('edition', $edition);
+            $form = new \library\Form(array('titre' => $this->model->infos['titre']));
+            $this->view->with('form', $form);
             $this->makeView();  
-        }        
+        }
     }
 
     public function editEdition() {
@@ -142,6 +148,8 @@ class LivreController extends \library\BaseController {
                 $edition->getLangs();
                 $edition->getFormats();
                 $this->view->with('edition', $edition);
+                $form = new \library\Form($edition->infos);
+                $this->view->with('form', $form);
                 $this->makeView();  
             }
 

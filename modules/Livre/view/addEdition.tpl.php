@@ -1,26 +1,15 @@
-<form method="post">
-    <p>Titre : <input type="text" name="data[titre]" value="<?php echo $model->infos['titre']; ?>" /></p>
+<?php
+echo "\n\t".$form->start('post');
 
-    <p>Langue : <select name="data[langid]">
-        <?php
-        foreach($edition->langs AS $id => $name) {
-            echo "\n\t\t\t".'<option value="'.$id.'">'.$name.'</option>';
-        }
-        ?>
-    </select></p>
+echo "\n\t".'<p>Titre : '.$form->HTMLinput('text', 'titre', 30).'</p>';
+echo "\n\t".'<p>Langue : '.$form->HTMLselect('langid', $edition->langs).'</p>';
+echo "\n\t".'<p>Date : '.$form->HTMLinput('date', 'datesortie').'</p>';
+echo "\n\t".'<p>Format : '.$form->HTMLselect('formatid', $edition->formats).'</p>';
 
-    <p>Date : <input type="date" name="data[datesortie]" value="" /></p>
+echo "\n\t".'<p>Editeur : '.$form->HTMLinput('text', 'publisher', 30).'</p>';
+echo "\n\t".'<p>Illustrateur : '.$form->HTMLinput('text', 'illustrateur', 30).'</p>';
+echo "\n\t".'<p>Nb de pages : '.$form->HTMLinput('number', 'nbpage').'</p>';
 
-    <p>Format : <select name="data[cycleid]">
-        <?php
-        foreach($edition->formats AS $id => $name) {
-            echo "\n\t\t\t".'<option value="'.$id.'">'.$name.'</option>';
-        }
-        ?>
-    </select></p>
-    <p>Editeur : <input type="text" name="data[publisher]" value="" /></p>
-    <p>Illustrateur : <input type="text" name="data[illustrateur]" value="" /></p>
-    <p>Nb de pages : <input type="int" name="data[nbpage]" value="" /></p>
-
-    <p><input type="submit" value="Créer"></p>
-</form>
+echo "\n\t".$form->HTMLsubmit('Ajouter');
+echo "\n\t".$form->end();
+?>
