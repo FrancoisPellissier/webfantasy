@@ -132,6 +132,8 @@ abstract class BaseController {
         // On affiche le formulaire
         else {
             $this->view->addTitle('Ajouter une page');
+            $form = new \library\Form(array());
+            $this->view->with('form', $form);
             $this->makeView();  
         }
     }
@@ -162,6 +164,8 @@ abstract class BaseController {
             else {
                 $this->view->addTitle('Modifier la page '.$model->infos['titre']);
                 $this->view->with('page', $model);
+                $form = new \library\Form($model->infos);
+                $this->view->with('form', $form);
                 $this->makeView();  
             }
 

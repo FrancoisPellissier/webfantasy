@@ -96,6 +96,13 @@ abstract class BaseModel {
 
             $pageCollection = new \modules\Page\Page();
             $this->infos['pages'] = $pageCollection->generateCollection($pages);
+
+            $this->infos['pages_array'] = array();
+            $this->infos['pages_array'][0] = '(Aucune)';
+            foreach($pages AS $page) {
+                $this->infos['pages_array'][$page['pageid']] = $page['titre'];
+            }
+
         }
     }
 
@@ -236,7 +243,7 @@ abstract class BaseModel {
         $text = strtolower($text);
 
         if (empty($text)) {
-        return 'n-a';
+            return 'n-a';
         }
 
         return $text;
