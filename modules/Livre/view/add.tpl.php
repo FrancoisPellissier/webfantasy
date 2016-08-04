@@ -1,22 +1,18 @@
-<form method="post">
-    <p>Titre VO <input type="text" name="data[titre_vo]" value="" /></p>
-    <p>Titre VF <input type="text" name="data[titre_vf]" value="" /></p>
+<?php
+echo "\n\t".$form->start("post");
 
-    <p>Date VO <input type="date" name="data[date_vo]" value="" /></p>
-    <p>Date VF <input type="date" name="data[date_vf]" value="" /></p>
+echo "\n\t".'<p>Titre VO : '.$form->HTMLinput("text", "titre_vo", 30).'</p>';
+echo "\n\t".'<p>Titre VF : '.$form->HTMLinput("text", "titre_vf", 30).'</p>';
 
-    <p>Cycle : <select name="data[cycleid]">
-    	<?php
-    	foreach($cycles AS $id => $name) {
-    		echo "\n\t\t\t".'<option value="'.$id.'">'.$name.'</option>';
-    	}
-    	?>
-    </select></p>
-	<p>Tome <input type="text" name="data[cycleordre]" value="" /></p>
+echo "\n\t".'<p>Date VO : '.$form->HTMLinput("date", "date_vo").'</p>';
+echo "\n\t".'<p>Date VF : '.$form->HTMLinput("date", "date_vf").'</p>';
 
+echo "\n\t".'<p>Cycle : '.$form->HTMLselect('cycleid', $cycles).'</p>';
+echo "\n\t".'<p>Tome : '.$form->HTMLinput("number", "cycleordre").'</p>';
 
-    <p>Description :</p>
-    <textarea name="data[description]" cols="70" rows="20" ></textarea>
+echo "\n\t".'<p>Description</p>'.$form->HTMLtextarea("description", 70, 20).'</p>';
 
-    <p><input type="submit" value="Créer"></p>
-</form>
+echo "\n\t".$form->HTMLsubmit('Ajouter');
+echo "\n\t".$form->end();
+?>
+
