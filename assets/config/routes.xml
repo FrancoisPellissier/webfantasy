@@ -35,6 +35,8 @@
 
     <!-- Administration -->
     <!-- Administration / Auteur -->
+    <route url="/auteur/add" module="Auteur" action="add" />
+    <route url="/auteur/([0-9]+)/([a-z0-9-]+)/edit" module="Auteur" action="edit" vars="id,name" />
 
     <!-- Administration / Cycle -->
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edit" module="Cycle" action="edit" vars="auteurid,id,name" />

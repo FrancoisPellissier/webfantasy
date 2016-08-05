@@ -31,4 +31,44 @@ class AuteurController extends \library\BaseController {
 
         $this->makeView();
 	}
+
+    public function add() {
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $this->model = new Auteur();
+            $data = $this->request->postData('data');
+            $this->model->hydrate($data);
+            $this->model->setFullname();
+            $auteurid = $this->model->add();
+            
+            $this->model->exists($auteurid);
+            $this->response->redirect($this->model->getSlug());
+        }
+        // On affiche le formulaire
+        else {
+            $this->view->addTitle('Ajouter un auteur');
+            $form = new \library\Form(array());
+            $this->view->with('form', $form);
+            $this->makeView();  
+        }
+    }
+
+    public function edit() {
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $this->getCommon();
+            $data = $this->request->postData('data');
+            $this->model->hydrate($data);
+            $this->model->setFullname();         
+            $this->model->edit();
+            $this->response->redirect($this->model->getSlug());
+        }
+        // On affiche le formulaire
+        else {
+            $this->getCommon();
+            $form = new \library\Form($this->model->infos);
+            $this->view->with('form', $form);
+            $this->makeView();     
+        }
+    }
 }

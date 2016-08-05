@@ -21,6 +21,9 @@ INSERT INTO site_auteur (auteurid, fullname, created_at, updated_at)
     FROM site_auteurs.site_domaine
     WHERE domaine BETWEEN 1 AND 3;
 
+UPDATE `site_auteur` SET firstname = LEFT(fullname, LOCATE(' ', fullname)-1);
+UPDATE `site_auteur` SET lastname = REPLACE(fullname, CONCAT(firstname, ' '), '');
+
 -- Livres
 DROP TABLE IF EXISTS site_livre;
 CREATE TABLE `site_livre` (

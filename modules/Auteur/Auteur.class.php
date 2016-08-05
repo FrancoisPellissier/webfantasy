@@ -89,4 +89,8 @@ class Auteur extends \library\BaseModel {
         // Insertion du lien Auteur / Cycle
         $result = $this->db->query('INSERT IGNORE INTO site_cycle_auteur (auteurid, cycleid, ordre) VALUES('.$this->infos['auteurid'].', '.intval($cycleid).', '.($cur['ordre']+1).') ')or error('Impossible de lier auteur et cycle', __FILE__, __LINE__, $this->db->error());
     }
+
+    public function setFullname() {
+        $this->infos['fullname'] = $this->infos['firstname'].' '.$this->infos['lastname'];
+    }
 }
