@@ -36,7 +36,7 @@ class Cycle extends \library\BaseModel {
         $cycles = $this->getResults($result);
 
         $livreCollection = new \modules\Livre\Livre();
-        $this->infos['livre'] = $livreCollection->generateCollection($cycles); 
+        $this->infos['livre'] = $livreCollection->generateCollection($cycles);
     }
 
     // Génération des sections de la sidebar

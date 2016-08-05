@@ -24,4 +24,12 @@ class Category extends \library\BaseModel {
     public function getSlug() {
         return '/category/'.$this->infos['categoryid'].'/'.$this->slug($this->infos['titre']);
     }
+
+    public function getChildren() {
+        $sql = 'SELECT '.implode(', ', array_keys($this->schema)).' FROM site_category WHERE category_parentid ='.$this->infos['categoryid'].' ORDER BY ordre';
+        $result = $this->db->query($sql)or error('Impossible de récupérer les catégories enfant', __FILE__, __LINE__, $this->db->error());
+        $categories = $this->getResults($result);
+
+        $this->infos['children'] = $this->generateCollection($categories);
+    }
 }

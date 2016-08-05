@@ -91,7 +91,7 @@ abstract class BaseController {
         
         // S'il n'existe pas, on redirige vers l'adresse fournie
         if(!$model->exists) {
-            $this->response->redirect($redirect);
+            $this->response->redirect();
         }
         else {
             $this->view->with('page', $model);
@@ -148,7 +148,7 @@ abstract class BaseController {
         
         // S'il n'existe pas, on redirige
         if(!$model->exists) {
-            $this->response->redirect($redirect);
+            $this->response->redirect();
         }
         else {
             // On traite le formulaire
@@ -178,5 +178,40 @@ abstract class BaseController {
             'url' => $url,
             'title' => $title
             );
+    }
+
+    protected function showCategory() {
+        $common = $this->getCommon();
+
+        $id = intval($this->request->getData('cateogryid'));
+        $model = new \modules\Category\Category();
+        $model->exists($id);
+        
+        // S'il n'existe pas, on redirige vers l'adresse fournie
+        if(!$model->exists) {
+            $this->response->redirect();
+        }
+        else {
+            $model->getChildren();
+            $this->view->with('category', $model);
+            // TO DO : handle parent page
+            // Une page parente existe ?
+            /*
+            if($model->infos['page_parent_id'] != 0) {
+                $parent = new \modules\Page\Page();
+                $parent->exists($model->infos['page_parent_id']);
+
+                if($parent->exists) {
+                    $this->addAriane($this->model->getSlug().$parent->getSlug(), $parent->infos['titre']);                    
+                }
+            }
+            */
+            $this->addAriane($this->model->getSlug().$model->getSlug(), $model->infos['titre']);
+            $this->makeView();
+        }
+    }
+
+    protected function showImage() {
+
     }
 }
