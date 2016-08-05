@@ -94,7 +94,6 @@ abstract class BaseModel {
             $result = $this->db->query($sql)or error('Impossible de récupérer les pages de la fiche "'.$this->table.' '.intval($this->infos[$this->key]).'"', __FILE__, __LINE__, $this->db->error());
             $pages = $this->getResults($result);
 
-            $pageCollection = new \modules\Page\Page();
             $this->infos['pages'] = $pageCollection->generateCollection($pages);
 
             $this->infos['pages_array'] = array();
@@ -102,8 +101,24 @@ abstract class BaseModel {
             foreach($pages AS $page) {
                 $this->infos['pages_array'][$page['pageid']] = $page['titre'];
             }
-
         }
+    }
+
+    public function getCategories() {
+        $types = array('auteur', 'cycle', 'livre');
+
+        // Ne fonctionne que si la fiche existe et est dans la liste
+        if($this->exists AND in_array($this->fichetype, $types)) {
+
+            $galleryCollection = new \modules\Category\Category();
+            $sql = 'SELECT '.implode(', ', array_keys($galleryCollection->schema)).' FROM site_category WHERE fichetype = \''.$this->fichetype.'\' AND ficheid = '.intval($this->infos[$this->key]).' AND category_parentid = 0 ORDER BY ordre';
+
+            $result = $this->db->query($sql)or error('Impossible de récupérer les catégories de la fiche "'.$this->table.' '.intval($this->infos[$this->key]).'"', __FILE__, __LINE__, $this->db->error());
+            $pages = $this->getResults($result);
+
+            $this->infos['categories'] = $galleryCollection->generateCollection($pages);
+        }
+
     }
 
     public function hydrate($datas) {

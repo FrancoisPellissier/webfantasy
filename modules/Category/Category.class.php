@@ -1,12 +1,13 @@
 <?php
 namespace modules\Category;
 
-class Categorie extends \library\BaseModel {
+class Category extends \library\BaseModel {
     public function __construct() {
         parent::__construct();
         $this->table = 'site_category';
         $this->key = 'categoryid';
         $this->time = true;
+        $this->fichetype = 'category';
         
         $this->schema = array(
             'categoryid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '0', 'publicname' => 'ID de la catégorie'),
@@ -18,5 +19,9 @@ class Categorie extends \library\BaseModel {
             'category_parentid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '0', 'publicname' => 'ID de la catégorie parente'),
             'ordre' => array('fieldtype' => 'INT', 'required' => false, 'default' => '0', 'publicname' => 'Ordre dans la catégorie parente'),
         );
+    }
+
+    public function getSlug() {
+        return '/category/'.$this->infos['categoryid'].'/'.$this->slug($this->infos['titre']);
     }
 }

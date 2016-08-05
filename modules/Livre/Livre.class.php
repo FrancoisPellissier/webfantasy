@@ -63,13 +63,15 @@ class Livre extends \library\BaseModel {
                 'value' => 'Editions'
             );
 
-            /* **** TO DO
-            ** A paramétrer si une galerie existe
-            */
-            $items[] = array(
-                'href' => $baselink.'',
-                'value' => 'Galerie'
-            );
+            // Affichage de la liste des catégories de 1er niveau
+            if(isset($this->infos['categories'])) {
+                foreach($this->infos['categories'] AS $page) {
+                    $items[] = array(
+                        'href' => $baselink.$page->getSlug(),
+                        'value' => $page->infos['titre']
+                    );
+                }
+            }
 
             /* **** TO DO
             ** A paramétrer si un topic d'avis existe (ou nouveau système s'il y a)

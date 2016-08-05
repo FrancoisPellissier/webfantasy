@@ -67,6 +67,7 @@ abstract class BaseController {
         // S'il existe, on le passe dans la vue et on le renvoie
         else {
             $model->getPages();
+            $model->getCategories();
             return $model;
         }
     }
