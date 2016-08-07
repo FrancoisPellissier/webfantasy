@@ -53,4 +53,14 @@ class Form {
         
         return $return;
     }
+
+    public function HTMLradio($name, $datas, $separator) {
+        $return = array();
+
+        foreach($datas AS $value => $lib) {
+            $return[] = '<input type="radio" id="'.$name.'_'.$value.'" name="data['.$name.']" value="'.$value.'"'.($this->setValue($name) == $value ? ' checked' : '').' /> <label for="'.$name.'_'.$value.'">'.$lib.'</label>';
+
+        }
+        return implode($separator, $return);
+    }
 }
