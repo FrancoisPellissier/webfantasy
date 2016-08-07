@@ -63,4 +63,8 @@ class Form {
         }
         return implode($separator, $return);
     }
+
+    public function HTMLcheckbox($name, $lib) {
+        return '<input type="checkbox" id="" name="'.$name.'"'.($this->setValue($name) ? ' checked' : '').' /><label for="">'.$lib.'</label>';
+    }
 }
