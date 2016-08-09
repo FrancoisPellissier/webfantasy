@@ -42,6 +42,7 @@ class Image extends \library\BaseModel {
             foreach($this->sizes AS $name => $size) {
                 $this->imageResize('img/upload/'.$source, $category->infos['folder'].'/'.$name, $this->infos['filename'], $size['width'], $size['height']);
             }
+            $this->cleanUpload('img/upload/'.$source);
         }
     }
 
@@ -171,8 +172,8 @@ class Image extends \library\BaseModel {
         // Définition des dimensions
         $size = $this->defineSize($width_source, $height_source, $width, $height);
 
-        $image = imagecreatetruecolor($size['width'], $size['width']);
-        imagecopyresampled($image, $source, 0, 0, 0, 0, $size['width'], $size['width'], $width_source, $height_source);
+        $image = imagecreatetruecolor($size['width'], $size['height']);
+        imagecopyresampled($image, $source, 0, 0, 0, 0, $size['width'], $size['height'], $width_source, $height_source);
         
         imagedestroy($source);
 
