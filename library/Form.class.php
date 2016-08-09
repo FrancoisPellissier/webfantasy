@@ -8,8 +8,8 @@ class Form {
         $this->data = $data;
     }
 
-    public function start($method, $action = "") {
-        return '<form method="'.$method.'"'.($action == "" ? '' : 'action="'.$action.'"').'>';
+    public function start($method, $action = "", $file = false) {
+        return '<form method="'.$method.'"'.($action == "" ? '' : ' action="'.$action.'"').($file ? ' enctype="multipart/form-data"' : '').'>';
     }
 
     public function end() {
@@ -36,6 +36,10 @@ class Form {
 
     public function HTMLinput($type, $name, $size = 0) {
         return '<input id="'.$name.'" type="'.$type.'" name="data['.$name.']" value="'.$this->setValue($name).'"'.($size == 0 ? '' : ' size = "'.$size.'"').' />';
+    }
+
+    public function HTMLinputFile($name) {
+        return '<input id="'.$name.'" type="file" name="'.$name.'" accept=".jpg, .jpeg, .JPG, .JPEG" />';
     }
 
     public function HTMLtextarea($name, $cols, $rows) {
