@@ -26,6 +26,17 @@ class Image extends \library\BaseModel {
         $this->sizes['large'] = array('width' => 130, 'height' => 130);
     }
 
+    // Génération du lien
+    public function getUrl($size) {
+        $url = $this->infos['folder'].'/'.$size.'/'.$this->infos['filename'];
+        if(file_exists($url)) {
+            return $url;
+        }
+        else {
+            return 'img/default_'.$size.'.jpg';
+        }
+    }
+
     // Migration temporaire
     public function migrate(\modules\Category\Category $category) {
         if($this->infos['folder'] != $category->infos['folder']) {
