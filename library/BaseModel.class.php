@@ -47,20 +47,22 @@ abstract class BaseModel {
         global $pun_user;
         
         // On génère la liste des champs à récupérer
-        $sql_fields = implode(', ', array_keys($this->schema));
+        $sql_fields = 't.'.implode(', t.', array_keys($this->schema));
         if($this->time)
-            $sql_fields .= ', created_at, updated_at';
-
-        // Génération de la clause WHERE
-        $where = 'WHERE '.$this->key.' = '.intval($id);
+            $sql_fields .= ', t.created_at, t.updated_at';
 
         // Il existe un lien avec les images ?
-        if($picture) {
-            // Génération d'une jointure avec la table image pour récupérer les informations...
+        if($this->picture) {
+            $image = new \modules\Image\Image();
+            $sql_fields .= ', i.'.implode(', i.', array_keys($image->schema));
+            $sql = ' LEFT JOIN site_image AS i ON t.pictureid = i.imageid WHERE t.'.$this->key.' = '.intval($id);
+        }
+        else {
+            $sql = ' WHERE t.'.$this->key.' = '.intval($id);
         }
 
         // On teste l'existence en récupérant les informations de la table
-        $result = $this->db->query('SELECT '.$sql_fields.' FROM '.$this->table.' '.$where)or error('Impossible de tester l\'existence dans la table "'.$this->table.'" pour la valeur "'.intval($id).'"', __FILE__, __LINE__, $this->db->error());
+        $result = $this->db->query('SELECT '.$sql_fields.' FROM '.$this->table.' AS t '.$sql)or error('Impossible de tester l\'existence dans la table "'.$this->table.'" pour la valeur "'.intval($id).'"', __FILE__, __LINE__, $this->db->error());
         
         if($this->db->num_rows($result)) {
             $cur = $this->db->fetch_assoc($result);
@@ -70,6 +72,12 @@ abstract class BaseModel {
             // Génération du titre usuel si que VF / VO
             if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
                 $this->infos['titre'] = ($this->infos['titre_vf'] != "" ? $this->infos['titre_vf'] : $this->infos['titre_vo']);
+            }
+
+            // Génération de l'image s'il y a
+            if($this->picture) {
+                $image->hydrate($cur);
+                $this->infos['image'] = $image;
             }
 
             // On enregistre la visite de cette "page" pour pouvoir faire des stats plus tard
