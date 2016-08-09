@@ -135,7 +135,7 @@ abstract class BaseController {
             $this->view->addTitle('Ajouter une page');
             $form = new \library\Form(array());
             $this->view->with('form', $form);
-            $this->makeView();  
+            $this->makeView();
         }
     }
 
@@ -167,7 +167,7 @@ abstract class BaseController {
                 $this->view->with('page', $model);
                 $form = new \library\Form($model->infos);
                 $this->view->with('form', $form);
-                $this->makeView();  
+                $this->makeView();
             }
 
         }
@@ -193,6 +193,7 @@ abstract class BaseController {
         }
         else {
             $model->getChildren();
+            $model->getImages();
             $this->view->with('category', $model);
             // TO DO : handle parent page
             // Une page parente existe ?
@@ -208,6 +209,38 @@ abstract class BaseController {
             */
             $this->addAriane($this->model->getSlug().$model->getSlug(), $model->infos['titre']);
             $this->makeView();
+        }
+    }
+
+    public function addImage() {
+        $common = $this->getCommon();
+
+        $id = intval($this->request->getData('cateogryid'));
+        $model = new \modules\Category\Category();
+        $model->exists($id);
+        
+        // S'il n'existe pas, on redirige vers l'adresse fournie
+        if(!$model->exists) {
+            $this->response->redirect();
+        }
+        else {
+            // On traite le formulaire
+            if($this->request->method() == 'POST') {
+                $data = $this->request->postData('data');
+
+                $image = new \modules\Image\Image();
+                $image->hydrate($data);
+                $image->addImage($_FILES, $model);
+
+                $this->response->redirect($this->model->getSlug().$model->getSlug());   
+            }
+            // On affiche le formulaire
+            else {
+                $this->view->addTitle('Ajouter une image');
+                $form = new \library\Form(array());
+                $this->view->with('form', $form);
+                $this->makeView();
+            } 
         }
     }
 

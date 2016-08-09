@@ -33,6 +33,7 @@
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page" module="Livre" action="showPages" vars="auteurid,id,name" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)" module="Livre" action="showPage" vars="auteurid,id,name,pageid,pagename" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)" module="Livre" action="showCategory" vars="auteurid,id,name,cateogryid,categoryname" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/add" module="Livre" action="addImage" vars="auteurid,id,name,cateogryid,categoryname" />
 
     <!-- Wiki -->
 
