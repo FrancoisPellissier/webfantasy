@@ -26,6 +26,25 @@ class Image extends \library\BaseModel {
         $this->sizes['large'] = array('width' => 130, 'height' => 130);
     }
 
+    // Migration temporaire
+    public function migrate(\modules\Category\Category $category) {
+        if($this->infos['folder'] != $category->infos['folder']) {
+            $url = str_replace('/./', '/', 'http://www.terrygoodkind.fr/galerie/'.$this->infos['folder'].$this->infos['filename']);
+            $source = $this->infos['filename'];
+            copy($url, 'img/upload/'.$source);
+
+            $this->infos['folder'] = $category->infos['folder'];
+            $this->infos['filename'] =  $this->infos['imageid'].'_'.$source;
+            $this->edit();
+
+            $this->generateFolders($category->infos['folder']);
+            $this->imageResize('img/upload/'.$source, $category->infos['folder'].'/original/', $this->infos['filename'], 0, 0, true);
+            foreach($this->sizes AS $name => $size) {
+                $this->imageResize('img/upload/'.$source, $category->infos['folder'].'/'.$name, $this->infos['filename'], $size['width'], $size['height']);
+            }
+        }
+    }
+
     // Ajout d'une image
     public function addImage($files, \modules\Category\Category $category) {
         $filename = $this->slug($this->infos['titre']).'.jpg';
@@ -47,7 +66,7 @@ class Image extends \library\BaseModel {
             // Gestion des dossiers
             $this->generateFolders($category->infos['folder']);
             // Taille originale
-            $this->imageResize($source, $category->infos['folder'].'/original/'.$name, $this->infos['filename'], 0, 0, true);
+            $this->imageResize($source, $category->infos['folder'].'/original/', $this->infos['filename'], 0, 0, true);
 
             // Formats pré-définis
             foreach($this->sizes AS $name => $size) {

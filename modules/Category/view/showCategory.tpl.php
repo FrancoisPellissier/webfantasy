@@ -13,7 +13,8 @@ if(!empty($category->infos['children'])) {
 // Sinon on affiche les image
 else {
     foreach($category->infos['images'] AS $image) {
+        $image->migrate($category);
 
-        echo '<p><img src="'.str_replace('/./', '/', 'http://www.terrygoodkind.fr/galerie/'.$image->infos['folder'].'thumbnail/TN-'.$image->infos['filename']).'" title="'.$image->infos['titre'].'" /></p>';
+        echo '<p><img src="'.$image->infos['folder'].'/thumbnail/'.$image->infos['filename'].'" title="'.$image->infos['titre'].'" /></p>';
     }
 }
