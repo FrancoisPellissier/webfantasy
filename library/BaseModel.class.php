@@ -126,7 +126,22 @@ abstract class BaseModel {
 
             $this->infos['categories'] = $galleryCollection->generateCollection($pages);
         }
+    }
 
+    public function getImages() {
+        $types = array('auteur', 'cycle', 'livre');
+
+        // Ne fonctionne que si la fiche existe et est dans la liste
+        if($this->exists AND in_array($this->fichetype, $types)) {
+
+            $imageCollection = new \modules\Image\Image();
+            $sql = 'SELECT i.'.implode(', i.', array_keys($imageCollection->schema)).' FROM site_image AS i INNER JOIN site_category AS c ON c.categoryid = i.categoryid AND fichetype = \''.$this->fichetype.'\' AND ficheid = '.intval($this->infos[$this->key]).' ORDER BY titre';
+
+            $result = $this->db->query($sql)or error('Impossible de récupérer les images de la fiche "'.$this->table.' '.intval($this->infos[$this->key]).'"', __FILE__, __LINE__, $this->db->error());
+            $pages = $this->getResults($result);
+
+            $this->infos['images'] = $imageCollection->generateCollection($pages);
+        }
     }
 
     public function hydrate($datas) {
