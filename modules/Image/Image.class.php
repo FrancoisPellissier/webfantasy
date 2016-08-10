@@ -21,9 +21,9 @@ class Image extends \library\BaseModel {
         );
 
         $this->sizes['thumbnail'] = array('width' => 130, 'height' => 130);
-        $this->sizes['small'] = array('width' => 130, 'height' => 130);
-        $this->sizes['medium'] = array('width' => 130, 'height' => 130);
-        $this->sizes['large'] = array('width' => 130, 'height' => 130);
+        $this->sizes['small'] = array('width' => 200, 'height' => 300);
+        $this->sizes['medium'] = array('width' => 600, 'height' => 800);
+        $this->sizes['large'] = array('width' => 1000, 'height' => 1333);
     }
 
     // Génération du lien
@@ -40,7 +40,11 @@ class Image extends \library\BaseModel {
     // Migration temporaire
     public function migrate() {
         if(substr($this->infos['folder'], 0, 2) == './') {
-            $url = str_replace('/./', '/', 'http://www.terrygoodkind.fr/galerie/'.$this->infos['folder'].$this->infos['filename']);
+            if(substr($this->infos['folder'], -4) != '.jpg')
+                $url = str_replace('/./', '/', 'http://www.terrygoodkind.fr/galerie/'.$this->infos['folder'].$this->infos['filename']);
+            else
+                $url = str_replace('/./', '/', 'http://www.terrygoodkind.fr/galerie/'.$this->infos['folder']);
+
             $source = $this->infos['filename'];
             copy($url, 'img/upload/'.$source);
 
