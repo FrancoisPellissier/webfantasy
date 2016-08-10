@@ -13,7 +13,7 @@ if(!empty($category->infos['children'])) {
 // Sinon on affiche les image
 else {
     foreach($category->infos['images'] AS $image) {
-        $image->migrate($category);
+        $image->migrate();
 
         echo '<p><img src="'.$image->infos['folder'].'/thumbnail/'.$image->infos['filename'].'" title="'.$image->infos['titre'].'" /></p>';
     }

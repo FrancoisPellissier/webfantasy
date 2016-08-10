@@ -38,23 +38,29 @@ class Image extends \library\BaseModel {
     }
 
     // Migration temporaire
-    public function migrate(\modules\Category\Category $category) {
-        if($this->infos['folder'] != $category->infos['folder']) {
+    public function migrate() {
+        if(substr($this->infos['folder'], 0, 2) == './') {
             $url = str_replace('/./', '/', 'http://www.terrygoodkind.fr/galerie/'.$this->infos['folder'].$this->infos['filename']);
             $source = $this->infos['filename'];
             copy($url, 'img/upload/'.$source);
 
-            $this->infos['folder'] = $category->infos['folder'];
+            $this->infos['folder'] = 'img/'.$this->infos['categoryid'];
             $this->infos['filename'] =  $this->infos['imageid'].'_'.$source;
             $this->edit();
 
-            $this->generateFolders($category->infos['folder']);
-            $this->imageResize('img/upload/'.$source, $category->infos['folder'].'/original/', $this->infos['filename'], 0, 0, true);
+            $this->generateFolders($this->infos['folder'] );
+            $this->imageResize('img/upload/'.$source, $this->infos['folder'] .'/original/', $this->infos['filename'], 0, 0, true);
             foreach($this->sizes AS $name => $size) {
-                $this->imageResize('img/upload/'.$source, $category->infos['folder'].'/'.$name, $this->infos['filename'], $size['width'], $size['height']);
+                $this->imageResize('img/upload/'.$source, $this->infos['folder'] .'/'.$name, $this->infos['filename'], $size['width'], $size['height']);
             }
             $this->cleanUpload('img/upload/'.$source);
         }
+    }
+
+    // Hydratation temporaire
+    public function hydrate($data) {
+        parent::hydrate($data);
+        $this->migrate();
     }
 
     // Ajout d'une image
