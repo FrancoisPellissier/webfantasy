@@ -161,7 +161,7 @@ abstract class BaseModel {
         }
     }
 
-    public function generateCollection($datas) {
+    public function generateCollection($datas, $auteur = null) {
         $collection = array();
         $module = ucwords($this->fichetype);
         $modelClass = '\modules\\'.$module.'\\'.$module;
@@ -169,12 +169,21 @@ abstract class BaseModel {
         // Parcourt des résultats pour générer un tableau d'objets
         foreach($datas AS $data) {
             $model = new $modelClass();
+
+            if($auteur) {
+                $model->auteur = $auteur;
+            }
             $model->hydrate($data);
 
             // Titre usuel
             if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
                 $model->infos['titre'] = ($model->infos['titre_vf'] != "" ? $model->infos['titre_vf'] : $model->infos['titre_vo']);
             }
+
+            // Image
+            $image = new \modules\Image\Image();
+            $image->hydrate($data);
+            $model->infos['image'] = $image;
 
             $collection[$model->infos[$this->key]] = $model;
         }

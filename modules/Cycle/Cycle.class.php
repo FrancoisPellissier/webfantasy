@@ -23,19 +23,20 @@ class Cycle extends \library\BaseModel {
     public function getLivres() {
         $livreCollection = new \modules\Livre\Livre();
         $auteurid = $this->auteur->infos['auteurid'];
+        $image = new \modules\Image\Image();
        
         // Présence d'un auteurid ?
         if($auteurid != 0) {
-            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).' FROM site_livre AS l INNER JOIN site_livre_auteur AS sla ON l.livreid = sla.livreid AND l.cycleid = '.$this->infos['cycleid'].' AND sla.auteurid = '.$auteurid.' ORDER BY l.cycleordre, date_vo, date_vf';
+            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).', i.'.implode(', i.', array_keys($image->schema)).' FROM site_livre AS l INNER JOIN site_livre_auteur AS sla ON l.livreid = sla.livreid AND l.cycleid = '.$this->infos['cycleid'].' AND sla.auteurid = '.$auteurid.' LEFT JOIN site_image AS i ON i.imageid = l.pictureid  ORDER BY l.cycleordre, date_vo, date_vf';
         }
         else  {
-            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).' FROM site_livre AS l WHERE l.cycleid = '.$this->infos['cycleid'].' ORDER BY l.cycleordre, date_vo, date_vf';
+            $sql = 'SELECT l.'.implode(', l.', array_keys($livreCollection->schema)).', i.'.implode(', i.', array_keys($image->schema)).' FROM site_livre AS l LEFT JOIN site_image AS i ON i.imageid = l.pictureid  WHERE l.cycleid = '.$this->infos['cycleid'].' ORDER BY l.cycleordre, date_vo, date_vf';
         }
         $result = $this->db->query($sql)or error('Impossible de récupérer les livres de ce cycle', __FILE__, __LINE__, $this->db->error());
         $cycles = $this->getResults($result);
 
         $livreCollection = new \modules\Livre\Livre();
-        $this->infos['livre'] = $livreCollection->generateCollection($cycles);
+        $this->infos['livre'] = $livreCollection->generateCollection($cycles, $this->auteur);
     }
 
     // Génération des sections de la sidebar

@@ -23,7 +23,7 @@ class Livre extends \library\BaseModel {
     }
 
     public function getCycle() {
-        $auteurid = $auteurid = $this->auteur->infos['auteurid'];
+        $auteurid = $this->auteur->infos['auteurid'];
 
         // On récupère le cycle associé
         $cycle = new \modules\Cycle\Cycle();
