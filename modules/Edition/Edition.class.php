@@ -59,9 +59,12 @@ class Edition extends \library\BaseModel {
             $model->infos['langname'] = $this->langs[$model->infos['langid']];
             $model->infos['formatname'] = $this->formats[$model->infos['formatid']];
 
+            $image = new \modules\Image\Image();
+            $image->hydrate($data);
+            $model->infos['image'] = $image;
+
             $collection[$model->infos[$this->key]] = $model;
         }
-
         return $collection;
     }
 }

@@ -36,7 +36,9 @@ class Livre extends \library\BaseModel {
 
     public function getEditions() {
         $editionCollection = new \modules\Edition\Edition();
-        $sql = 'SELECT e.'.implode(', e.', array_keys($editionCollection->schema)).' FROM site_edition AS e INNER JOIN site_livre_edition AS le ON e.editionid = le.editionid AND le.livreid = '.$this->infos[$this->key] .' ORDER BY langid, datesortie DESC';
+        $image = new \modules\Image\Image();
+
+        $sql = 'SELECT e.'.implode(', e.', array_keys($editionCollection->schema)).', i.'.implode(', i.', array_keys($image->schema)).' FROM site_edition AS e INNER JOIN site_livre_edition AS le ON e.editionid = le.editionid AND le.livreid = '.$this->infos[$this->key] .' LEFT JOIN site_image AS i ON i.imageid = e.pictureid ORDER BY langid, datesortie DESC';
 
         $result = $this->db->query($sql)or error('Impossible de récupérer les éditions  de ce livre', __FILE__, __LINE__, $this->db->error());
         $editions = $this->getResults($result);
