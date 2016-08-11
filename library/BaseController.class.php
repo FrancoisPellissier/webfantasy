@@ -279,7 +279,27 @@ abstract class BaseController {
     }
 
     protected function showImage() {
+        $this->getCommon();
 
+        $id = intval($this->request->getData('cateogryid'));
+        $model = new \modules\Category\Category();
+        $model->exists($id);
+
+        $imageid = intval($this->request->getData('imageid'));
+        $image = new \modules\Image\Image();
+        $image->exists($imageid);
+
+         // S'il n'existe pas, on redirige vers l'adresse fournie
+        if(!$model->exists || !$image->exists) {
+            $this->response->redirect();
+        }
+        else {
+            $this->view->with('category', $model);
+            $this->view->with('image', $image);
+            $this->addAriane($this->model->getSlug().$model->getSlug(), $model->infos['titre']);
+            $this->view->addTitle($image->infos['title']);
+            $this->makeView();
+        }
     }
 
     protected function editFicheImage() {
