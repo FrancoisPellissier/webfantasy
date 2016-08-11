@@ -184,13 +184,10 @@ li { list-style: none; }
 a {
     color : #666666;
     font-family:verdana;
-    text-decoration:none;
 }
 
 a:hover , a:active , a:focus {
     color : #666666;
-    font-weight : bold;
-    text-decoration:none;
 }
 
 h3 {
