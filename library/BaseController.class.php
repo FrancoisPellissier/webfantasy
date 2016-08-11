@@ -230,7 +230,7 @@ abstract class BaseController {
 
                 $image = new \modules\Image\Image();
                 $image->hydrate($data);
-                $image->addImage($_FILES, $model);
+                $image->editImage($_FILES, $model);
 
                 $this->response->redirect($this->model->getSlug().$model->getSlug());   
             }
@@ -238,6 +238,40 @@ abstract class BaseController {
             else {
                 $this->view->addTitle('Ajouter une image');
                 $form = new \library\Form(array());
+                $this->view->with('form', $form);
+                $this->makeView();
+            } 
+        }
+    }
+
+    public function editImage() {
+        $this->getCommon();
+
+        $id = intval($this->request->getData('cateogryid'));
+        $model = new \modules\Category\Category();
+        $model->exists($id);
+
+        $imageid = intval($this->request->getData('imageid'));
+        $image = new \modules\Image\Image();
+        $image->exists($imageid);
+        
+        // S'il n'existe pas, on redirige vers l'adresse fournie
+        if(!$model->exists || !$image->exists) {
+            $this->response->redirect();
+        }
+        else {
+            // On traite le formulaire
+            if($this->request->method() == 'POST') {
+                $data = $this->request->postData('data');
+                $image->hydrate($data);
+                $image->editImage($_FILES, $model);
+
+                $this->response->redirect($this->model->getSlug().$model->getSlug());   
+            }
+            // On affiche le formulaire
+            else {
+                $this->view->addTitle('Modifier une image');
+                $form = new \library\Form($image->infos);
                 $this->view->with('form', $form);
                 $this->makeView();
             } 

@@ -101,6 +101,33 @@ class Image extends \library\BaseModel {
         $this->cleanUpload($source);
     }
 
+    // Modification d'une image
+    public function editImage($files, \modules\Category\Category $category) {
+        // Modification de l'image en base
+        $this->edit();
+
+        $filename = $this->infos['filename'];
+        $source = 'img/upload/'. $filename;
+        $error = $this->imageUpload($files, $filename);
+
+        // L'image est bien téléchargée ? On la traite
+        if(!$error) {
+            // Gestion des dossiers
+            $this->generateFolders($category->infos['folder']);
+            // Taille originale
+            $this->imageResize($source, $category->infos['folder'].'/original/', $this->infos['filename'], 0, 0, true);
+
+            // Formats pré-définis
+            foreach($this->sizes AS $name => $size) {
+                $this->imageResize($source, $category->infos['folder'].'/'.$name, $this->infos['filename'], $size['width'], $size['height']);
+            }
+
+            // Association image/catégorie
+            $this->assocCategory($category->infos['categoryid']);
+        }
+        $this->cleanUpload($source);
+    }
+
     // Gestion des images uploadées
     public function imageUpload($files, $filename) {
         $error = false;
