@@ -48,6 +48,10 @@ abstract class BaseModel {
         
         // On génère la liste des champs à récupérer
         $sql_fields = 't.'.implode(', t.', array_keys($this->schema));
+
+        if($this->picture)
+            $sql_fields .= ', t.pictureid';
+
         if($this->time)
             $sql_fields .= ', t.created_at, t.updated_at';
 
@@ -145,6 +149,10 @@ abstract class BaseModel {
     }
 
     public function hydrate($datas) {
+        if($this->picture) {
+            $this->schema['pictureid'] = array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID de l auteur');
+        }
+
         // On parcourt le schema pour insérer les données correspondant dans les data
         foreach($this->schema AS $field => $infos) {
             if(isset($datas[$field])) {
@@ -174,6 +182,10 @@ abstract class BaseModel {
     }
 
     public function checkData($modiftype, $post, $errors) {
+        if($this->picture) {
+            $this->schema['pictureid'] = array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID de l auteur');
+        }
+
         $data = array();
         $error = array();
         

@@ -77,13 +77,13 @@ abstract class BaseController {
     }
 
     public function showPages() {
-        $common = $this->getCommon();
+        $this->getCommon();
 
         $this->makeView();
     }
 
     public function showPage() {
-        $common = $this->getCommon();
+        $this->getCommon();
 
         $id = intval($this->request->getData('pageid'));
         $model = new \modules\Page\Page();
@@ -181,7 +181,7 @@ abstract class BaseController {
     }
 
     protected function showCategory() {
-        $common = $this->getCommon();
+        $this->getCommon();
 
         $id = intval($this->request->getData('cateogryid'));
         $model = new \modules\Category\Category();
@@ -213,7 +213,7 @@ abstract class BaseController {
     }
 
     public function addImage() {
-        $common = $this->getCommon();
+        $this->getCommon();
 
         $id = intval($this->request->getData('cateogryid'));
         $model = new \modules\Category\Category();
@@ -246,5 +246,38 @@ abstract class BaseController {
 
     protected function showImage() {
 
+    }
+
+    protected function editFicheImage() {
+        $this->getCommon();
+
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $data = $this->request->postData('data');
+            $image = new \modules\Image\Image();
+            $image->exists($data['pictureid']);
+
+            if($image->exists) {
+                $this->model->hydrate($data);
+                $this->model->edit();
+            }
+
+            $this->response->redirect($this->model->getSlug());   
+        }
+        // On affiche le formulaire
+        else {
+            $this->model->getImages();
+
+            $images = array();
+            foreach($this->model->infos['images'] AS $image) {
+                $images[$image->infos['imageid']] = '<img src="'.$image->getUrl('thumbnail').'" />';
+            }
+            $this->view->with('images', $images);
+
+            $this->view->addTitle('Choisir une image');
+            $form = new \library\Form($this->model->infos);
+            $this->view->with('form', $form);
+            $this->makeView();
+        } 
     }
 }
