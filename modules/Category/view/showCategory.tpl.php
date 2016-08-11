@@ -15,6 +15,6 @@ else {
     foreach($category->infos['images'] AS $image) {
         $image->migrate();
 
-        echo '<p><img src="'.$image->infos['folder'].'/thumbnail/'.$image->infos['filename'].'" title="'.$image->infos['titre'].'" /></p>';
+        echo '<p><a href="'.$model->getSlug().$category->getSlug().'/image/'.$image->infos['imageid'].'"><img src="'.$image->infos['folder'].'/thumbnail/'.$image->infos['filename'].'" title="'.$image->infos['titre'].'" /></a></p>';
     }
 }
