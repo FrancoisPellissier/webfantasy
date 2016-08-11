@@ -4,8 +4,8 @@ DROP TABLE IF EXISTS site_image;
 CREATE TABLE site_image (
 	imageid INT NOT NULL AUTO_INCREMENT,
 	categoryid INT NOT NULL DEFAULT 0,
-	titre VARCHAR(255) NOT NULL DEFAULT '',
-	description TEXT NULL DEFAULT NULL,
+	title VARCHAR(255) NOT NULL DEFAULT '',
+	commentaire TEXT NULL DEFAULT NULL,
 	folder VARCHAR(255) NOT NULL DEFAULT '',
 	filename VARCHAR(255) NOT NULL DEFAULT '',
 	created_at DATETIME NULL DEFAULT NULL,
@@ -14,7 +14,7 @@ CREATE TABLE site_image (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Récupération des images liées à l'une des catégories migrées
-INSERT INTO site_image (imageid, titre, description, folder, filename, created_at, updated_at)
+INSERT INTO site_image (imageid, title, commentaire, folder, filename, created_at, updated_at)
 	SELECT
 		i.id,
 		i.`name`,
