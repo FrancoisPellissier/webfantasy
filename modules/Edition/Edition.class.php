@@ -10,6 +10,7 @@ class Edition extends \library\BaseModel {
         $this->table = 'site_edition';
         $this->key = 'editionid';
         $this->time = true;
+        $this->picture = true;
 
         $this->formats = array();
         $this->langs = array();
