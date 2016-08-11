@@ -47,7 +47,7 @@ class Edition extends \library\BaseModel {
         }
     }
 
-    public function generateCollection($datas) {
+    public function generateCollection($datas, $auteur = null) {
         $collection = array();
         $this->getLangs();
         $this->getFormats();
