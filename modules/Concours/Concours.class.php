@@ -30,7 +30,7 @@ class Concours extends \library\BaseModel {
         $sql_fields = 't.'.implode(', t.', array_keys($this->schema));
 
         // On teste l'existence en récupérant les informations de la table
-        $result = $this->db->query('SELECT '.$sql_fields.' FROM '.$this->table.' AS t WHERE t.'.$this->key.' = '.intval($id))or error('Impossible de tester l\'existence dans la table "'.$this->table.'" pour la valeur "'.intval($id).'"', __FILE__, __LINE__, $this->db->error());
+        $result = $this->db->query('SELECT '.$sql_fields.' FROM '.$this->table.' AS t WHERE t.'.$this->key.' = '.intval($id).' AND date_debut <= CURDATE()')or error('Impossible de tester l\'existence dans la table "'.$this->table.'" pour la valeur "'.intval($id).'"', __FILE__, __LINE__, $this->db->error());
         
         if($this->db->num_rows($result)) {
             $cur = $this->db->fetch_assoc($result);
@@ -58,5 +58,20 @@ class Concours extends \library\BaseModel {
 
     public function getSlug() {
         return 'concours/'.$this->infos['formid'].'/'.$this->slug($this->infos['titre']);
+    }
+
+    public function getQuestions() {
+        $sql = 'SELECT q.questionid, q.libelle AS qlib, q.answerid AS good_anwer, a.answerid, a.libelle AS alib FROM form_question AS q INNER JOIN form_answer AS a ON q.questionid = a.questionid AND q.formid = '.$this->infos['formid'].' ORDER BY q.ordre, a.ordre';
+        $result = $this->db->query($sql)or error('Impossible de récupérer les questions/réponses du concours', __FILE__, __LINE__, $this->db->error());
+
+        $qa = array();
+        while($cur = $this->db->fetch_assoc($result)) {
+            // Question
+            $qa[$cur['questionid']]['libelle'] = $cur['qlib'];
+            $qa[$cur['questionid']]['good'] = $cur['good_anwer'];
+            $qa[$cur['questionid']]['answer'][$cur['answerid']] = $cur['alib'];
+        }
+        
+        $this->infos['question'] = $qa;
     }
 }
