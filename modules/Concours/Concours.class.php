@@ -6,7 +6,7 @@ class Concours extends \library\BaseModel {
         parent::__construct();
         $this->table = 'form';
         $this->key = 'formid';
-        $this->fichetype = 'form';
+        $this->fichetype = 'concours';
         $this->time = true;
         
         $this->schema = array(
@@ -48,7 +48,12 @@ class Concours extends \library\BaseModel {
     }
 
     public function listAll() {
-        
+        $sql = 'SELECT '.implode(', ', array_keys($this->schema)).' FROM form WHERE date_debut <= CURDATE() ORDER BY date_debut DESC';
+        $result = $this->db->query($sql)or error('Impossible de récupérer les concours', __FILE__, __LINE__, $this->db->error());
+        $concours = $this->getResults($result);
+
+        $concoursCollection = new \modules\Concours\Concours();
+        return $concoursCollection->generateCollection($concours);
     }
 
     public function getSlug() {

@@ -14,7 +14,7 @@ class ConcoursController extends \library\BaseController {
 
     public function listConcours() {
         $concours = new Concours();
-        $this->view->with('concours', $concours->listAll());
+        $this->view->with('concoursList', $concours->listAll());
         $this->addAriane('concours', 'Concours');
         $this->makeView();
     }
