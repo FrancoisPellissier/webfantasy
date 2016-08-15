@@ -41,6 +41,7 @@ class ConcoursController extends \library\BaseController {
             $participate->clean();
             $userid = $participate->add();
             $this->model->saveAnswer($userid, $data['question']);
+            $this->model->increment();
 
             $this->response->redirect($this->model->getSlug().'/done');
         }

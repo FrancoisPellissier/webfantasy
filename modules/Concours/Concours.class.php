@@ -113,4 +113,8 @@ class Concours extends \library\BaseModel {
             $this->db->query($sql)or error('Impossible d enregistrer la réponse', __FILE__, __LINE__, $this->db->error());
         }
     }
+
+    public function increment() {
+        $this->db->query('UPDATE '.$this->table.' SET participants = participants + 1 WHERE '.$this->key.' = '.intval($this->infos[$this->key]))or error('Impossible d incrémenter le concours', __FILE__, __LINE__, $this->db->error());
+    }
 }
