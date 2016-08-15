@@ -62,8 +62,9 @@ abstract class BaseController {
         $model->exists($id);
         
         // S'il n'existe pas, on redirige vers l'adresse fournie
-        if(!$model->exists)
+        if(!$model->exists) {
             $this->response->redirect($redirect);
+        }
         // S'il existe, on le passe dans la vue et on le renvoie
         else {
             $model->getPages();

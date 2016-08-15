@@ -11,6 +11,7 @@ class ErrorController extends \library\BaseController {
 
 	public function maintenance() {
 		$this->titre_page = 'Maintenance';
+		$this->view->addHeader('HTTP/1.0 503 Service Unavailable');
 		$this->makeView();
 	}
 }
