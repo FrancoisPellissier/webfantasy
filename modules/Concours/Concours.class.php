@@ -30,7 +30,7 @@ class Concours extends \library\BaseModel {
         $sql_fields = 't.'.implode(', t.', array_keys($this->schema));
 
         // On teste l'existence en récupérant les informations de la table
-        $result = $this->db->query('SELECT '.$sql_fields.' FROM '.$this->table.' AS t WHERE t.'.$this->key.' = '.intval($id).' AND date_debut <= CURDATE()')or error('Impossible de tester l\'existence dans la table "'.$this->table.'" pour la valeur "'.intval($id).'"', __FILE__, __LINE__, $this->db->error());
+        $result = $this->db->query('SELECT '.$sql_fields.' FROM '.$this->table.' AS t WHERE t.'.$this->key.' = '.intval($id).' AND CURDATE() BETWEEN date_debut AND date_fin')or error('Impossible de tester l\'existence dans la table "'.$this->table.'" pour la valeur "'.intval($id).'"', __FILE__, __LINE__, $this->db->error());
         
         if($this->db->num_rows($result)) {
             $cur = $this->db->fetch_assoc($result);
