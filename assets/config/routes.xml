@@ -38,6 +38,9 @@
     <route url="/about" module="About" action="about" />
     <route url="/contact" module="Contact" action="contact" />
     <route url="/mentions" module="About" action="mentions" />
+    <route url="/newsletter" module="Newsletter" action="handle" />
+    <route url="/newsletter/subscribe" module="Newsletter" action="subscribe" />
+    <route url="/newsletter/unsubscribe" module="Newsletter" action="unsubscribe" />
 
     <!-- Livre -->
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)" module="Livre" action="showLivre" vars="auteurid,id,name" />

@@ -227,3 +227,19 @@ SET en.formatid = f.formatid;
 UPDATE site_edition
   SET formatid = 6
 WHERE formatid = 0;
+
+
+-- Newsletter
+DROP TABLE IF EXISTS site_newsletter;
+CREATE TABLE `site_newsletter` (
+  `email` varchar(255) NOT NULL,
+  `domaine` int(11) NOT NULL DEFAULT '1',
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`email`,`domaine`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO site_newsletter (email, domaine)
+  SELECT email, domaine
+  FROM site_auteurs.site_newsletter;
+  
