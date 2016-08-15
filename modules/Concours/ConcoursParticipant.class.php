@@ -36,4 +36,12 @@ class ConcoursParticipant extends \library\BaseModel {
     4 : Reçu
     */
     }
+
+    public function clean() {
+        $fields = array('nom', 'prenom', 'adresse_1', 'adresse_2', 'city');
+
+        foreach($fields AS $field) {
+            $this->infos[$field] = mb_strtoupper($this->infos[$field]);
+        }
+    }
 }

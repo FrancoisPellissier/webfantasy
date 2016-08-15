@@ -38,6 +38,7 @@ class ConcoursController extends \library\BaseController {
 
             $participate = new ConcoursParticipant();
             $participate->hydrate($data);
+            $participate->clean();
             $userid = $participate->add();
             $this->model->saveAnswer($userid, $data['question']);
 

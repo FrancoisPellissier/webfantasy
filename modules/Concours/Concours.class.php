@@ -62,7 +62,12 @@ class Concours extends \library\BaseModel {
     }
 
     public function getSlug() {
-        return 'concours/'.$this->infos['formid'].'/'.$this->slug($this->infos['titre']);
+        if($this->test) {
+            return 'concours/test/'.$this->infos['formid'].'/'.$this->slug($this->infos['titre']);
+        }
+        else  {
+            return 'concours/'.$this->infos['formid'].'/'.$this->slug($this->infos['titre']);
+        }
     }
 
     public function getQuestions() {
