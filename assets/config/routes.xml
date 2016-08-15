@@ -18,6 +18,10 @@
     <route url="/concours/([0-9]+)/([a-z0-9-]+)/participate" module="Concours" action="participeConcours" vars="id,name" />
     <route url="/concours/([0-9]+)/([a-z0-9-]+)/done" module="Concours" action="participeDone" vars="id,name" />
 
+    <route url="/concours/(test)/([0-9]+)/([a-z0-9-]+)" module="Concours" action="showConcours" vars="test,id,name" />
+    <route url="/concours/(test)/([0-9]+)/([a-z0-9-]+)/participate" module="Concours" action="participeConcours" vars="test,id,name" />
+    <route url="/concours/(test)/([0-9]+)/([a-z0-9-]+)/done" module="Concours" action="participeDone" vars="test,id,name" />
+
     <!-- Cycle -->
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)" module="Cycle" action="showCycle" vars="auteurid,id,name" />
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/livre" module="Cycle" action="showLivres" vars="auteurid,id,name" />

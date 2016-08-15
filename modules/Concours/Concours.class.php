@@ -8,6 +8,7 @@ class Concours extends \library\BaseModel {
         $this->key = 'formid';
         $this->fichetype = 'concours';
         $this->time = true;
+        $this->test = false;
         
         $this->schema = array(
         'formid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID du concours'),
@@ -26,11 +27,15 @@ class Concours extends \library\BaseModel {
     public function exists($id, $track = false) {        
         global $pun_user;
 
+        if(isset($_GET['test'])) {
+            $this->test = true;
+        }
+
         // On génère la liste des champs à récupérer
         $sql_fields = 't.'.implode(', t.', array_keys($this->schema));
 
         // On teste l'existence en récupérant les informations de la table
-        $result = $this->db->query('SELECT '.$sql_fields.' FROM '.$this->table.' AS t WHERE t.'.$this->key.' = '.intval($id).' AND CURDATE() BETWEEN date_debut AND date_fin')or error('Impossible de tester l\'existence dans la table "'.$this->table.'" pour la valeur "'.intval($id).'"', __FILE__, __LINE__, $this->db->error());
+        $result = $this->db->query('SELECT '.$sql_fields.' FROM '.$this->table.' AS t WHERE t.'.$this->key.' = '.intval($id).($this->test ? '' : ' AND CURDATE() BETWEEN date_debut AND date_fin'))or error('Impossible de tester l\'existence dans la table "'.$this->table.'" pour la valeur "'.intval($id).'"', __FILE__, __LINE__, $this->db->error());
         
         if($this->db->num_rows($result)) {
             $cur = $this->db->fetch_assoc($result);
