@@ -43,7 +43,18 @@ foreach($model->infos['question'] AS $questionid => $question) {
     </tr>
     <tr>
         <td>Pays (*):</td>
-        <td><input type='text' id='pays' name='data[country]' size='20' /></td>
+        <td>
+        <?php
+        $pays = array('France', 'Belgique', 'Luxembourg', 'Suisse');
+
+        echo "\n\t\t".'<select name="data[country]" id="country">';
+        foreach($pays AS $c) {
+            echo "\n\t\t".'<option value="'.$c.'">'.$c.'</option>';
+        }
+
+        echo "\n\t\t".'</select>';
+        ?>
+        </td>
     </tr>
     <tr>
         <td>E-mail (*):</td>
