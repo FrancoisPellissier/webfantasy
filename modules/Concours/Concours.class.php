@@ -74,4 +74,33 @@ class Concours extends \library\BaseModel {
         
         $this->infos['question'] = $qa;
     }
+
+    public function checkAnswer($datas) {
+        $this->getQuestions();
+        $is_allright = '1';
+        foreach($this->infos['question'] AS $id => $cur) {
+            if(isset($datas[$id])) {
+                if($datas[$id] != $cur['good']) {
+                    $is_allright = '0';
+                }
+            }
+            else {
+                $is_allright = '0';
+            }
+        }
+        return $is_allright;
+    }
+
+    public function saveAnswer($userid, $datas) {
+        foreach($datas AS $questionid => $answerid) {
+            $data = array(
+                'questionid' => $questionid,
+                'userid' => $userid,
+                'answerid' => $answerid,
+                'formid' => $this->infos['formid']);
+            
+            $sql = \library\Query::insert('form_user_answer', $data);
+            $this->db->query($sql)or error('Impossible d enregistrer la réponse', __FILE__, __LINE__, $this->db->error());
+        }
+    }
 }

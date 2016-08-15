@@ -16,6 +16,7 @@
     <route url="/concours" module="Concours" action="listConcours" vars="" />
     <route url="/concours/([0-9]+)/([a-z0-9-]+)" module="Concours" action="showConcours" vars="id,name" />
     <route url="/concours/([0-9]+)/([a-z0-9-]+)/participate" module="Concours" action="participeConcours" vars="id,name" />
+    <route url="/concours/([0-9]+)/([a-z0-9-]+)/done" module="Concours" action="participeDone" vars="id,name" />
 
     <!-- Cycle -->
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)" module="Cycle" action="showCycle" vars="auteurid,id,name" />

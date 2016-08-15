@@ -18,7 +18,7 @@ CREATE TABLE `form` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`formid`)
-) ENGINE=InnoDBDEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO form
   SELECT *, creationdate
@@ -32,7 +32,7 @@ CREATE TABLE `form_answer` (
   `libelle` varchar(255) NOT NULL DEFAULT '',
   `ordre` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`answerid`)
-) ENGINE=InnoDB AUTO_INCREMENT=234 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO form_answer
   SELECT *
@@ -45,7 +45,6 @@ CREATE TABLE `form_participants` (
   `formid` int(11) NOT NULL DEFAULT '0',
   `email` varchar(250) NOT NULL DEFAULT '',
   `user_ip` varchar(250) NOT NULL DEFAULT '',
-  `user_id` int(11) NOT NULL DEFAULT '0',
   `all_right` enum('0','1') NOT NULL DEFAULT '0',
   `subsidiaire` int(11) NOT NULL DEFAULT '0',
   `statut` tinyint(1) DEFAULT '0',
@@ -60,10 +59,10 @@ CREATE TABLE `form_participants` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`userid`)
-) ENGINE=InnoDB AUTO_INCREMENT=28084 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO form_participants
-  SELECT userid, formid, email, user_ip, user_id, all_right, subsidiaire, statut, ordre, nom, prenom, adresse_1, adresse_2, zipcode, city, country, creationdate, creationdate
+  SELECT userid, formid, email, user_ip, all_right, subsidiaire, statut, ordre, nom, prenom, adresse_1, adresse_2, zipcode, city, country, creationdate, creationdate
   FROM site_auteurs.form_participants;
 
 DROP TABLE IF EXISTS form_participants_history;
@@ -74,7 +73,7 @@ CREATE TABLE `form_participants_history` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`historyid`)
-) ENGINE=InnoDB AUTO_INCREMENT=381 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO form_participants_history
   SELECT historyid, userid, statut, updatedate, updatedate FROM site_auteurs.form_participants_history;
@@ -88,7 +87,7 @@ CREATE TABLE `form_question` (
   `questiontype` enum('radio','checkbox','value') NOT NULL DEFAULT 'radio',
   `answerid` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`questionid`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO form_question
   SELECT * FROM site_auteurs.form_question;

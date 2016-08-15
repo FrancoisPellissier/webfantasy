@@ -1,4 +1,4 @@
-<form action="">
+<form method="post">
 <?php
 echo '<h1>'.$model->infos['titre'].'</h1>';
 
@@ -7,7 +7,7 @@ foreach($model->infos['question'] AS $questionid => $question) {
     echo "\n\t\t".'<legend>'.$question['libelle'].'</legend>';
 
     foreach($question['answer'] AS $answerid => $answer) {
-        echo "\n\t\t\t".'<p><input type="radio" id="a'.$answerid.'" name="question['.$questionid.']" value="'.$answerid.'" /> <label for="a'.$answerid.'">'.$answer.'</label></p>';
+        echo "\n\t\t\t".'<p><input type="radio" id="a'.$answerid.'" name="data[question]['.$questionid.']" value="'.$answerid.'" /> <label for="a'.$answerid.'">'.$answer.'</label></p>';
     }
 
     echo "\n\t".'</fieldset>';
@@ -19,35 +19,35 @@ foreach($model->infos['question'] AS $questionid => $question) {
 <table>
     <tr>
         <td>Nom (*):</td>
-        <td><input type='text' id='nom' name='nom' size='20' /></td>
+        <td><input type='text' id='nom' name='data[nom]' size='20' /></td>
     </tr>
     <tr>
         <td>Prénom (*):</td>
-        <td><input type='text' id='prenom' name='prenom' size='20' /></td>
+        <td><input type='text' id='prenom' name='data[prenom]' size='20' /></td>
     </tr>
     <tr>
         <td>Adresse (*):</td>
-        <td><input type='text' id='adr_1' name='adr_1' size='50' /></td>
+        <td><input type='text' id='adr_1' name='data[adresse_1]' size='50' /></td>
     </tr>
     <tr>
         <td>Adresse (suite) :</td>
-        <td><input type='text' name='adr_2' size='50' /></td>
+        <td><input type='text' name='data[adresse_2]' size='50' /></td>
     </tr>
     <tr>
         <td>Code postal (*):</td>
-        <td><input type='text' id='cp' name='cp' size='10' /></td>
+        <td><input type='text' id='cp' name='data[zipcode]' size='10' /></td>
     </tr>
     <tr>
         <td>Ville (*):</td>
-        <td><input type='text' id='ville' name='ville' size='20' /></td>
+        <td><input type='text' id='ville' name='data[city]' size='20' /></td>
     </tr>
     <tr>
         <td>Pays (*):</td>
-        <td><input type='text' id='pays' name='pays' size='20' /></td>
+        <td><input type='text' id='pays' name='data[country]' size='20' /></td>
     </tr>
     <tr>
         <td>E-mail (*):</td>
-        <td><input type='text' id='email' name='email' size='30' /></td>
+        <td><input type='text' id='email' name='data[email]' size='30' /></td>
     </tr>
 </table>
 </fieldset>

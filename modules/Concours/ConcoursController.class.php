@@ -32,22 +32,26 @@ class ConcoursController extends \library\BaseController {
         if($this->request->method() == 'POST') {
             $data = $this->request->postData('data');
 
-            $data['typepage'] = $this->model->fichetype;
-            $data['ficheid'] = $this->model->infos[$this->model->key];
+            $data['all_right'] = $this->model->checkAnswer($data['question']);
+            $data['user_ip'] = get_remote_address();
+            $data['formid'] = $this->model->infos['formid'];
 
-            $page = new \modules\Page\Page();
-            $page->hydrate($data);
-            $page->setDefaultOrder();
+            $participate = new ConcoursParticipant();
+            $participate->hydrate($data);
+            $userid = $participate->add();
+            $this->model->saveAnswer($userid, $data['question']);
 
-            $pageid = $page->add();
-            $page->exists($pageid);
-
-            $this->response->redirect($this->model->getSlug());
+            $this->response->redirect($this->model->getSlug().'/done');
         }
         // On affiche le formulaire
         else {
             $this->model->getQuestions();
             $this->makeView();
         }
+    }
+
+    public function participeDone() {
+        $common = $this->getCommon();
+        $this->makeView();   
     }
 }
