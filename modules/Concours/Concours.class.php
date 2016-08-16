@@ -102,15 +102,17 @@ class Concours extends \library\BaseModel {
     }
 
     public function saveAnswer($userid, $datas) {
-        foreach($datas AS $questionid => $answerid) {
-            $data = array(
-                'questionid' => $questionid,
-                'userid' => $userid,
-                'answerid' => $answerid,
-                'formid' => $this->infos['formid']);
-            
-            $sql = \library\Query::insert('form_user_answer', $data);
-            $this->db->query($sql)or error('Impossible d enregistrer la réponse', __FILE__, __LINE__, $this->db->error());
+        if(!empty($datas)) {
+            foreach($datas AS $questionid => $answerid) {
+                $data = array(
+                    'questionid' => $questionid,
+                    'userid' => $userid,
+                    'answerid' => $answerid,
+                    'formid' => $this->infos['formid']);
+                
+                $sql = \library\Query::insert('form_user_answer', $data);
+                $this->db->query($sql)or error('Impossible d enregistrer la réponse', __FILE__, __LINE__, $this->db->error());
+            }
         }
     }
 

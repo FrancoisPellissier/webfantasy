@@ -65,7 +65,7 @@ foreach($model->infos['question'] AS $questionid => $question) {
 <fieldset>
 
 <p><label><input type='checkbox' id='lu' name='lu' /> J'ai lu et j'accepte le règlement du concours (*)</label></p>
-<p><label><input type='checkbox' id='newsletter' name='newsletter' /> Je souhaite être prévenu des prochains concours et de l'actualité de WebFantasy.fr</label></p>
+<p><label><input type='checkbox' id='newsletter' name='newsletter' /> Je souhaite être prévenu des prochains concours</label></p>
 
 <p><input type="submit" value="Valider" /></p>
 </form>

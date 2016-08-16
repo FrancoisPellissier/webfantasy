@@ -43,6 +43,13 @@ class ConcoursController extends \library\BaseController {
             $this->model->saveAnswer($userid, $data['question']);
             $this->model->increment();
 
+            // Newsletter
+            if($this->request->postExists('newsletter')) {
+                $newsletter = new \modules\Newsletter\Newsletter();
+                $newsletter->hydrate(array('domaine' => '0', 'email' => $data['email']));
+                $newsletter->subscribe();
+            }
+
             $this->response->redirect($this->model->getSlug().'/done');
         }
         // On affiche le formulaire
