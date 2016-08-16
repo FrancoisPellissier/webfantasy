@@ -295,6 +295,7 @@ abstract class BaseController {
             $this->response->redirect();
         }
         else {
+            $model->getPrevNext($imageid);
             $this->view->with('category', $model);
             $this->view->with('image', $image);
             $this->addAriane($this->model->getSlug().$model->getSlug(), $model->infos['titre']);

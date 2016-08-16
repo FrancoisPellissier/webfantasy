@@ -35,10 +35,35 @@ class Category extends \library\BaseModel {
 
     public function getImages() {
         $image = new \modules\Image\Image();
-        $sql = 'SELECT i.'.implode(', i.', array_keys($image->schema)).' FROM site_image AS i INNER JOIN site_image_category AS ic ON ic.imageid = i.imageid AND ic.categoryid = '.$this->infos['categoryid'].' ORDER BY i.updated_at DESC';
+        $sql = 'SELECT i.'.implode(', i.', array_keys($image->schema)).' FROM site_image AS i INNER JOIN site_image_category AS ic ON ic.imageid = i.imageid AND ic.categoryid = '.$this->infos['categoryid'].' ORDER BY i.created_at DESC';
         $result = $this->db->query($sql)or error('Impossible de récupérer les images de cette catégorie', __FILE__, __LINE__, $this->db->error());
         $images = $this->getResults($result);
 
        $this->infos['images'] = $image->generateCollection($images);
+    }
+
+    public function getPrevNext($imageid) {
+        if(!isset($this->infos['images'])) {
+            $this->getImages();
+        }
+
+        $prev = '';
+        $next = false;
+
+        foreach($this->infos['images'] AS $image) {
+            if($next) {
+                $this->infos['next'] = $image;
+                $next = false;
+            }
+            else if($image->infos['imageid'] == $imageid) {
+                if($prev != '') {
+                    $this->infos['previous'] = $prev;
+                    $prev = '';
+                }
+
+                $next = true;
+            }
+            $prev = $image;
+        }
     }
 }
