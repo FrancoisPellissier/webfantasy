@@ -42,6 +42,7 @@ class ConcoursController extends \library\BaseController {
             $userid = $participate->add();
             $this->model->saveAnswer($userid, $data['question']);
             $this->model->increment();
+            $participate->sendEmail();
 
             // Newsletter
             if($this->request->postExists('newsletter')) {

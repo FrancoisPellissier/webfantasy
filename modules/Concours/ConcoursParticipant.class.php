@@ -44,4 +44,14 @@ class ConcoursParticipant extends \library\BaseModel {
             $this->infos[$field] = mb_strtoupper($this->infos[$field]);
         }
     }
+
+    public function sendEmail(Concours $concours) {
+        $email = new \library\Email('concours_valid', 'WebFantasy - Concours '.$concours->['titre'], $this->infos['email']);
+        $email->setVar('nom', $this->infos['nom']);
+        $email->setVar('prenom', $this->infos['prenom']);
+        $email->setVar('concours', $concours->infos['titre']);
+        $email->setVar('date', $concours->infos['date_fin']);
+
+        $email->send();
+    }
 }
