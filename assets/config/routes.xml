@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <routes>
-    <route url="/" module="Accueil" action="showAccueil" />
+    <route url="/" module="Actualite" action="showLast" />
+
+    <!-- Actualite -->
+    <route url="/actualite" module="Actualite" action="showLast" />
+    <route url="/actualite/([0-9]+)/([a-z0-9-]+)" module="Actualite" action="showActualite" vars="id,name" />
 
     <!-- Auteur -->
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)" module="Auteur" action="showAuteur" vars="id,name" />
