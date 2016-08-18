@@ -23,19 +23,6 @@ if(empty($sidebar)) {
         'type' => 'contenu',
         'value' => '<img title="Prochaine sortie originale : Death\'s Mistress" src="http://www.terrygoodkind.fr/img/terrygoodkind/livres/edition/miniature/196_Deaths_Mistress.jpg" /><br /><br />10 janvier 2017 / J -192 jours'
         );
-
-    $sidebar[] = array(
-        'type' => 'title',
-        'value' => 'Terry Goodkind');
-
-    $sidebar[] = array(
-        'type' => 'link',
-        'value' => array(
-            array('href' => '#', 'title' => 'Interviews', 'value' => 'Interviews'),
-            array('href' => '#', 'title' => 'Cours', 'value' => 'Cours'),
-            array('href' => '#', 'title' => 'Les Livres', 'value' => 'Les Livres')
-            )
-        );
 }
 ?>
 

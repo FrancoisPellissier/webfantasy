@@ -5,6 +5,7 @@
     <!-- Actualite -->
     <route url="/actualite" module="Actualite" action="showLast" />
     <route url="/actualite/([0-9]+)/([a-z0-9-]+)" module="Actualite" action="showActualite" vars="id,name" />
+    <route url="/actualite/archive/([0-9]+)/([0-9-]+)" module="Actualite" action="showArchive" vars="annee,mois" />
 
     <!-- Auteur -->
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)" module="Auteur" action="showAuteur" vars="id,name" />

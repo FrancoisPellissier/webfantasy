@@ -73,4 +73,18 @@ class Actualite extends \library\BaseModel {
     public function getSlug() {
         return 'actualite/'.$this->infos['id'].'/'.$this->slug($this->infos['subject']);
     }
+
+    public function getMonths() {
+        $sql = 'SELECT FROM_UNIXTIME(posted, \'%Y-%m\') AS periode, FROM_UNIXTIME(posted, \'%Y\') As annee, FROM_UNIXTIME(posted, \'%c\') AS mois FROM pun_topics WHERE forum_id = 164 GROUP BY periode ORDER BY periode DESC';
+        $result = $this->db->query($sql)or error('Impossible de récupérer la liste des mois', __FILE__, __LINE__, $this->db->error());
+        return $this->getResults($result);
+    }
+
+    public function getArchive($annee, $mois) {
+        $sql = 'SELECT t.id, t.poster, t.`subject`, t.posted, p.message FROM pun_topics AS t INNER JOIN pun_posts AS p ON t.first_post_id = p.id AND t.id = p.topic_id AND t.forum_id = 164 AND FROM_UNIXTIME(t.posted, \'%Y\') = '.intval($annee).' AND FROM_UNIXTIME(t.posted, \'%c\') = '.intval($mois).'  ORDER BY t.posted';
+
+        $result = $this->db->query($sql)or error('Impossible de récupérer les actualités', __FILE__, __LINE__, $this->db->error());
+        $actualites = $this->getResults($result);
+        return $this->generateCollection($actualites);
+    }
 }

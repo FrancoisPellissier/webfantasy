@@ -1,7 +1,16 @@
 <?php
 echo "\n\t".'<p>Acrhives : <select name="periode" id="periode" onChange="choosePeriode()">';
 foreach($list_months AS $month) {
-    echo "\n\t\t".'<option value="'.$month['annee'].'/'.$month['mois'].'">'.$month['periode'].'</option>';
+
+    if($annee == $month['annee'] && $mois == $month['mois']) {
+        $test = ' selected="selected"';
+    }
+    else {
+        $test = '';
+    }
+
+
+    echo "\n\t\t".'<option value="'.$month['annee'].'/'.$month['mois'].'"'.$test.'>'.$month['periode'].'</option>';
 }
 
 echo "\n\t".'</select></p>';
