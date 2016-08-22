@@ -17,6 +17,7 @@ class ActualiteController extends \library\BaseController {
         $this->model->getComments();
         $this->view->addTitle($this->model->infos['subject']);
         $this->addAriane('actualite', 'Actualités');
+        $this->addAriane('actualite/archive/'.$this->model->getSlugDate(), ucwords(\library\Timestamp::formatDate($this->model->infos['posted'], 'mois Y')));
         $this->addAriane($this->model->getSlug(), $this->model->infos['subject']);
         $this->makeView();
     }

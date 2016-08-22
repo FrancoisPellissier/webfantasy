@@ -99,4 +99,8 @@ class Actualite extends \library\BaseModel {
             $this->mois = date('n');
         }
     }
+
+    public function getSlugDate() {
+        return date('Y/n', $this->infos['posted']);
+    }
 }
