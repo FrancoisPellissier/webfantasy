@@ -2,6 +2,8 @@
 namespace modules\Actualite;
 
 class Actualite extends \library\BaseModel {
+    public $annee, $mois;
+
     public function __construct() {
         parent::__construct();
         $this->table = 'pun_topics';
@@ -80,11 +82,21 @@ class Actualite extends \library\BaseModel {
         return $this->getResults($result);
     }
 
-    public function getArchive($annee, $mois) {
-        $sql = 'SELECT t.id, t.poster, t.`subject`, t.posted, p.message FROM pun_topics AS t INNER JOIN pun_posts AS p ON t.first_post_id = p.id AND t.id = p.topic_id AND t.forum_id = 164 AND FROM_UNIXTIME(t.posted, \'%Y\') = '.intval($annee).' AND FROM_UNIXTIME(t.posted, \'%c\') = '.intval($mois).'  ORDER BY t.posted';
+    public function getArchive() {
+        $sql = 'SELECT t.id, t.poster, t.`subject`, t.posted, p.message FROM pun_topics AS t INNER JOIN pun_posts AS p ON t.first_post_id = p.id AND t.id = p.topic_id AND t.forum_id = 164 AND FROM_UNIXTIME(t.posted, \'%Y\') = '.intval($this->annee).' AND FROM_UNIXTIME(t.posted, \'%c\') = '.intval($this->mois).'  ORDER BY t.posted';
 
         $result = $this->db->query($sql)or error('Impossible de récupérer les actualités', __FILE__, __LINE__, $this->db->error());
         $actualites = $this->getResults($result);
         return $this->generateCollection($actualites);
+    }
+
+    public function getDate($request) {
+        $this->annee = intval($request->getData('annee'));
+        $this->mois = intval($request->getData('mois'));
+
+        if($this->annee == 0 || $this->mois == 0) {
+            $this->annee = date('Y');
+            $this->mois = date('n');
+        }
     }
 }

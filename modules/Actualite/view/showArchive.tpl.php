@@ -2,7 +2,7 @@
 echo "\n\t".'<p>Acrhives : <select name="periode" id="periode" onChange="choosePeriode()">';
 foreach($list_months AS $month) {
 
-    if($annee == $month['annee'] && $mois == $month['mois']) {
+    if($actualite->annee == $month['annee'] && $actualite->mois == $month['mois']) {
         $test = ' selected="selected"';
     }
     else {

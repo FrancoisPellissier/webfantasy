@@ -3,7 +3,7 @@
     <route url="/" module="Actualite" action="showLast" />
 
     <!-- Actualite -->
-    <route url="/actualite" module="Actualite" action="showLast" />
+    <route url="/actualite" module="Actualite" action="showArchive" />
     <route url="/actualite/([0-9]+)/([a-z0-9-]+)" module="Actualite" action="showActualite" vars="id,name" />
     <route url="/actualite/archive/([0-9]+)/([0-9-]+)" module="Actualite" action="showArchive" vars="annee,mois" />
 
