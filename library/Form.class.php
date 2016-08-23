@@ -58,6 +58,23 @@ class Form {
         return $return;
     }
 
+    public function HTMLselectObject($name, $datas, $key, $value, $default = array()) {
+        $return = "\n\t".'<select name="data['.$name.']">';
+
+        if(!empty($default)) {
+            $return .= "\n\t\t".'<option value="'.$default[$key].'"'.($default[$key] == $this->data[$name] ? ' selected="selected"' : '').'>'.$default[$value].'</option>';
+        }
+
+        foreach($datas AS $data) {
+            if($data->infos[$key] != $this->data[$key]) {
+                $return .= "\n\t\t".'<option value="'.$data->infos[$key].'"'.($data->infos[$key] == $this->data[$name] ? ' selected="selected"' : '').'>'.$data->infos[$value].'</option>';
+            }
+        }
+        $return .= "\n\t".'</select>';
+        
+        return $return;
+    }
+
     public function HTMLradio($name, $datas, $separator) {
         $return = array();
 
