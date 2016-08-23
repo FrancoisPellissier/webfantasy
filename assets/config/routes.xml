@@ -14,8 +14,6 @@
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)" module="Auteur" action="showPage" vars="id,name,pageid,pagename" />
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)" module="Auteur" action="showCategory" vars="id,name,cateogryid,categoryname" />
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)" module="Auteur" action="showImage" vars="id,name,cateogryid,categoryname,imageid" />
-    <route url="/auteur/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)/edit" module="Auteur" action="editImage" vars="id,name,cateogryid,categoryname,imageid" />
-    <route url="/auteur/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/add" module="Auteur" action="addImage" vars="id,name,cateogryid,categoryname" />
 
     <!-- Concours -->
     <route url="/concours" module="Concours" action="listConcours" vars="" />
@@ -34,10 +32,6 @@
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)" module="Cycle" action="showPage" vars="auteurid,id,name,pageid,pagename" />
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)" module="Cycle" action="showCategory" vars="auteurid,id,name,cateogryid,categoryname" />
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)" module="Cycle" action="showImage" vars="auteurid,id,name,cateogryid,categoryname,imageid" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)/edit" module="Cycle" action="editImage" vars="auteurid,id,name,cateogryid,categoryname,imageid" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/add" module="Cycle" action="addImage" vars="auteurid,id,name,cateogryid,categoryname" />
-
-    <!-- Galerie -->
 
     <!-- Général -->
     <route url="/about" module="About" action="about" />
@@ -55,8 +49,6 @@
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)" module="Livre" action="showPage" vars="auteurid,id,name,pageid,pagename" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)" module="Livre" action="showCategory" vars="auteurid,id,name,cateogryid,categoryname" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)" module="Livre" action="showImage" vars="auteurid,id,name,cateogryid,categoryname,imageid" />
-    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)/edit" module="Livre" action="editImage" vars="auteurid,id,name,cateogryid,categoryname,imageid" />
-    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/add" module="Livre" action="addImage" vars="auteurid,id,name,cateogryid,categoryname" />
 
     <!-- Wiki -->
 
@@ -64,12 +56,22 @@
     <!-- Administration / Auteur -->
     <route url="/auteur/add" module="Auteur" action="add" />
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)/edit" module="Auteur" action="edit" vars="id,name" />
+    <route url="/auteur/([0-9]+)/([a-z0-9-]+)/category/add" module="Auteur" action="addCategory" vars="id,name" />
+    <route url="/auteur/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/add" module="Auteur" action="addCategory" vars="id,name,cateogryid,categoryname" />
+    <route url="/auteur/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/edit" module="Auteur" action="editCategory" vars="id,name,cateogryid,categoryname" />
+    <route url="/auteur/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)/edit" module="Auteur" action="editImage" vars="id,name,cateogryid,categoryname,imageid" />
+    <route url="/auteur/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/add" module="Auteur" action="addImage" vars="id,name,cateogryid,categoryname" />
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)/edit/image" module="Auteur" action="editFicheImage" vars="id,name" />
 
     <!-- Administration / Cycle -->
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edit" module="Cycle" action="edit" vars="auteurid,id,name" />
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edit/image" module="Cycle" action="editFicheImage" vars="auteurid,id,name" />
     <route url="/cycle/([0-9]+)/add" module="Cycle" action="add" vars="auteurid" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/add" module="Cycle" action="addCategory" vars="auteurid,id,name" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/add" module="Cycle" action="addCategory" vars="auteurid,id,name,cateogryid,categoryname" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/edit" module="Cycle" action="editCategory" vars="auteurid,id,name,cateogryid,categoryname" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/add" module="Cycle" action="addImage" vars="auteurid,id,name,cateogryid,categoryname" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)/edit" module="Cycle" action="editImage" vars="auteurid,id,name,cateogryid,categoryname,imageid" />
 
     <!-- Administration / Livre -->
     <route url="/livre/([0-9]+)/add" module="Livre" action="add" vars="auteurid" />
@@ -78,6 +80,11 @@
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edition/add" module="Livre" action="addEdition" vars="auteurid,id,name" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edition/([0-9]+)/edit" module="Livre" action="editEdition" vars="auteurid,id,name,editionid" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edition/([0-9]+)/edit/image" module="Livre" action="editEditionImage" vars="auteurid,id,name,editionid" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/add" module="Livre" action="addCategory" vars="auteurid,id,name" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/add" module="Livre" action="addCategory" vars="auteurid,id,name,cateogryid,categoryname" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/edit" module="Livre" action="editCategory" vars="auteurid,id,name,cateogryid,categoryname" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/add" module="Livre" action="addImage" vars="auteurid,id,name,cateogryid,categoryname" />
+    <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)/edit" module="Livre" action="editImage" vars="auteurid,id,name,cateogryid,categoryname,imageid" />
 
     <!-- Administration / Page -->
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)/page/add" module="Auteur" action="addPage" vars="id,name" />

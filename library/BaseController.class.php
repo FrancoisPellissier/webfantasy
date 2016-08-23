@@ -213,6 +213,77 @@ abstract class BaseController {
         }
     }
 
+    protected function addCategory() {
+        $this->getCommon();
+        $this->model->getCategories();
+        
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $data = $this->request->postData('data');
+            $data['fichetype'] = $this->model->fichetype;
+            $data['ficheid'] = $this->model->infos[$this->model->key];
+            
+            $Newmodel = new \modules\Category\Category();
+            $Newmodel->hydrate($data);
+            $newid = $Newmodel->add();
+
+            $Newmodel->exists($newid);
+            $Newmodel->setDefaultOrder();
+            $Newmodel->setFolder();
+            $Newmodel->edit();
+
+            $this->response->redirect($this->model->getSlug().$Newmodel->getSlug());   
+        }
+        // On affiche le formulaire
+        else {
+            $data = array();
+
+            $id = intval($this->request->getData('cateogryid'));
+            $model = new \modules\Category\Category();
+            $model->exists($id);
+
+            if($model->exists) {
+                $data['category_parentid'] = $id;
+            }
+
+            $form = new \library\Form($data);
+            $this->view->with('form', $form);
+            $this->addAriane($this->model->getSlug(), $model->infos['titre']);
+            $this->makeView();
+        }
+    }
+
+    protected function editCategory() {
+        $this->getCommon();
+        $this->model->getCategories();
+
+        $id = intval($this->request->getData('cateogryid'));
+        $model = new \modules\Category\Category();
+        $model->exists($id);
+        
+        // S'il n'existe pas, on redirige vers l'adresse fournie
+        if(!$model->exists) {
+            $this->response->redirect();
+        }
+        else {
+            // On traite le formulaire
+            if($this->request->method() == 'POST') {
+                $data = $this->request->postData('data');
+                $model->hydrate($data);
+                $model->edit();
+
+                $this->response->redirect($this->model->getSlug().$model->getSlug());   
+            }
+            // On affiche le formulaire
+            else {
+                $form = new \library\Form($model->infos);
+                $this->view->with('form', $form);
+                $this->addAriane($this->model->getSlug().$model->getSlug(), $model->infos['titre']);
+                $this->makeView();
+            }
+        }
+    }
+
     public function addImage() {
         $this->getCommon();
 

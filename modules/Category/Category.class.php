@@ -66,4 +66,14 @@ class Category extends \library\BaseModel {
             $prev = $image;
         }
     }
+
+    public function setDefaultOrder() {
+        $result = $this->db->query('SELECT IFNULL(MAX(ordre), 0) AS ordre FROM site_category WHERE category_parentid = '.intval($this->infos['category_parentid']).' AND fichetype =\''.$this->db->escape($this->infos['fichetype']).'\' AND ficheid = '.intval($this->infos['ficheid']))or error('Impossible de récupérer le dernier ordre', __FILE__, __LINE__, $this->db->error()); 
+        $cur = $this->db->fetch_assoc($result);
+        $this->infos['ordre'] = $cur['ordre'] + 1;
+    }
+
+    public function setFolder() {
+        $this->infos['folder'] = 'img/'.intval($this->infos[$this->key]);
+    }
 }
