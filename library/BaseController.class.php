@@ -223,16 +223,11 @@ abstract class BaseController {
             $data['fichetype'] = $this->model->fichetype;
             $data['ficheid'] = $this->model->infos[$this->model->key];
             
-            $Newmodel = new \modules\Category\Category();
-            $Newmodel->hydrate($data);
-            $newid = $Newmodel->add();
+            $newCategory = new \modules\Category\Category();
+            $newCategory->hydrate($data);
+            $newid = $newCategory->add();
 
-            $Newmodel->exists($newid);
-            $Newmodel->setDefaultOrder();
-            $Newmodel->setFolder();
-            $Newmodel->edit();
-
-            $this->response->redirect($this->model->getSlug().$Newmodel->getSlug());   
+            $this->response->redirect($this->model->getSlug().$newCategory->getSlug());   
         }
         // On affiche le formulaire
         else {
