@@ -54,9 +54,6 @@ class LivreController extends \library\BaseController {
             $this->model->hydrate($data);    
 
             $livreid = $this->model->add();
-            $this->model->exists($livreid);
-
-            $this->model->auteur->assocLivre($livreid);
             $this->response->redirect($this->model->getSlug());
         }
         // On affiche le formulaire

@@ -120,4 +120,19 @@ class Livre extends \library\BaseModel {
     public function assocEdition($editionid) {
         $result = $this->db->query('INSERT IGNORE INTO site_livre_edition (livreid, editionid) VALUES('.$this->infos['livreid'].', '.intval($editionid).') ')or error('Impossible de lier auteur et edition', __FILE__, __LINE__, $this->db->error());
     }
+
+    public function add() {
+        $livreid = parent::add();
+        $this->exists($livreid);
+        $this->auteur->assocLivre($livreid);
+
+        $category = new \modules\Category\Category();
+        $category->hydrate(
+            array(
+                'fichetype' => 'livre',
+                'ficheid' => $livreid,
+                'titre' => 'Couvertures')
+            );
+        $category->add();
+    }
 }
