@@ -297,7 +297,7 @@ abstract class BaseController {
 
                 $image = new \modules\Image\Image();
                 $image->hydrate($data);
-                $image->editImage($_FILES, $model);
+                $image->addImage($_FILES, $model);
 
                 $this->response->redirect($this->model->getSlug().$model->getSlug());   
             }

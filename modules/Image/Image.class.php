@@ -10,6 +10,7 @@ class Image extends \library\BaseModel {
         $this->key = 'imageid';
         $this->time = true;
         $this->fichetype = 'image';
+        $this->picture = false;
         
         $this->schema = array(
             'imageid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID de l image'),
@@ -97,6 +98,12 @@ class Image extends \library\BaseModel {
 
             // Association image/catégorie
             $this->assocCategory($category->infos['categoryid']);
+
+            // 1ère image ?
+            if($category->infos['pictureid'] == 0) {
+                $category->infos['pictureid'] = $imageid;
+                $category->edit();
+            }
         }
         $this->cleanUpload($source);
     }

@@ -8,6 +8,7 @@ class Category extends \library\BaseModel {
         $this->key = 'categoryid';
         $this->time = true;
         $this->fichetype = 'category';
+        $this->picture = true;
         
         $this->schema = array(
             'categoryid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '0', 'publicname' => 'ID de la catégorie'),
@@ -17,7 +18,7 @@ class Category extends \library\BaseModel {
             'ficheid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '0', 'publicname' => 'ID de la fiche associée'),
             'folder' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Nom du dossier physique'),
             'category_parentid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '0', 'publicname' => 'ID de la catégorie parente'),
-            'ordre' => array('fieldtype' => 'INT', 'required' => false, 'default' => '0', 'publicname' => 'Ordre dans la catégorie parente'),
+            'ordre' => array('fieldtype' => 'INT', 'required' => false, 'default' => '0', 'publicname' => 'Ordre dans la catégorie parente')
         );
     }
 
