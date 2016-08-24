@@ -25,12 +25,22 @@ class ConcoursController extends \library\BaseController {
         $this->makeView();
     }
 
+    public function errorConcours() {
+        $common = $this->getCommon();
+        $this->view->with('error', $this->request->getData('error'));
+        $this->makeView();
+    }
+
     public function participeConcours() {
         $common = $this->getCommon();
 
         // On traite le formulaire
         if($this->request->method() == 'POST') {
             $data = $this->request->postData('data');
+
+            if($data['verif'] != 9) {
+                $this->response->redirect($this->model->getSlug().'/error/captcha');
+            }
 
             $data['all_right'] = $this->model->checkAnswer($data['question']);
             $data['user_ip'] = get_remote_address();

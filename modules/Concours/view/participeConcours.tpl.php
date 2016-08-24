@@ -66,6 +66,7 @@ foreach($model->infos['question'] AS $questionid => $question) {
 
 <p><label><input type='checkbox' id='lu' name='lu' /> J'ai lu et j'accepte le règlement du concours (*)</label></p>
 <p><label><input type='checkbox' id='newsletter' name='newsletter' /> Je souhaite être prévenu des prochains concours</label></p>
+<p>Combien font 2 + 7 ? <input type='text' id='verif' name='verif' size='1' /></p>
 
 <p><input type="submit" value="Valider" /></p>
 </form>

@@ -119,4 +119,13 @@ class Concours extends \library\BaseModel {
     public function increment() {
         $this->db->query('UPDATE '.$this->table.' SET participants = participants + 1 WHERE '.$this->key.' = '.intval($this->infos[$this->key]))or error('Impossible d incrémenter le concours', __FILE__, __LINE__, $this->db->error());
     }
+
+    public function getWinners() {
+        $result = $this->db->query('SELECT nom, prenom, city, country FROM form_participants WHERE statut != 0 AND '.$this->key.' = '.intval($this->infos[$this->key]))or error('Impossible de récupérer les gagnants du concours', __FILE__, __LINE__, $this->db->error());
+
+        $this->infos['winners'] = array();
+        while($cur = $this->db->fetch_assoc($result)) {
+            $this->infos['winners'][] = $cur;
+        }
+    }
 }

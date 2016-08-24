@@ -24,5 +24,13 @@ if(date('Y-m-d') <= $model->infos['date_fin']) {
 }
 else {
     echo '<h2>Le concours est terminé</h2>';
-    echo '<p>Les gagnants sont :</p>';
+    $model->getWinners();
+    
+    if(!empty($model->infos['winners'])) {
+        echo '<p>Les gagnants sont :</p>';
+        foreach($model->infos['winners'] AS $winner) {
+            echo "\n\t".'<p>'.substr($winner['prenom'], 0, 1).'. '.$winner['nom'].' - '.$winner['city'].' ('.$winner['country'].')'.'</p>';
+        }
+    }
+    
 }
