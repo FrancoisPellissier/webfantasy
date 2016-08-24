@@ -155,3 +155,7 @@ SET i.categoryid = c.categoryid;
 INSERT IGNORE INTO site_image_category (imageid, categoryid)
 	SELECT imageid, categoryid
 	FROM site_image;
+
+
+ALTER TABLE site_category
+	ADD COLUMN `pictureid` int(11) NOT NULL DEFAULT '0' AFTER ordre;
