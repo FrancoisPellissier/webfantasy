@@ -38,16 +38,13 @@ class ConcoursController extends \library\BaseController {
         if($this->request->method() == 'POST') {
             $data = $this->request->postData('data');
 
-            if($data['verif'] != 9) {
-                $this->response->redirect($this->model->getSlug().'/error/captcha');
-            }
-
             $data['all_right'] = $this->model->checkAnswer($data['question']);
             $data['user_ip'] = get_remote_address();
             $data['formid'] = $this->model->infos['formid'];
 
             $participate = new ConcoursParticipant();
             $participate->hydrate($data);
+            $participate->verif($this->model, $this->request, $this->response);
             $participate->clean();
             $userid = $participate->add();
             $this->model->saveAnswer($userid, $data['question']);

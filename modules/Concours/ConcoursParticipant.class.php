@@ -46,12 +46,32 @@ class ConcoursParticipant extends \library\BaseModel {
     }
 
     public function sendEmail(Concours $concours) {
-        $email = new \library\Email('concours_valid', 'WebFantasy - Concours '.$concours->['titre'], $this->infos['email']);
+        $email = new \library\Email('concours_valid', 'WebFantasy - Concours '.$concours->infos['titre'], $this->infos['email']);
         $email->setVar('nom', $this->infos['nom']);
         $email->setVar('prenom', $this->infos['prenom']);
         $email->setVar('concours', $concours->infos['titre']);
         $email->setVar('date', $concours->infos['date_fin']);
 
         $email->send();
+    }
+
+    public function verif($concours, $request, $response) {
+        // Captcha
+        if($request->postData('verif') != 9) {
+            $response->redirect($concours->getSlug().'/error/1');
+        }
+        // Réglement
+        else if(!$request->postExists('lu')) {
+            $response->redirect($concours->getSlug().'/error/2');
+        }
+        // Champs de coordonnées
+        else {
+            $fields = array('nom', 'prenom', 'adresse_1', 'zipcode', 'city');
+            foreach($fields AS $field) {
+                if(empty($this->infos[$field])) {
+                    $response->redirect($concours->getSlug().'/error/3');
+                }
+            }
+        }
     }
 }

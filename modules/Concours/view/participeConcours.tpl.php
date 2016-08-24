@@ -27,7 +27,7 @@ foreach($model->infos['question'] AS $questionid => $question) {
     </tr>
     <tr>
         <td>Adresse (*):</td>
-        <td><input type='text' id='adr_1' name='data[adresse_1]' size='50' /></td>
+        <td><input type='text' id='adresse_1' name='data[adresse_1]' size='50' /></td>
     </tr>
     <tr>
         <td>Adresse (suite) :</td>
@@ -35,11 +35,11 @@ foreach($model->infos['question'] AS $questionid => $question) {
     </tr>
     <tr>
         <td>Code postal (*):</td>
-        <td><input type='text' id='cp' name='data[zipcode]' size='10' /></td>
+        <td><input type='text' id='zipcode' name='data[zipcode]' size='10' /></td>
     </tr>
     <tr>
         <td>Ville (*):</td>
-        <td><input type='text' id='ville' name='data[city]' size='20' /></td>
+        <td><input type='text' id='city' name='data[city]' size='20' /></td>
     </tr>
     <tr>
         <td>Pays (*):</td>
