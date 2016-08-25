@@ -8,7 +8,7 @@ class Page extends \library\BaseModel {
         $this->key = 'pageid';
         $this->time = true;
         $this->fichetype = 'page';
-        $this->picture = true;
+        // $this->picture = true;
         
         $this->schema = array(
         'pageid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID de la page'),

@@ -98,6 +98,11 @@
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)/edit" module="Livre" action="editPage" vars="auteurid,id,name,pageid,pagename" />
 
     <!-- Redirection -->
-    <route url="/([a-z]+)-([0-9]+)-[A-Za-z_]+-tome_([0-9]+)-[A-Za-z_]+\.html" module="Redirection" action="livreTome" vars="section,cycleid,tome" />
+    <route url="/([a-z]+)-([0-9]+)-[A-Za-z_]+.html" module="Redirection" action="livreId" vars="section,livreid" />
+    <route url="/livre.php?id=([0-9]+)&amp;partie=([a-z]+)" module="Redirection" action="livreId" vars="livreid,section" />
+    <route url="/([a-z]+)-([0-9]+)-[A-Za-z_]+-tome_([0-9]+)-[A-Za-z_]+.html" module="Redirection" action="livreTome" vars="section,cycleid,tome" />
     <route url="/livre.php?cid=([0-9]+)&amp;tid=([0-9]+)&amp;partie=([a-z]+)" module="Redirection" action="livreTome" vars="cycleid,tome,section" />
+
+    <route url="/([a-z]+)-([0-9]+)-[A-Za-z_]+-([0-9]+)-[A-Za-z0-9_]+.html" module="Redirection" action="livrePage" vars="section,livreid,pageid" />
+    <route url="/livres.php?id=([0-9]+)&amp;partie=([a-z]+)&amp;pageid=([0-9]+)" module="Redirection" action="livrePage" vars="livreid,section,pageid" />
 </routes>
