@@ -21,6 +21,7 @@ class Route
     }
 
     public function match($url) {
+        $url = str_replace('&', '|', $url);
         if (preg_match('`^'.$this->url.'$`', $url, $matches)) {
             return $matches;
         }
@@ -44,6 +45,7 @@ class Route
     public function setUrl($url) {
         if (is_string($url)) {
             $this->url = $url;
+            $this->url = str_replace('&', '|', $this->url);
         }
     }
 
