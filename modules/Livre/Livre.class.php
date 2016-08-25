@@ -136,12 +136,12 @@ class Livre extends \library\BaseModel {
         $category->add();
     }
 
-    public function getRedirectTome($cycled, $tome) {
-        $result = $this->db->query('SELECT '.implode(', ', array_keys($livre->schema)).' FROM site_livre WHERE cycleid = '.intval($cycleid).' AND cycleordre = '.intval($tome))or error('Impossible de retrouver le livre', __FILE__, __LINE__, $this->db->error());
+    public function getRedirectTome($cycleid, $tome) {
+        $result = $this->db->query('SELECT livreid FROM site_livre WHERE cycleid = '.intval($cycleid).' AND cycleordre = '.intval($tome))or error('Impossible de retrouver le livre', __FILE__, __LINE__, $this->db->error());
 
         if($this->db->num_rows($result)) {
             $cur = $this->db->fetch_assoc($result);
-            $this->hydrate($cur);
+            $this->exists($cur['livreid']);
         }
     }
 }

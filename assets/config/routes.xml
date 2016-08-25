@@ -96,4 +96,8 @@
     <route url="/auteur/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)/edit" module="Auteur" action="editPage" vars="id,name,pageid,pagename" />
     <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)/edit" module="Cycle" action="editPage" vars="auteurid,id,name,pageid,pagename" />
     <route url="/livre/([0-9]+)/([0-9]+)/([a-z0-9-]+)/page/([0-9]+)/([a-z0-9-]+)/edit" module="Livre" action="editPage" vars="auteurid,id,name,pageid,pagename" />
+
+    <!-- Redirection -->
+    <route url="/([a-z]+)-([0-9]+)-[A-Za-z_]+-tome_([0-9]+)-[A-Za-z_]+\.html" module="Redirection" action="livreTome" vars="section,cycleid,tome" />
+    <route url="/livre.php?cid=([0-9]+)&amp;tid=([0-9]+)&amp;partie=([a-z]+)" module="Redirection" action="livreTome" vars="cycleid,tome,section" />
 </routes>
