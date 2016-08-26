@@ -22,7 +22,7 @@
     <route url="/concours/([0-9]+)/[a-z0-9-]+/done" module="Concours" action="participeDone" vars="id" />
     <route url="/concours/([0-9]+)/[a-z0-9-]+/error/([0-9]+)" module="Concours" action="errorConcours" vars="id,error" />
 
-    <route url="/concours/(test)/([0-9]+)/[a-z0-9-]+" module="Concours" action="showConcours" vars="test,id,name" />
+    <route url="/concours/(test)/([0-9]+)/[a-z0-9-]+" module="Concours" action="showConcours" vars="test,id" />
     <route url="/concours/(test)/([0-9]+)/[a-z0-9-]+/participate" module="Concours" action="participeConcours" vars="test,id" />
     <route url="/concours/(test)/([0-9]+)/[a-z0-9-]+/done" module="Concours" action="participeDone" vars="test,id" />
     <route url="/concours/(test)/([0-9]+)/[a-z0-9-]+/error/([0-9]+)" module="Concours" action="errorConcours" vars="test,id,error" />
@@ -32,8 +32,8 @@
     <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/livre" module="Cycle" action="showLivres" vars="auteurid,id" />
     <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/page" module="Cycle" action="showPages" vars="auteurid,id" />
     <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/page/([0-9]+)/[a-z0-9-]+" module="Cycle" action="showPage" vars="auteurid,id,pageid" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+" module="Cycle" action="showCategory" vars="auteurid,id,name,cateogryid" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+/image/([0-9]+)" module="Cycle" action="showImage" vars="auteurid,id,name,cateogryid,imageid" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+" module="Cycle" action="showCategory" vars="auteurid,id,cateogryid" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+/image/([0-9]+)" module="Cycle" action="showImage" vars="auteurid,id,cateogryid,imageid" />
 
     <!-- Général -->
     <route url="/about" module="About" action="about" />
@@ -66,14 +66,14 @@
     <route url="/auteur/([0-9]+)/[a-z0-9-]+/edit/image" module="Auteur" action="editFicheImage" vars="id" />
 
     <!-- Administration / Cycle -->
-    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edit" module="Cycle" action="edit" vars="auteurid,id,name" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/edit/image" module="Cycle" action="editFicheImage" vars="auteurid,id,name" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/edit" module="Cycle" action="edit" vars="auteurid,id" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/edit/image" module="Cycle" action="editFicheImage" vars="auteurid,id" />
     <route url="/cycle/([0-9]+)/add" module="Cycle" action="add" vars="auteurid" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/add" module="Cycle" action="addCategory" vars="auteurid,id,name" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/add" module="Cycle" action="addCategory" vars="auteurid,id,name,cateogryid,categoryname" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/edit" module="Cycle" action="editCategory" vars="auteurid,id,name,cateogryid,categoryname" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/add" module="Cycle" action="addImage" vars="auteurid,id,name,cateogryid,categoryname" />
-    <route url="/cycle/([0-9]+)/([0-9]+)/([a-z0-9-]+)/category/([0-9]+)/([a-z0-9-]+)/image/([0-9]+)/edit" module="Cycle" action="editImage" vars="auteurid,id,name,cateogryid,categoryname,imageid" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/add" module="Cycle" action="addCategory" vars="auteurid,id" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+/add" module="Cycle" action="addCategory" vars="auteurid,id,cateogryid" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+/edit" module="Cycle" action="editCategory" vars="auteurid,id,cateogryid" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+/image/add" module="Cycle" action="addImage" vars="auteurid,id,cateogryid" />
+    <route url="/cycle/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+/image/([0-9]+)/edit" module="Cycle" action="editImage" vars="auteurid,id,cateogryid,imageid" />
 
     <!-- Administration / Livre -->
     <route url="/livre/([0-9]+)/add" module="Livre" action="add" vars="auteurid" />
