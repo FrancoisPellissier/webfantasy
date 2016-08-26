@@ -82,4 +82,29 @@ class RedirectionController extends \library\BaseController {
         return intval($convert[$livreid]);
     }
 
+    public function interviewId() {
+        if($this->request->getExists('id')) {
+            $interviewid = intval($this->request->getData('id'));
+        }
+        else {
+            $interviewid = intval($this->request->getData('interviewid'));
+        }
+
+        $auteurid = $this->configInterviewAuteur($interviewid);
+        $auteur = new \modules\Auteur\Auteur();
+        $auteur->exists($auteurid);
+
+        $page = new \modules\Page\Page();
+        $page->getRedirectInterviews($interviewid);
+
+        // Redirection
+        $this->response->permanentRedirect($auteur->getSlug().$page->getSlug());
+    }
+
+    public function configInterviewAuteur($interviewid) {
+        $convert = array(1 => 1, 2 => 1, 6 => 1, 3 => 1, 4 => 1, 5 => 1, 7 => 1, 8 => 1, 10 => 1, 11 => 1, 12 => 1, 13 => 1, 14 => 1, 15 => 1, 16 => 1, 17 => 1, 18 => 1, 19 => 1, 20 => 1, 21 => 1, 22 => 1, 23 => 2, 24 => 2, 25 => 2, 26 => 2, 27 => 2, 28 => 2, 29 => 2, 30 => 2, 31 => 2, 32 => 2, 33 => 3, 34 => 3, 38 => 2, 35 => 3, 36 => 3, 37 => 2);
+
+        return intval($convert[$interviewid]);
+    }
+
 }

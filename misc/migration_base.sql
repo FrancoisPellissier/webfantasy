@@ -160,12 +160,15 @@ CREATE TABLE `site_page` (
 
 INSERT INTO site_page
   SELECT
-    pageid, page_parent_id, typepage, ficheid, ordre, titre, extrait, texte, source, traducteur, poster_id, date, creation_date, creation_date
+    pageid, page_parent_id, typepage, ficheid, ordre, titre, extrait, texte, source, traducteur, poster_id, `date`, 0, created_at, updated_at
   FROM site_auteurs.site_page;
 
-  UPDATE `site_page`
+UPDATE `site_page`
   SET publish_date = NULL
 WHERE publish_date = '0000-00-00';
+
+ALTER TABLE site_page
+  ADD COLUMN interviewid INT NOT NULL DEFAULT 0;
 
 SELECT @nb := MAX(pageid) FROM site_page;
 
@@ -178,8 +181,8 @@ INSERT INTO site_page (pageid, typepage, ficheid, ordre, titre, poster_id, creat
 INSERT INTO site_page (pageid, typepage, ficheid, ordre, titre, poster_id, created_at, updated_at)
   VALUES(@nb+3, 'auteur', 3, 0, 'Interviews', 2, NOW(), NOW());
 
-INSERT INTO site_page (page_parent_id, typepage, ficheid, ordre, titre, extrait, texte, source, poster_id, created_at, updated_at)
-  SELECT @nb+domaine, 'auteur', domaine, ordre, titre, description, texte, source, 2, NOW(), NOW()
+INSERT INTO site_page (page_parent_id, typepage, ficheid, ordre, titre, extrait, texte, source, poster_id, created_at, updated_at, interviewid)
+  SELECT @nb+domaine, 'auteur', domaine, ordre, titre, description, texte, source, 2, NOW(), NOW(), id
   FROM site_auteurs.site_interviews;
   
 

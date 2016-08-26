@@ -50,4 +50,13 @@ class Page extends \library\BaseModel {
         $cur = $this->db->fetch_assoc($result);
         $this->infos['ordre'] = $cur['ordre'] + 1;
     }
+
+        public function getRedirectInterviews($id) {
+        $result = $this->db->query('SELECT pageid FROM site_page WHERE interviewid = '.intval($id))or error('Impossible de retrouver l interview', __FILE__, __LINE__, $this->db->error());
+
+        if($this->db->num_rows($result)) {
+            $cur = $this->db->fetch_assoc($result);
+            $this->exists($cur['pageid']);
+        }
+    }
 }
