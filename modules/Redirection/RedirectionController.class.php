@@ -107,4 +107,18 @@ class RedirectionController extends \library\BaseController {
         return intval($convert[$interviewid]);
     }
 
+    public function actualite() {
+        if($this->request->getExists('id')) {
+            $id = intval($this->request->getData('id'));
+        }
+        else {
+            $id = intval($this->request->getData('id'));
+        }
+
+        $actualite = new \modules\Actualite\Actualite();
+        $actualite->exists($id);
+
+        // Redirection
+        $this->response->permanentRedirect($actualite->getSlug());
+    }
 }
