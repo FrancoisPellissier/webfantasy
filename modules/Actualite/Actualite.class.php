@@ -54,7 +54,7 @@ class Actualite extends \library\BaseModel {
         $sql = 'SELECT id, poster, posted, message FROM pun_posts WHERE topic_id = '.$this->infos['id'].' AND id != '.$this->infos['first_post_id'].' ORDER BY posted';
         $result = $this->db->query($sql)or error('Impossible de récupérer les actualités', __FILE__, __LINE__, $this->db->error());
         
-        $comment = new ActualiteComment();
+        $comment = new \library\ForumPost();
         $comments = $this->getResults($result);
         $this->infos['comments'] = $comment->generateCollection($comments);
     }
