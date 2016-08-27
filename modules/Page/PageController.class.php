@@ -20,7 +20,9 @@ class PageController extends \library\BaseController {
             $parent->exists($this->model->infos['page_parent_id']);
 
             if($parent->exists) {
-                $this->addAriane($parent->getSlug(true), $parent->infos['titre']);                    
+                $this->addAriane($parent->getSlug(true), $parent->infos['titre']);
+                $parent->getPrevNext($this->model->infos['pageid']);
+                $this->view->with('parent', $parent);
             }
         }
 

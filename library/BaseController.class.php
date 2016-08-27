@@ -110,7 +110,9 @@ abstract class BaseController {
                 $parent->exists($model->infos['page_parent_id']);
 
                 if($parent->exists) {
-                    $this->addAriane($this->model->getSlug().$parent->getSlug(), $parent->infos['titre']);                    
+                    $this->addAriane($this->model->getSlug().$parent->getSlug(), $parent->infos['titre']);
+                    $parent->getPrevNext($model->infos['pageid']);
+                    $this->view->with('parent', $parent);
                 }
             }
 

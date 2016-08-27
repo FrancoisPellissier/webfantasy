@@ -59,4 +59,25 @@ class Page extends \library\BaseModel {
             $this->exists($cur['pageid']);
         }
     }
+
+    public function getPrevNext($pageid) {
+        $prev = '';
+        $next = false;
+
+        foreach($this->infos['childpages'] AS $page) {
+            if($next) {
+                $this->infos['next'] = $page;
+                $next = false;
+            }
+            else if($page->infos['pageid'] == $pageid) {
+                if($prev != '') {
+                    $this->infos['previous'] = $prev;
+                    $prev = '';
+                }
+
+                $next = true;
+            }
+            $prev = $page;
+        }
+    }
 }

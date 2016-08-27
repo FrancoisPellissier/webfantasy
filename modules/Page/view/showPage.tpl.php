@@ -12,4 +12,13 @@ if(!empty($page->infos['childpages'])) {
 	}
 }
 
+if(isset($parent)) {
+    if(isset($parent->infos['previous'])) {
+        echo '<p><a href="'.($isPage ? '' : $model->getSlug()).$parent->infos['previous']->getSlug($isPage).'">'.$parent->infos['previous']->infos['titre'].'</a> <<</p>';
+    }
+    if(isset($parent->infos['next'])) {
+        echo '<p>>> <a href="'.($isPage ? '' : $model->getSlug()).$parent->infos['next']->getSlug($isPage).'">'.$parent->infos['next']->infos['titre'].'</a></p>';
+    }
+}
+
 echo "\n\t".'<p>Administration : <a href="'.($isPage ? '' : $model->getSlug()).$page->getSlug($isPage).'/edit">Modifier</p>';
