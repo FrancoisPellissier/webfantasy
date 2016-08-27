@@ -3,7 +3,7 @@ namespace modules\Concours;
 
 class ConcoursController extends \library\BaseController {
     public function getCommon() {
-        $this->model = $this->exists('concours');
+        $this->model = $this->exists();
         
         // Génération du nom de la page
         $this->view->addTitle('Concours : '.$this->model->infos['titre']);

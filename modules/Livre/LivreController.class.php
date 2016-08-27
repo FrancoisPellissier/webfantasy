@@ -163,37 +163,36 @@ class LivreController extends \library\BaseController {
         $edition = new \modules\Edition\Edition();
         $edition->exists($this->request->getData('editionid'));
 
-        if($edition->exists) {
-            // On traite le formulaire
-            if($this->request->method() == 'POST') {
-                $data = $this->request->postData('data');
-                $image = new \modules\Image\Image();
-                $image->exists($data['pictureid']);
-
-                if($image->exists) {
-                    $edition->hydrate($data);
-                    $edition->edit();
-                }
-                $this->response->redirect($this->model->getSlug().'/edition');
-            }
-            // On affiche le formulaire
-            else {
-                $this->model->getImages();
-
-                $images = array();
-                foreach($this->model->infos['images'] AS $image) {
-                    $images[$image->infos['imageid']] = '<img src="'.$image->getUrl('thumbnail').'" />';
-                }
-                $this->view->with('images', $images);
-
-                $this->view->addTitle('Choisir une image');
-                $form = new \library\Form($edition->infos);
-                $this->view->with('form', $form);
-                $this->makeView();  
-            }
+        if(!$edition->exists) {
+            $this->notFound();
         }
+            
+        // On traite le formulaire
+        if($this->request->method() == 'POST') {
+            $data = $this->request->postData('data');
+            $image = new \modules\Image\Image();
+            $image->exists($data['pictureid']);
+
+            if($image->exists) {
+                $edition->hydrate($data);
+                $edition->edit();
+            }
+            $this->response->redirect($this->model->getSlug().'/edition');
+        }
+        // On affiche le formulaire
         else {
-             $this->response->redirect($this->model->getSlug().'/edition');
+            $this->model->getImages();
+
+            $images = array();
+            foreach($this->model->infos['images'] AS $image) {
+                $images[$image->infos['imageid']] = '<img src="'.$image->getUrl('thumbnail').'" />';
+            }
+            $this->view->with('images', $images);
+
+            $this->view->addTitle('Choisir une image');
+            $form = new \library\Form($edition->infos);
+            $this->view->with('form', $form);
+            $this->makeView();  
         }
     }
 }

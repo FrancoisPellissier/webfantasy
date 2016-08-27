@@ -10,7 +10,7 @@ class AboutController extends \library\BaseController {
             $this->view->with('texte', $parser->text($texte));
         }
         else
-            $this->response->redirect('');
+            $this->response->notFound();
     }
 
     public function about() {

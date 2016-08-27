@@ -61,7 +61,7 @@ abstract class BaseController {
         exit;
     }
 
-    public function exists($redirect = '') {
+    public function exists() {
         $id = intval($this->request->getData('id'));
 
         $modelClass = '\modules\\'.$this->module.'\\'.$this->module;
