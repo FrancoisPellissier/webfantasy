@@ -76,13 +76,13 @@ class Livre extends \library\BaseModel {
                 }
             }
 
-            /* **** TO DO
-            ** A paramétrer si un topic d'avis existe (ou nouveau système s'il y a)
-            */
-            $items[] = array(
-                'href' => $baselink.'/avis',
-                'value' => 'Avis'
-            );
+            // Affichage des avis si un topic existe
+            if($this->infos['avisid'] != 0) {
+                $items[] = array(
+                    'href' => $baselink.'/avis',
+                    'value' => 'Avis'
+                );
+            }
 
             // Affichage de la liste des pages de 1er niveau
             if(isset($this->infos['pages'])) {
