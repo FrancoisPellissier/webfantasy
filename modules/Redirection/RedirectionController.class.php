@@ -30,6 +30,9 @@ class RedirectionController extends \library\BaseController {
         
         $livre = new \modules\Livre\Livre();
         $livre->getRedirectTome($cycleid, $tome);
+        if(!$livre->exists) {
+            $this->notFound();
+        }
         $livre->auteur->infos['auteurid'] = $this->configLivreAuteur($livre->infos['livreid']);
 
         // Redirection
@@ -48,6 +51,9 @@ class RedirectionController extends \library\BaseController {
         
         $livre = new \modules\Livre\Livre();
         $livre->exists($livreid);
+        if(!$livre->exists) {
+            $this->notFound();
+        }
         $livre->auteur->infos['auteurid'] = $this->configLivreAuteur($livre->infos['livreid']);
 
         // Redirection
@@ -67,6 +73,9 @@ class RedirectionController extends \library\BaseController {
         
         $livre = new \modules\Livre\Livre();
         $livre->exists($livreid);
+        if(!$livre->exists) {
+            $this->notFound();
+        }
         $livre->auteur->infos['auteurid'] = $this->configLivreAuteur($livre->infos['livreid']);
 
         $page = new \modules\Page\Page();
@@ -96,6 +105,9 @@ class RedirectionController extends \library\BaseController {
 
         $page = new \modules\Page\Page();
         $page->getRedirectInterviews($interviewid);
+        if(!$auteur->exists || !$page->exists) {
+            $this->notFound();
+        }
 
         // Redirection
         $this->response->permanentRedirect($auteur->getSlug().$page->getSlug());
@@ -117,6 +129,9 @@ class RedirectionController extends \library\BaseController {
 
         $actualite = new \modules\Actualite\Actualite();
         $actualite->exists($id);
+        if(!$actualite->exists) {
+            $this->notFound();
+        }
 
         // Redirection
         $this->response->permanentRedirect($actualite->getSlug());
