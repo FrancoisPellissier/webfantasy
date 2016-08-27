@@ -88,10 +88,10 @@ abstract class BaseModel {
     }
 
     public function getPages() {
-        $types = array('auteur', 'cycle', 'livre');
+        $types = array('domaine', 'auteur', 'cycle', 'livre');
 
         // Ne fonctionne que si la fiche existe et est dans la liste
-        if($this->exists AND in_array($this->fichetype, $types)) {
+        if(in_array($this->fichetype, $types)) {
 
             $pageCollection = new \modules\Page\Page();
             $sql = 'SELECT pageid, titre FROM site_page WHERE typepage = \''.$this->fichetype.'\' AND ficheid = '.intval($this->infos[$this->key]).' AND page_parent_id = 0 ORDER BY ordre';
@@ -100,12 +100,6 @@ abstract class BaseModel {
             $pages = $this->getResults($result);
 
             $this->infos['pages'] = $pageCollection->generateCollection($pages);
-
-            $this->infos['pages_array'] = array();
-            $this->infos['pages_array'][0] = '(Aucune)';
-            foreach($pages AS $page) {
-                $this->infos['pages_array'][$page['pageid']] = $page['titre'];
-            }
         }
     }
 

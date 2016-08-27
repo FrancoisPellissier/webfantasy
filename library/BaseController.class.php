@@ -100,7 +100,7 @@ abstract class BaseController {
         
         // S'il n'existe pas, on redirige vers l'adresse fournie
         if(!$model->exists) {
-            $this->response->redirect();
+            $this->notFound();
         }
         else {
             $this->view->with('page', $model);
@@ -157,7 +157,7 @@ abstract class BaseController {
         
         // S'il n'existe pas, on redirige
         if(!$model->exists) {
-            $this->response->redirect();
+            $this->notFound();
         }
         else {
             // On traite le formulaire

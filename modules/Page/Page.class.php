@@ -41,8 +41,8 @@ class Page extends \library\BaseModel {
         }
     }
 
-    public function getSlug() {
-        return '/page/'.$this->infos['pageid'].'/'.$this->slug($this->infos['titre']);
+    public function getSlug($solo = false) {
+        return ($solo ? '' : '/').'page/'.$this->infos['pageid'].'/'.$this->slug($this->infos['titre']);
     }
 
     public function setDefaultOrder() {

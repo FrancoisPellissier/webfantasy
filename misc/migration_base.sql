@@ -246,4 +246,28 @@ CREATE TABLE `site_newsletter` (
 INSERT INTO site_newsletter (email, domaine)
   SELECT email, domaine
   FROM site_auteurs.site_newsletter;
-  
+
+DROP TABLE IF EXISTS site_domaine;
+CREATE TABLE `site_domaine` (
+  `domaine` int(11) NOT NULL AUTO_INCREMENT,
+  `auteur` varchar(255) NOT NULL,
+  `startdate` date DEFAULT NULL,
+  `forum_desc` text,
+  `num_topics` mediumint(8) NOT NULL DEFAULT '0',
+  `num_posts` mediumint(8) NOT NULL DEFAULT '0',
+  `last_post` int(10) DEFAULT NULL,
+  `last_post_id` int(10) DEFAULT NULL,
+  `last_poster` varchar(200) DEFAULT NULL,
+  `visible` enum('1','0') NOT NULL DEFAULT '0',
+  PRIMARY KEY (`domaine`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO site_domaine
+  SELECT
+  IF(domaine = 0, 4, domaine), auteur, startdate, forum_desc, num_topics, num_posts, last_post, last_post_id, last_poster, visible
+  FROM site_auteurs.site_domaine
+  WHERE domaine < 4;
+
+UPDATE site_domaine
+SET domaine = 0
+WHERE domaine = 4;
