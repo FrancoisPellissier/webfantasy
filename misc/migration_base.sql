@@ -35,6 +35,7 @@ CREATE TABLE `site_livre` (
   `description` text,
   `cycleid` int(11) NOT NULL DEFAULT '0',
   `cycleordre` int(11) NOT NULL DEFAULT '0',
+  `avisid` int(11) NOT NULL DEFAULT '0',
   `pictureid` int(11) NOT NULL DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
@@ -42,10 +43,10 @@ CREATE TABLE `site_livre` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO site_livre (
-  livreid, titre_vo, titre_vf, date_vo, date_vf, description, cycleid, cycleordre, created_at, updated_at
+  livreid, titre_vo, titre_vf, date_vo, date_vf, description, cycleid, cycleordre, avisid, created_at, updated_at
   )
   SELECT
-    livreid, titrevo, titrevf, sortievo, sortievf, couv4, cycleid, tome, NOW(), NOW()
+    livreid, titrevo, titrevf, sortievo, sortievf, couv4, cycleid, tome, topicavisid, NOW(), NOW()
   FROM site_auteurs.site_livre;
 
 -- cycle

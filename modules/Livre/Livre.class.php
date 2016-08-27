@@ -19,6 +19,7 @@ class Livre extends \library\BaseModel {
         'description' => array('fieldtype' => 'TEXT', 'required' => false, 'default' => '', 'publicname' => 'Présentation du livre'),
         'cycleid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID du cycle associé'),
         'cycleordre' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'Ordre du livre dans le cycle'),
+        'avisid' => array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID du topic avis associé')
         );
     }
 
@@ -79,7 +80,7 @@ class Livre extends \library\BaseModel {
             ** A paramétrer si un topic d'avis existe (ou nouveau système s'il y a)
             */
             $items[] = array(
-                'href' => $baselink.'',
+                'href' => $baselink.'/avis',
                 'value' => 'Avis'
             );
 
@@ -134,6 +135,15 @@ class Livre extends \library\BaseModel {
                 'titre' => 'Couvertures')
             );
         $category->add();
+    }
+
+    public function getAvis() {
+        $sql = 'SELECT p.id, p.poster, p.posted, p.message FROM pun_posts AS p INNER JOIN pun_topics AS t ON p.topic_id = t.id AND topic_id = '.$this->infos['avisid'].' AND p.id != t.first_post_id ORDER BY posted';
+        $result = $this->db->query($sql)or error('Impossible de récupérer les avis', __FILE__, __LINE__, $this->db->error());
+        
+        $comment = new \library\ForumPost();
+        $comments = $this->getResults($result);
+        $this->infos['avis'] = $comment->generateCollection($comments);
     }
 
     public function getRedirectTome($cycleid, $tome) {

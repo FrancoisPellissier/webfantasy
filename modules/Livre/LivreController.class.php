@@ -43,6 +43,14 @@ class LivreController extends \library\BaseController {
         $this->makeView();
     }
 
+    public function showAvis() {
+        $this->getCommon();
+        $this->model->getAvis();
+        $this->view->addTitle('Avis');
+        $this->addAriane($this->model->getSlug().'/avis', 'Avis');
+        $this->makeView();
+    }
+
     public function add() {
         // On traite le formulaire
         if($this->request->method() == 'POST') {
