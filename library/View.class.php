@@ -28,6 +28,16 @@ class View {
         */   
         $this->layout();
     }
+
+    /**
+     * View::setView()
+     * 
+     * @param string $view
+     * @return void
+     */
+    public function setView($view) {
+        $this->view = $view;
+    }
          
     /**
      * View::layout()

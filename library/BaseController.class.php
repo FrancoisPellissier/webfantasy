@@ -53,6 +53,14 @@ abstract class BaseController {
         $this->view->make();
     }
 
+    public function notFound() {
+        $this->view->addTitle('Page introuvable');
+        $this->view->setView('modules/Error/view/error_404.tpl.php');
+        $this->view->addHeader('HTTP/1.0 404 Not Found');
+        $this->makeView();
+        exit;
+    }
+
     public function exists($redirect = '') {
         $id = intval($this->request->getData('id'));
 
@@ -63,7 +71,7 @@ abstract class BaseController {
         
         // S'il n'existe pas, on redirige vers l'adresse fournie
         if(!$model->exists) {
-            $this->response->redirect($redirect);
+            $this->notFound();
         }
         // S'il existe, on le passe dans la vue et on le renvoie
         else {
