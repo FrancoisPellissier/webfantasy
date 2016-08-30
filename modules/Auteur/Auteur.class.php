@@ -75,6 +75,10 @@ class Auteur extends \library\BaseModel {
         else if($section == 'page') {
             $baselink = $this->getSlug();
 
+            $items[] = array(
+                'href' => $baselink.'/livre',
+                'value' => 'Les livres');
+
             // Affichage de la liste des catégories de 1er niveau
             if(isset($this->infos['categories'])) {
                 foreach($this->infos['categories'] AS $page) {
