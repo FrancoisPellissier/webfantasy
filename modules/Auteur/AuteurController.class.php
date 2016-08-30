@@ -26,6 +26,9 @@ class AuteurController extends \library\BaseController {
 
 	public function showLivres() {
         $common = $this->getCommon();
+        $this->model->getLivres();
+        $this->view->addTitle('Les livres');
+        $this->addAriane($this->model->getSlug().'/livre', 'Les livres');
         $this->makeView();
 	}
 

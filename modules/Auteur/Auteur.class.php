@@ -31,7 +31,28 @@ class Auteur extends \library\BaseModel {
     }
 
     public function getLivres() {
+        $sql = 'SELECT c.cycleid, c.titre_vo AS c_titre_vo, c.titre_vf AS c_titre_vf, c.is_cycle, l.livreid, l.titre_vo, l.titre_vf, l.cycleordre, i.imageid AS t_imageid, i.categoryid AS t_categoryid, i.title AS t_title, i.commentaire AS t_commentaire, i.folder AS t_folder, i.filename AS t_filename FROM site_cycle_auteur AS ca INNER JOIN site_cycle AS c ON ca.cycleid = c.cycleid AND ca.auteurid = '.$this->infos[$this->key].' INNER JOIN site_livre AS l ON c.cycleid = l.cycleid INNER JOIN site_livre_auteur AS la ON l.livreid = la.livreid AND la.auteurid = '.$this->infos[$this->key].' LEFT JOIN site_image AS i ON l.pictureid = i.imageid ORDER BY ca.ordre, l.cycleordre, l.date_vo';
 
+        $result = $this->db->query($sql)or error('Impossible de récupérer les livres de cet auteur', __FILE__, __LINE__, $this->db->error());
+        
+        $cycles = array();
+        while($cur = $this->db->fetch_assoc($result)) {
+            $titre = ($cur['c_titre_vf'] != "" ? $cur['c_titre_vf'] : $cur['c_titre_vo']);
+
+            $livre = new \modules\Livre\Livre();
+            $livre->hydrate($cur);
+            $livre->setTitreUsuel();
+
+            $image = new \modules\Image\Image();
+            $image->hydrateImage($cur);
+            $livre->infos['image'] = $image;
+            $livre->auteur = $this;
+
+            $cycles[$cur['cycleid']]['titre'] = $titre;
+            $cycles[$cur['cycleid']]['livre'][$cur['livreid']] = $livre;
+        }
+
+        $this->infos['livres'] = $cycles;
     }
 
     // Génération des sections de la sidebar

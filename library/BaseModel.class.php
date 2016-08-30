@@ -74,9 +74,7 @@ abstract class BaseModel {
             $this->infos = $cur;
 
             // Génération du titre usuel si que VF / VO
-            if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
-                $this->infos['titre'] = ($this->infos['titre_vf'] != "" ? $this->infos['titre_vf'] : $this->infos['titre_vo']);
-            }
+            $this->setTitreUsuel();
 
             // Génération de l'image s'il y a
             if($this->picture) {
@@ -145,7 +143,7 @@ abstract class BaseModel {
 
     public function hydrate($datas) {
         if($this->picture) {
-            $this->schema['pictureid'] = array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID de l auteur');
+            $this->schema['pictureid'] = array('fieldtype' => 'INT', 'required' => false, 'default' => '', 'publicname' => 'ID de l image');
         }
 
         // On parcourt le schema pour insérer les données correspondant dans les data
@@ -169,11 +167,7 @@ abstract class BaseModel {
                 $model->auteur = $auteur;
             }
             $model->hydrate($data);
-
-            // Titre usuel
-            if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
-                $model->infos['titre'] = ($model->infos['titre_vf'] != "" ? $model->infos['titre_vf'] : $model->infos['titre_vo']);
-            }
+            $model->setTitreUsuel();
 
             // Image
             $image = new \modules\Image\Image();
@@ -183,6 +177,12 @@ abstract class BaseModel {
             $collection[$model->infos[$this->key]] = $model;
         }
         return $collection;
+    }
+
+    public function setTitreUsuel() {
+        if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
+            $this->infos['titre'] = ($this->infos['titre_vf'] != "" ? $this->infos['titre_vf'] : $this->infos['titre_vo']);
+        }
     }
 
     public function checkData($modiftype, $post, $errors) {
