@@ -21,7 +21,7 @@ class Image extends \library\BaseModel {
             'filename' => array('fieldtype' => 'VARCHAR', 'required' => false, 'default' => '', 'publicname' => 'Nom du fichier')
         );
 
-        $this->sizes['thumbnail'] = array('width' => 130, 'height' => 130);
+        $this->sizes['thumbnail'] = array('width' => 160, 'height' => 160);
         $this->sizes['small'] = array('width' => 200, 'height' => 300);
         $this->sizes['medium'] = array('width' => 600, 'height' => 800);
         $this->sizes['large'] = array('width' => 1000, 'height' => 1333);
