@@ -126,7 +126,7 @@ CREATE TABLE temp
 UPDATE site_image AS i
 INNER JOIN temp AS t
 	ON i.imageid = t.imageid
-	AND i.categoryid = 0;
+	AND i.categoryid = 0
 SET i.categoryid = t.categoryid;
 
 DROP TABLE IF EXISTS temp;
