@@ -49,13 +49,21 @@ abstract class BaseModel {
         // On génère la liste des champs à récupérer
         $sql_fields = 't.'.implode(', t.', array_keys($this->schema));
 
+        if($this->picture) {
+            $image = new \modules\Image\Image();
+
+            $sql_fields .= $image->getSelect();
+            $sql = ' LEFT JOIN site_image AS i ON t.pictureid = i.imageid WHERE t.'.$this->key.' = '.intval($id);
+        }
+        else {
+            $sql = ' WHERE t.'.$this->key.' = '.intval($id);
+        }
+
         if($this->picture)
             $sql_fields .= ', t.pictureid';
 
         if($this->time)
             $sql_fields .= ', t.created_at, t.updated_at';
-
-         $sql = ' WHERE t.'.$this->key.' = '.intval($id);
 
         // On teste l'existence en récupérant les informations de la table
         $result = $this->db->query('SELECT '.$sql_fields.' FROM '.$this->table.' AS t '.$sql)or error('Impossible de tester l\'existence dans la table "'.$this->table.'" pour la valeur "'.intval($id).'"', __FILE__, __LINE__, $this->db->error());
@@ -73,7 +81,7 @@ abstract class BaseModel {
             // Génération de l'image s'il y a
             if($this->picture) {
                 $image = new \modules\Image\Image();
-                $image->exists($this->infos['pictureid']);
+                $image->hydrateImage($cur);
                 $this->infos['image'] = $image;
             }
 

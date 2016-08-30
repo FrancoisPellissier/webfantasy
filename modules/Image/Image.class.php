@@ -27,6 +27,22 @@ class Image extends \library\BaseModel {
         $this->sizes['large'] = array('width' => 1000, 'height' => 1333);
     }
 
+    public function hydrateImage($datas) {
+        foreach($this->schema AS $field => $infos) {
+            if(isset($datas['t_'.$field])) {
+                $this->infos[$field] = $datas['t_'.$field];
+            }
+        }
+    }
+
+    public function getSelect() {
+        $return = '';
+        foreach($this->schema AS $field => $structure) {
+            $return .= ', i.'.$field.' AS t_'.$field;
+        }
+        return $return;
+    }
+
     // Génération du lien
     public function getUrl($size) {
         $url = $this->infos['folder'].'/'.$size.'/'.$this->infos['filename'];
