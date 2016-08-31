@@ -8,6 +8,11 @@ class NewsletterController extends \library\BaseController {
         if($this->request->method() == 'POST') {
 
             $data = $this->request->postData('data');
+
+            if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+                $this->response->redirect('newsletter/error'); 
+            }
+
             $data['domaine'] = $this->domaine;
             $newsletter->hydrate($data);
 

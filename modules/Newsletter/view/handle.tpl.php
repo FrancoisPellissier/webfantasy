@@ -1,3 +1,9 @@
+<?php
+if(isset($_GET['error'])) {
+    echo "\n".'<p>L\'adresse email que vous avez renseignée n\'est pas valide.</p>';
+}
+?>
+
 <p>Votre adresse email sera uniquement utilisée sur ce site pour vous tenir informé des nouvelles actualités et concours mis en place. Vous pouvez à tout moment la supprimer en passant par ce même formulaire.</p>
 
 <form method="post">

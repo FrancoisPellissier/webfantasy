@@ -40,6 +40,7 @@
     <route url="/contact" module="Contact" action="contact" />
     <route url="/mentions" module="About" action="mentions" />
     <route url="/newsletter" module="Newsletter" action="handle" />
+    <route url="/newsletter/(error)" module="Newsletter" action="handle" vars="error" />
     <route url="/newsletter/subscribe" module="Newsletter" action="subscribe" />
     <route url="/newsletter/unsubscribe" module="Newsletter" action="unsubscribe" />
 
