@@ -109,9 +109,9 @@
     <route url="/([a-z]+)-([0-9]+)-[A-Za-z_]+-tome_([0-9]+)-[A-Za-z_]+.html" module="Redirection" action="livreTome" vars="section,cycleid,tome" />
     <route url="/([a-z]+)-([0-9]+)-[A-Za-z_]+-([0-9]+)-[A-Za-z0-9_]+.html" module="Redirection" action="livrePage" vars="section,livreid,pageid" />
     
-    <route url="/interviews.php?id=([0-9]+)&amp;" module="Redirection" action="interviewId" vars="interviewid" />
-    <route url="/actualite.php?id=([0-9]+)&amp;" module="Redirection" action="actualite" vars="id" />
-    <route url="/livre.php?id=([0-9]+)&amp;partie=([a-z]+)" module="Redirection" action="livreId" vars="livreid,section" />
-    <route url="/livre.php?cid=([0-9]+)&amp;tid=([0-9]+)&amp;partie=([a-z]+)" module="Redirection" action="livreTome" vars="cycleid,tome,section" />
-    <route url="/livres.php?id=([0-9]+)&amp;partie=([a-z]+)&amp;pageid=([0-9]+)" module="Redirection" action="livrePage" vars="livreid,section,pageid" />
+    <route url="/interviews\.php\?id=([0-9]+)" module="Redirection" action="interviewId" vars="interviewid" />
+    <route url="/actualite\.php\?id=([0-9]+)" module="Redirection" action="actualite" vars="id" />
+    <route url="/livre\.php\?id=([0-9]+)&amp;partie=([a-z]+)" module="Redirection" action="livreId" vars="livreid,section" />
+    <route url="/livre\.php\?cid=([0-9]+)&amp;tid=([0-9]+)&amp;partie=([a-z]+)" module="Redirection" action="livreTome" vars="cycleid,tome,section" />
+    <route url="/livre\.php\?id=([0-9]+)&amp;partie=([a-z]+)&amp;pageid=([0-9]+)" module="Redirection" action="livrePage" vars="livreid,section,pageid" />
 </routes>
