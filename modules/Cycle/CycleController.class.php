@@ -31,6 +31,8 @@ class CycleController extends \library\BaseController {
 	}
 
     public function add() {
+        $this->checkRight();
+
         // On traite le formulaire
         if($this->request->method() == 'POST') {
             $this->model = new Cycle();
@@ -64,6 +66,8 @@ class CycleController extends \library\BaseController {
     }
 
     public function edit() {
+        $this->checkRight();
+        
         // On traite le formulaire
         if($this->request->method() == 'POST') {
             $this->getCommon();

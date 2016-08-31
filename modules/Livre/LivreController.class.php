@@ -52,6 +52,8 @@ class LivreController extends \library\BaseController {
     }
 
     public function add() {
+        $this->checkRight();
+
         // On traite le formulaire
         if($this->request->method() == 'POST') {
             $this->model = new Livre();
@@ -87,6 +89,8 @@ class LivreController extends \library\BaseController {
     }
 
     public function edit() {
+        $this->checkRight();
+
         // On traite le formulaire
         if($this->request->method() == 'POST') {
             $this->getCommon();
@@ -109,6 +113,8 @@ class LivreController extends \library\BaseController {
     }
 
     public function addEdition() {
+        $this->checkRight();
+
         $this->view->addTitle('Ajouter une édition');
         $this->getCommon();
         $this->addAriane($this->model->getSlug().'/edition', 'Éditions');
@@ -134,6 +140,8 @@ class LivreController extends \library\BaseController {
     }
 
     public function editEdition() {
+        $this->checkRight();
+
         $this->view->addTitle('Modifier une édition');
         $this->getCommon();
         $this->addAriane($this->model->getSlug().'/edition', 'Éditions');
@@ -165,6 +173,8 @@ class LivreController extends \library\BaseController {
     }
 
     public function editEditionImage() {
+        $this->checkRight();
+        
         $this->view->addTitle('Choisir une image');
         $this->getCommon();
         $this->addAriane($this->model->getSlug().'/edition', 'Éditions');

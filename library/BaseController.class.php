@@ -122,6 +122,7 @@ abstract class BaseController {
     }
 
     public function addPage() {
+        $this->checkRight();
         $this->getCommon();
 
         // On traite le formulaire
@@ -151,6 +152,7 @@ abstract class BaseController {
     }
 
     public function editPage() {
+        $this->checkRight();
         $this->getCommon();
 
         $id = intval($this->request->getData('pageid'));
@@ -224,6 +226,7 @@ abstract class BaseController {
     }
 
     protected function addCategory() {
+        $this->checkRight();
         $this->getCommon();
         $this->model->getCategories();
         
@@ -259,6 +262,7 @@ abstract class BaseController {
     }
 
     protected function editCategory() {
+        $this->checkRight();
         $this->getCommon();
         $this->model->getCategories();
 
@@ -290,6 +294,7 @@ abstract class BaseController {
     }
 
     public function addImage() {
+        $this->checkRight();
         $this->getCommon();
 
         $id = intval($this->request->getData('cateogryid'));
@@ -322,6 +327,7 @@ abstract class BaseController {
     }
 
     public function editImage() {
+        $this->checkRight();
         $this->getCommon();
 
         $id = intval($this->request->getData('cateogryid'));
@@ -381,6 +387,7 @@ abstract class BaseController {
     }
 
     protected function editFicheImage() {
+        $this->checkRight();
         $this->getCommon();
 
         // On traite le formulaire
@@ -411,5 +418,12 @@ abstract class BaseController {
             $this->view->with('form', $form);
             $this->makeView();
         } 
+    }
+
+    protected function checkRight() {
+        global $pun_user;
+        if(!$pun_user['is_admmod']) {
+            $this->notFound();
+        }
     }
 }

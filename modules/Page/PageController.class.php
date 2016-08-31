@@ -32,6 +32,8 @@ class PageController extends \library\BaseController {
     }
 
     public function addPage() {
+        $this->checkRight();
+
         // On traite le formulaire
         if($this->request->method() == 'POST') {
             $data = $this->request->postData('data');
@@ -65,6 +67,8 @@ class PageController extends \library\BaseController {
     }
 
     public function editPage() {
+        $this->checkRight();
+        
         $this->getCommon();
 
         $domaine = new \modules\Domaine\Domaine();
