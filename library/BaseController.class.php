@@ -86,6 +86,36 @@ abstract class BaseController {
         }
     }
 
+    public function setDefaultSidebar() {
+        // Domaine
+        $domaine = new \modules\Domaine\Domaine();
+        $domaine->exists($this->domaine);
+        $this->view->sidebarAdd('contenu', $domaine->infos['forum_desc']);
+
+        // Il y a un concours en cours ?
+        $concours = new \modules\Concours\Concours();
+        $concours->getCurrent();
+        if($concours->exists) {
+            $this->view->sidebarAdd('title', 'Concours');
+            $this->view->sidebarAdd('contenu', 'Image du concours');
+        }
+        // Sortie VF
+        $edition_vf = new \modules\Edition\Edition();
+        $edition_vf->sortieExists($domaine, 'vf');
+        if($edition_vf->exists) {
+            $this->view->sidebarAdd('title', $edition_vf->infos['titre']);
+            $this->view->sidebarAdd('contenu', $edition_vf->sidebar());
+        }
+
+        // Sortie VO
+        $edition_vo = new \modules\Edition\Edition();
+        $edition_vo->sortieExists($domaine, 'vo');
+        if($edition_vo->exists) {
+            $this->view->sidebarAdd('title', $edition_vo->infos['titre']);
+            $this->view->sidebarAdd('contenu', $edition_vo->sidebar());
+        }
+    }
+
     public function getCommon() {
 
     }
@@ -426,7 +456,7 @@ abstract class BaseController {
     }
 
     protected function checkRight() {
-        if(!$this->user['is_admmod']) {
+        if($this->user['is_admmod']) {
             $this->notFound();
         }
     }

@@ -78,9 +78,7 @@ abstract class BaseModel {
 
             // Génération de l'image s'il y a
             if($this->picture) {
-                $image = new \modules\Image\Image();
-                $image->hydrateImage($cur);
-                $this->infos['image'] = $image;
+                $this->setImage($cur);
             }
 
             // On enregistre la visite de cette "page" pour pouvoir faire des stats plus tard
@@ -168,11 +166,7 @@ abstract class BaseModel {
             }
             $model->hydrate($data);
             $model->setTitreUsuel();
-
-            // Image
-            $image = new \modules\Image\Image();
-            $image->hydrate($data);
-            $model->infos['image'] = $image;
+            $model->setImage($data);
 
             $collection[$model->infos[$this->key]] = $model;
         }
@@ -183,6 +177,12 @@ abstract class BaseModel {
         if(isset($this->schema['titre_vf']) && isset($this->schema['titre_vo'])) {
             $this->infos['titre'] = ($this->infos['titre_vf'] != "" ? $this->infos['titre_vf'] : $this->infos['titre_vo']);
         }
+    }
+
+    public function setImage($data) {
+        $image = new \modules\Image\Image();
+        $image->hydrateImage($data);
+        $this->infos['image'] = $image;
     }
 
     public function checkData($modiftype, $post, $errors) {
