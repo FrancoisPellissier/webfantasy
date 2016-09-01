@@ -259,12 +259,14 @@ CREATE TABLE `site_domaine` (
   `last_post_id` int(10) DEFAULT NULL,
   `last_poster` varchar(200) DEFAULT NULL,
   `visible` enum('1','0') NOT NULL DEFAULT '0',
+  `editionvoid` int(10) DEFAULT NULL,
+  `editionvfid` int(10) DEFAULT NULL,
   PRIMARY KEY (`domaine`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO site_domaine
   SELECT
-  IF(domaine = 0, 4, domaine), auteur, startdate, forum_desc, num_topics, num_posts, last_post, last_post_id, last_poster, visible
+  IF(domaine = 0, 4, domaine), auteur, startdate, forum_desc, num_topics, num_posts, last_post, last_post_id, last_poster, visible, 0, 0
   FROM site_auteurs.site_domaine
   WHERE domaine < 4;
 
