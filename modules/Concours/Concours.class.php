@@ -25,8 +25,6 @@ class Concours extends \library\BaseModel {
     }
 
     public function exists($id, $track = false) {        
-        global $pun_user;
-
         if(isset($_GET['test'])) {
             $this->test = true;
         }
@@ -45,8 +43,20 @@ class Concours extends \library\BaseModel {
             // On enregistre la visite de cette "page" pour pouvoir faire des stats plus tard
             // L'info n'est pertinente que pour le fiche vu, pas pour la récupération dans le cadre d'un test d'existence
             if($track) {
-                $this->db->query(Query::insert('stats_log', array('tablename' => $this->table, 'tableid' => $this->infos[$this->key], 'ip' => get_remote_address(), 'userid' => $pun_user['id']) , true));
+                $this->db->query(Query::insert('stats_log', array('tablename' => $this->table, 'tableid' => $this->infos[$this->key], 'ip' => get_remote_address(), 'userid' => $this->user['id']) , true));
             }
+        }
+        else 
+            $this->exists = false;
+    }
+
+    public function getCurrent() {
+        $result = $this->db->query('SELECT t.'.implode(', t.', array_keys($this->schema)).' FROM '.$this->table.' AS t WHERE CURDATE() BETWEEN date_debut AND date_fin ORDER BY date_debut')or error('Impossible de récupérer le concours en cours', __FILE__, __LINE__, $this->db->error());
+        
+        if($this->db->num_rows($result)) {
+            $cur = $this->db->fetch_assoc($result);
+            $this->exists = true;
+            $this->infos = $cur;
         }
         else 
             $this->exists = false;
