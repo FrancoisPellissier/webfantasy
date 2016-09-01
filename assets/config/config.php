@@ -21,8 +21,7 @@ define('MAINTENANCE_MOD', false);
 require PUN_ROOT.'include/common.php';
 require PUN_ROOT.'include/parser.php';
 
-global $pun_user;
-
+$pun_user;
 $domaine = 3;
 
 // Inclusions

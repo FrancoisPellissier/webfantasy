@@ -7,6 +7,7 @@ abstract class BaseController {
     protected $view = '';
     protected $request;
     protected $response;
+    protected $user;
     protected $jsfile;
     protected $model;
     protected $fil_ariane;
@@ -41,11 +42,15 @@ abstract class BaseController {
         $this->action = $action;
     }
 
+    public function setUser($user) {
+        $this->user = $user;
+    }
+
     public function makeView() {        
         // Valeurs génériques à transmettre
         $this->view->with('model', $this->model);
         $this->view->with('fil_ariane', $this->fil_ariane);
-        $this->view->with('user', $this->user->infos);
+        $this->view->with('user', $this->user);
         $this->view->with('jsfile', $this->jsfile);
         $this->view->with('domaine', $this->domaine);
 
@@ -421,8 +426,7 @@ abstract class BaseController {
     }
 
     protected function checkRight() {
-        global $pun_user;
-        if(!$pun_user['is_admmod']) {
+        if(!$this->user['is_admmod']) {
             $this->notFound();
         }
     }

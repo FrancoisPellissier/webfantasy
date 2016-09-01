@@ -4,14 +4,17 @@ namespace library;
 class Application {
     protected $httpRequest;
     protected $domaine;
+    protected $user;
 
-    public function __construct($domaine) {
+    public function __construct($domaine, $user) {
          $this->httpRequest = new HTTPRequest();
          $this->domaine = $domaine;
+         $this->user = $user;
     }
 
     public function run() {
         $controller = $this->getController();
+        $controller->setUser($this->user);
         $controller->execute();
     }
 
