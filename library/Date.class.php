@@ -65,4 +65,20 @@ class Date {
         else
             return $date;
     }
+
+    public static function nextSortie($date) {
+        $cur_sortie = self::formatDate($date, 'J mois annee');
+
+        $now = time();
+        $date_sortie = mktime(0, 0, 0, substr($date, 5, 2), substr($date, -2), substr($date, 0, 4));
+        if(time() < $date_sortie) {
+            $ecart = $date_sortie - $now;
+            $jours = floor($ecart / 86400) + 1;
+            $cur_sortie .= "\n\t\t".'<br /><strong>J - '.$jours.' jour'.($jours > 1 ? 's' : '').'</strong>';
+        }
+        else if($now < $date_sortie + 86400)
+            $cur_sortie .= "\n\t\t".'<br /><strong>Aujourd\'hui</strong>';
+
+        return $cur_sortie;
+    }
 }

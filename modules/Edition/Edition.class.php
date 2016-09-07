@@ -69,8 +69,8 @@ class Edition extends \library\BaseModel {
 
     public function sidebar() {
         if($this->exists) {
-            $texte = '<a href="'.$this->infos['livre']->getSlug().'"><img src="'.$this->infos['image']->getUrl('thumbnail').'" /></a>';
-            $texte .= '<br /><br />Date de sortie / J-X';
+            $texte = '<a href="'.$this->infos['livre']->getSlug().'"><img src="'.$this->infos['image']->getUrl('thumbnail').'" /></a>'.$this->infos['date_sortie'];
+            $texte .= '<br /><br />'.\library\Date::nextSortie($this->infos['datesortie']);
             return $texte;
         }
         else {
