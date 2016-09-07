@@ -75,7 +75,7 @@ class Category extends \library\BaseModel {
     }
 
     public function setFolder() {
-        $this->infos['folder'] = 'img/'.intval($this->infos[$this->key]);
+        $this->infos['folder'] = FOLDER_IMG_CATEGORY.'/'.intval($this->infos[$this->key]);
     }
 
     public function add() {

@@ -50,7 +50,7 @@ class Image extends \library\BaseModel {
             return $url;
         }
         else {
-            return 'img/default_'.$size.'.jpg';
+            return FOLDER_IMG_CATEGORY.'/default_'.$size.'.jpg';
         }
     }
 
@@ -65,7 +65,7 @@ class Image extends \library\BaseModel {
             $source = $this->infos['filename'];
             copy($url, 'img/upload/'.$source);
 
-            $this->infos['folder'] = 'img/'.$this->infos['categoryid'];
+            $this->infos['folder'] = FOLDER_IMG_CATEGORY.'/'.$this->infos['categoryid'];
             $this->infos['filename'] =  $this->infos['imageid'].'_'.$source;
             $this->edit();
 

@@ -28,7 +28,8 @@ $domaine = 3;
 require_once('library/autoload.php');
 
 // Constantes
-define('FOLDER_IMAGES', 'img');
+define('FOLDER_IMG', 'img');
+define('FOLDER_IMG_CATEGORY', FOLDER_IMG.'/category');
 
 // Timezone to date
 date_default_timezone_set('Europe/Paris');
