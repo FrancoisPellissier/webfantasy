@@ -43,7 +43,10 @@ abstract class BaseController {
     }
 
     public function setUser($user) {
-        $this->user = $user;
+        $newUser = new \modules\User\User();
+        $newUser->hydrate($user);
+
+        $this->user = $newUser;
     }
 
     public function makeView() {        
@@ -456,7 +459,7 @@ abstract class BaseController {
     }
 
     protected function checkRight() {
-        if($this->user['is_admmod']) {
+        if($this->user->infos['is_admmod']) {
             $this->notFound();
         }
     }

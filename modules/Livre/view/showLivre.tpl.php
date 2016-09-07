@@ -15,5 +15,6 @@ echo "\n\t".'<p><strong>Date de sortie française :</strong> '.$model->infos['da
 echo "\n\t".'<p><strong>Présentation :</strong><br/>';
 echo parse_message($model->infos['description'], 0);
 
-
-echo "\n\t".'<p>Administration : <a href="'.$model->getSlug().'/edit">Modifier</a> - <a href="'.$model->getSlug().'/edit/image">Choisir image</a></p>';
+if($user->checkRight()) {
+    echo "\n\t".'<p>Administration : <a href="'.$model->getSlug().'/edit">Modifier</a> - <a href="'.$model->getSlug().'/edit/image">Choisir image</a></p>';
+}

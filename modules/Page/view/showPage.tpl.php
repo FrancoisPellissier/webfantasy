@@ -21,4 +21,6 @@ if(isset($parent)) {
     }
 }
 
-echo "\n\t".'<p>Administration : <a href="'.($isPage ? '' : $model->getSlug()).$page->getSlug($isPage).'/edit">Modifier</p>';
+if($user->checkRight()) {
+    echo "\n\t".'<p>Administration : <a href="'.($isPage ? '' : $model->getSlug()).$page->getSlug($isPage).'/edit">Modifier</p>';
+}
