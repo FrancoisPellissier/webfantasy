@@ -86,6 +86,7 @@
     <route url="/livre/([0-9]+)/([0-9]+)/[a-z0-9-]+/edition/add" module="Livre" action="addEdition" vars="auteurid,id" />
     <route url="/livre/([0-9]+)/([0-9]+)/[a-z0-9-]+/edition/([0-9]+)/edit" module="Livre" action="editEdition" vars="auteurid,id,editionid" />
     <route url="/livre/([0-9]+)/([0-9]+)/[a-z0-9-]+/edition/([0-9]+)/edit/image" module="Livre" action="editEditionImage" vars="auteurid,id,editionid" />
+    <route url="/livre/([0-9]+)/([0-9]+)/[a-z0-9-]+/edition/([0-9]+)/sortie/(v[of])" module="Livre" action="nextSortie" vars="auteurid,id,editionid,lang" />
     <route url="/livre/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/add" module="Livre" action="addCategory" vars="auteurid,id" />
     <route url="/livre/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+/add" module="Livre" action="addCategory" vars="auteurid,id,cateogryid" />
     <route url="/livre/([0-9]+)/([0-9]+)/[a-z0-9-]+/category/([0-9]+)/[a-z0-9-]+/edit" module="Livre" action="editCategory" vars="auteurid,id,cateogryid" />

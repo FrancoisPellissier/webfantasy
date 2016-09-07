@@ -213,4 +213,25 @@ class LivreController extends \library\BaseController {
             $this->makeView();  
         }
     }
+
+    public function nextSortie() {
+        $this->checkRight();
+        $this->getCommon();
+
+
+        $edition = new \modules\Edition\Edition();
+        $edition->exists($this->request->getData('editionid'));
+
+        if($edition->exists) {
+            $lang = $this->request->getData('lang');
+            $domaine = new \modules\Domaine\Domaine();
+            $domaine->exists($this->domaine);
+            $domaine->infos['edition'.$lang.'id'] = $edition->infos['editionid'];
+            $domaine->edit();
+            $this->response->redirect($this->model->getSlug().'/edition');
+        }
+        else {
+            $this->notFound();
+        }
+    }
 }
