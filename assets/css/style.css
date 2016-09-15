@@ -213,6 +213,13 @@ h3 {
     border: solid black 1px;
 }
 
+/* *********** CATEGORY *************/
+#section-category img {
+    margin-right: 2px;
+    margin-bottom: 2px;
+    border: solid black 1px;
+}
+
 /* *********** CONCOURS **************/
 #section-concours-show .texte-right {
     vertical-align: top;
