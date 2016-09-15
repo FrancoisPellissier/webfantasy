@@ -1,3 +1,4 @@
+<div class="section" id="section-auteur-livres">
 <?php
 // dump($model->infos['livres']);
 foreach($model->infos['livres'] AS $cycleid => $cycle) {
@@ -7,5 +8,5 @@ foreach($model->infos['livres'] AS $cycleid => $cycle) {
         echo '<a href="'.$livre->getSlug().'"><img title="'.$livre->infos['titre'].'" src="'.$livre->infos['image']->getUrl('thumbnail').'" /></a>';
     }
 }
-
 ?>
+</div>

@@ -6,14 +6,14 @@
 body {
     font-family: Verdana, Arial, Helvetica, sans-serif;
     font-size: 10px;
-	color: #666666;
-	background: #FFFFFF url(images/background-header.jpg) repeat-x top;
+    color: #666666;
+    background: #FFFFFF url(images/background-header.jpg) repeat-x top;
 }
 
 div#site {
     text-align:left;
     width: 1000px;
-	margin: auto;
+    margin: auto;
 }
 
 /* ------------------------------------ */
@@ -32,95 +32,95 @@ div#sous-header {
 }
 
 div#mh {
-	margin-left: 70px;
+    margin-left: 70px;
 }
 
 div#mh a, div#mh a:link {
-	float: left;
-	padding-right: 50px;
-	padding-top:10px;
-	font-family: Verdana;
-	font-size: 10px;
-	text-decoration: none;
-	font-weight: bold;
-	color: #FFFFFF;	
+    float: left;
+    padding-right: 50px;
+    padding-top:10px;
+    font-family: Verdana;
+    font-size: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #FFFFFF; 
 }
 
 /* ------------------------------------ */
 
 div#corp {
-	background: url(images/corp.jpg) repeat-y;
+    background: url(images/corp.jpg) repeat-y;
 }
 
 
 div#left {
-	float: left;
-	width: 318px;
-	margin: 0px;
-	padding: 0px;
-	background: url(images/left-background.jpg) repeat-y;
+    float: left;
+    width: 318px;
+    margin: 0px;
+    padding: 0px;
+    background: url(images/left-background.jpg) repeat-y;
 }
 
 div#contenu-left {
-	background: url(images/left-top.jpg) no-repeat;
+    background: url(images/left-top.jpg) no-repeat;
     padding-top: 20px;
-	padding-bottom: 20px;
-	padding-left: 63px;
-	padding-right: 25px;
+    padding-bottom: 20px;
+    padding-left: 63px;
+    padding-right: 25px;
 }
 
 div.title {
-	background: url(images/title.jpg) no-repeat;
-	height: 26px;
-	width: 216px;
-	margin-bottom: 10px;
-	padding-top: 5px;
-	padding-left: 10px;
+    background: url(images/title.jpg) no-repeat;
+    height: 26px;
+    width: 216px;
+    margin-bottom: 10px;
+    padding-top: 5px;
+    padding-left: 10px;
     font-family: "Times New Roman", Times, Verdana;
     font-size: 13px;
-	color: #000000;	
-	font-weight : bold;
-	font-style: italic;
+    color: #000000; 
+    font-weight : bold;
+    font-style: italic;
 }
 
 div.contenu-menu {
-	padding-bottom: 0px;
-	padding-left: 10px;
-	padding-bottom: 18px;
+    padding-bottom: 0px;
+    padding-left: 10px;
+    padding-bottom: 18px;
 }
 
 div.menu {
-	margin-left: 10px;
-	padding-left: 4px;
-	padding-top: 7px;
-	background: url(images/li.jpg) repeat-y;
+    margin-left: 10px;
+    padding-left: 4px;
+    padding-top: 7px;
+    background: url(images/li.jpg) repeat-y;
 }
 
 div.menu a {
     color : #666666;
     font-weight : bold;
-	font-size: 11px;
-	height: 10px;
+    font-size: 11px;
+    height: 10px;
 }
 
 div#right {
     width:682px;
-	float:left;
+    float:left;
 }
 
 div#arbo {
     padding-top: 10px;
-	padding-bottom: 35px;
-	padding-left: 0px;
-	padding-right: 70px;
+    padding-bottom: 35px;
+    padding-left: 0px;
+    padding-right: 70px;
 }
 
 div#contenu-right {
-	background: url(images/right-top.jpg) no-repeat;
+    background: url(images/right-top.jpg) no-repeat;
     padding-top: 20px;
-	padding-bottom: 40px;
-	padding-left: 0px;
-	padding-right: 70px;
+    padding-bottom: 40px;
+    padding-left: 0px;
+    padding-right: 70px;
 }
 
 
@@ -134,20 +134,20 @@ div#contenu-right {
 
 #footer {
     height:33px;
-	width:100%;
-	margin:0 auto;
-	padding:0;
-	background: url(images/background-footer.jpg) repeat-x bottom;
-	background-color: #e40001;
-	text-align:center;
-	clear: both;
-	margin-top:-42px;
+    width:100%;
+    margin:0 auto;
+    padding:0;
+    background: url(images/background-footer.jpg) repeat-x bottom;
+    background-color: #e40001;
+    text-align:center;
+    clear: both;
+    margin-top:-42px;
 }
 
 #footer p {
     padding-top: 12px;
     font-size: 10px;
-	color: #FFFFFF
+    color: #FFFFFF
 }
 
 #footer a {
@@ -167,15 +167,15 @@ div#contenu-right {
 
 html, body { 
     margin: 0;
-	padding: 0;
+    padding: 0;
 }
 
 span.spacer {
-	height:0.01em;
-	overflow:hidden;
-	display:block;
-	width:100%;
-	clear:both;
+    height:0.01em;
+    overflow:hidden;
+    display:block;
+    width:100%;
+    clear:both;
 }
 
 img { border: 0; }
@@ -191,8 +191,22 @@ a:hover , a:active , a:focus {
 }
 
 h3 {
-	font-size: 11px;
-	font-weight: bold;
-	color: #ff5a00;
-	margin-bottom: 15px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ff5a00;
+    margin-bottom: 15px;
+}
+
+/* **************************************** */
+/* ********** SECTIONS ******************** */
+/* **************************************** */
+.section {
+    padding: 0px;
+    margin: 0px;
+}
+
+#section-auteur-livres img {
+    margin-right: 2px;
+    margin-bottom: 2px;
+    border: solid black 1px;
 }
