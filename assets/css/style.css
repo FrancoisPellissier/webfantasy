@@ -205,8 +205,16 @@ h3 {
     margin: 0px;
 }
 
+#section-auteur p {
+    text-align: justify;
+}
+
 #section-auteur-livres img {
     margin-right: 2px;
     margin-bottom: 2px;
     border: solid black 1px;
+}
+
+#section-page p {
+    text-align: justify;
 }
