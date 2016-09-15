@@ -1,11 +1,22 @@
+<div class="section" id="section-concours-show">
 <?php
 echo '<h1>'.$model->infos['titre'].'</h1>';
-
-echo '<p><img src="http://www.webfantasy.fr/img/concours/concours_'.$model->infos['formid'].'.jpg" /></p>';
-
-echo parse_message($model->infos['description'], 0);
-
 ?>
+<table>
+    <tr>
+        <td class="image-left">
+        <?php
+        echo '<p><img src="http://www.webfantasy.fr/img/concours/concours_'.$model->infos['formid'].'.jpg" /></p>';
+        ?>
+        </td>
+        <td class="texte-right">
+        <?php
+        echo parse_message($model->infos['description'], 0);
+        ?>
+        </td>
+    </tr>
+</table>
+
 <h2>Règlement du concours</h2>
 
 <p>Ce concours est limité à une participation par personne physique habitant en France métropolitaine (Corse incluse), en Belgique, en Suisse ou au Luxembourg.</p>
@@ -34,3 +45,5 @@ else {
     }
     
 }
+?>
+</div>

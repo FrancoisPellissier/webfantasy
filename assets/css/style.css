@@ -203,18 +203,28 @@ h3 {
 .section {
     padding: 0px;
     margin: 0px;
-}
-
-#section-auteur p {
     text-align: justify;
 }
 
+/* *********** AUTEUR ***************/
 #section-auteur-livres img {
     margin-right: 2px;
     margin-bottom: 2px;
     border: solid black 1px;
 }
 
-#section-page p {
-    text-align: justify;
+/* *********** CONCOURS **************/
+#section-concours-show .texte-right {
+    vertical-align: top;
+    padding-left: 10px;
+}
+
+#section-concours-list .texte-right {
+    vertical-align: top;
+    padding-left: 10px;
+}
+
+#section-concours-list h2 {
+    width: 300px;
+    border-bottom: solid black 1px;
 }
