@@ -206,21 +206,21 @@ h3 {
     text-align: justify;
 }
 
-/* *********** AUTEUR ***************/
+/* *********** AUTEUR ************** */
 #section-auteur-livres img {
     margin-right: 2px;
     margin-bottom: 2px;
     border: solid black 1px;
 }
 
-/* *********** CATEGORY *************/
+/* *********** CATEGORY ************ */
 #section-category img {
     margin-right: 2px;
     margin-bottom: 2px;
     border: solid black 1px;
 }
 
-/* *********** CONCOURS **************/
+/* *********** CONCOURS ************* */
 #section-concours-show .texte-right {
     vertical-align: top;
     padding-left: 10px;
@@ -234,4 +234,15 @@ h3 {
 #section-concours-list h2 {
     width: 300px;
     border-bottom: solid black 1px;
+}
+
+/* *********** LIVRES ************** */
+#section-livre-fiche .fiche-left {
+    vertical-align: top;
+    padding-top: 10px;
+}
+
+#section-livre-fiche .fiche-right {
+    vertical-align: top;
+    padding-left: 12px;
 }
